@@ -1,9 +1,4 @@
-// Simple posts loader for Create React App
-// Since CRA doesn't easily support dynamic imports of markdown files,
-// we'll use a direct import approach
-
-// For now, let's inline the content to keep it simple
-// In production, you'd fetch these from files or an API
+// Fallback to inline content for now - the file-based system needs more setup
 const realPosts = [
   {
     slug: "beyond-chatbot",
@@ -92,7 +87,7 @@ The next wave of AI interfaces will be:
 ];
 
 export function getAllPosts() {
-  // Return only the real posts, sorted by date (newest first)
+  // Return the posts, sorted by date (newest first)
   return realPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
