@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const location = useLocation();
+  const { isDarkMode } = useTheme();
   
   const isActive = (path) => location.pathname === path;
   
@@ -12,7 +14,11 @@ export default function Navigation() {
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/">
-          <img src="/mac-logo.png" alt="Nathan A. King" className="h-12 w-auto" />
+          <img 
+            src="/mac-logo.png" 
+            alt="Nathan A. King" 
+            className={`h-12 w-auto transition-all duration-200 ${isDarkMode ? 'brightness-0 invert' : ''}`}
+          />
         </Link>
         
         {/* Navigation Links and Theme Toggle */}
