@@ -38,13 +38,13 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
       style={{ zIndex: 999999 }}
       onClick={onClose}
     >
-      <div className="fixed inset-0 flex items-center justify-center p-4 pt-20 pb-12">
+      <div className="fixed inset-0 flex items-center justify-center p-4 pt-24 pb-16">
         <div className="relative">
           {/* Image */}
           <img
             src={src}
             alt={alt}
-            className="max-w-[80vw] max-h-[70vh] object-contain rounded-lg shadow-2xl"
+            className="max-w-[85vw] max-h-[75vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
           
