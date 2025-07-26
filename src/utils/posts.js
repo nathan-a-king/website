@@ -44,7 +44,7 @@ The chatbot era served its purpose—it showed us what was possible. Now it's ti
   {
     slug: "ai-first-workflows",
     title: "Designing for AI-First Workflows",
-    date: "July 12, 2025",
+    date: "July 5, 2025",
     excerpt: "AI-first products demand a different approach. It's not just about embedding a model...",
     content: `
 When ChatGPT first arrived, the chat interface felt fresh—almost magical. For the first time, anyone could type a question, a prompt, or even a vague musing into a box and get back something surprisingly coherent, sometimes even profound. It was playful, frictionless, and conversational.
