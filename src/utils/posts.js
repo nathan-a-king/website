@@ -10,7 +10,7 @@ When ChatGPT first launched, the chat interface felt **novel** and even *magical
 
 But over time, we've started to feel the limits of this format. Power users don't just want to chat. They want to **build**, **explore**, and **execute**. Copying answers from chat into other tools is tedious. 
 
-![Traditional chat interface workflow](/images/posts/chat-workflow.png)
+![Embeddings query](/images/posts/UI.jpeg)
 
 > The future isn't just smarter AI—it's better interfaces for working alongside it.
 

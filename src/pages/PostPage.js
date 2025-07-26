@@ -58,7 +58,7 @@ export default function PostPage() {
 
           {/* Post Header */}
           <header className="mb-8 text-center opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
-            <h1 className="text-4xl font-bold mb-4 text-gray-900 leading-tight">
+            <h1 className="text-4xl mb-4 text-gray-900 leading-tight">
               {post.title}
             </h1>
             <div className="flex items-center justify-center text-sm text-gray-600">
