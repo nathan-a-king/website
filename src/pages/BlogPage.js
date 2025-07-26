@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "../components/ui/card";
 import { CalendarDays } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
+import ClickableImage from '../components/ClickableImage';
 import { getAllPosts } from '../utils/posts';
 
 const POSTS_PER_PAGE = 10;
@@ -65,19 +66,7 @@ export default function BlogPage() {
                         </blockquote>
                       ),
                       img: ({src, alt}) => (
-                        <figure className="my-8">
-                          <img 
-                            src={src} 
-                            alt={alt} 
-                            className="w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
-                            loading="lazy"
-                          />
-                          {alt && (
-                            <figcaption className="text-sm text-gray-600 dark:text-gray-400 text-center mt-3 italic">
-                              {alt}
-                            </figcaption>
-                          )}
-                        </figure>
+                        <ClickableImage src={src} alt={alt} />
                       ),
                       ul: ({children}) => <ul className="list-disc list-inside mb-4 space-y-1">{children}</ul>,
                       ol: ({children}) => <ol className="list-decimal list-inside mb-4 space-y-1">{children}</ol>,
