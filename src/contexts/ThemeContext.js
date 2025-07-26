@@ -30,19 +30,9 @@ export const ThemeProvider = ({ children }) => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
-      // Update theme-color meta tag for dark mode
-      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      if (themeColorMeta) {
-        themeColorMeta.setAttribute('content', '#111827'); // gray-900
-      }
     } else {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
-      // Update theme-color meta tag for light mode
-      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      if (themeColorMeta) {
-        themeColorMeta.setAttribute('content', '#ffffff'); // white
-      }
     }
   }, [isDarkMode]);
 
