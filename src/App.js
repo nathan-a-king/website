@@ -160,11 +160,19 @@ export default function BlogPost() {
                     components={{
                       // Custom styling for markdown elements
                       h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
-                      h2: ({children}) => <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>,
+                      h2: ({children}) => <h2 className="text-2xl mt-6 mb-3">{children}</h2>,
                       h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>,
-                      p: ({children}) => <p className="mb-4 text-justify">{children}</p>,
+                      p: ({children, ...props}) => {
+                        // Check if this paragraph is inside a blockquote
+                        const isInBlockquote = props.node?.parent?.tagName === 'blockquote';
+                        return (
+                          <p className={isInBlockquote ? "text-justify" : "mb-4 text-justify"}>
+                            {children}
+                          </p>
+                        );
+                      },
                       blockquote: ({children}) => (
-                        <blockquote className="border-l-4 border-gray-300 pl-6 my-6 italic text-lg bg-gray-50 py-4">
+                        <blockquote className="border-l-4 border-gray-300 pl-6 pr-4 my-4 italic text-lg bg-gray-50">
                           {children}
                         </blockquote>
                       ),
