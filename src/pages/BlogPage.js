@@ -51,7 +51,15 @@ export default function BlogPage() {
                       h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
                       h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
                       h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-gray-900 dark:text-gray-100">{children}</h3>,
-                      p: ({children, ...props}) => {
+                      p: ({children, node, ...props}) => {
+                        // Check if this paragraph contains an image by looking at the node
+                        const hasImg = node?.children?.some(child => child.tagName === 'img');
+                        
+                        if (hasImg) {
+                          // Return the image directly without wrapping in p tag
+                          return <div className="mb-4">{children}</div>;
+                        }
+                        
                         // Check if this paragraph is inside a blockquote
                         const isInBlockquote = props.node?.parent?.tagName === 'blockquote';
                         return (

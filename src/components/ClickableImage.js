@@ -7,7 +7,7 @@ export default function ClickableImage({ src, alt, className = '' }) {
 
   return (
     <>
-      <figure className="my-8 group cursor-pointer" onClick={() => setIsModalOpen(true)}>
+      <div className="my-8 group cursor-pointer" onClick={() => setIsModalOpen(true)}>
         <div className="relative overflow-hidden rounded-lg">
           <img 
             src={src} 
@@ -23,11 +23,11 @@ export default function ClickableImage({ src, alt, className = '' }) {
           </div>
         </div>
         {alt && (
-          <figcaption className="text-sm text-gray-600 dark:text-gray-400 text-center mt-3 italic">
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center mt-3 italic">
             {alt}
-          </figcaption>
+          </div>
         )}
-      </figure>
+      </div>
       
       <ImageModal 
         src={src}

@@ -5,8 +5,6 @@ import { useTheme } from '../contexts/ThemeContext';
 export default function ImageModal({ src, alt, isOpen, onClose }) {
   const { isDarkMode } = useTheme();
   
-  console.log('ImageModal isDarkMode:', isDarkMode); // Debug log
-  
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
