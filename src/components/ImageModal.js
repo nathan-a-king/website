@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function ImageModal({ src, alt, isOpen, onClose }) {
+  const { isDarkMode } = useTheme();
+  
+  console.log('ImageModal isDarkMode:', isDarkMode); // Debug log
+  
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
@@ -31,7 +36,7 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-90 backdrop-blur-sm"
+      className={isDarkMode ? 'fixed inset-0 backdrop-blur-sm bg-gray-900' : 'fixed inset-0 backdrop-blur-sm bg-white/95'}
       style={{ zIndex: 999999 }}
       onClick={onClose}
     >
@@ -58,7 +63,7 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
         
         {/* Caption */}
         {alt && (
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg text-sm max-w-[80%] text-center">
+          <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm max-w-[80%] text-center ${isDarkMode ? 'bg-gray-800/90 text-gray-200' : 'bg-gray-100/90 text-gray-800'}`}>
             {alt}
           </div>
         )}
