@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Avenir';
+  src: local('Avenir'), local('Avenir Next');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-avenir {
+  font-family: 'Avenir', -apple-system, system-ui, sans-serif;
+}
