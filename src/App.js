@@ -65,7 +65,7 @@ export default function BlogPost() {
     <div className="relative min-h-screen bg-white text-black font-avenir">
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/70 border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold tracking-tight">Nathan A. King</div>
+          <img src="/mac-logo.png" alt="Nathan A. King" className="h-12 w-auto" />
           <ul className="flex space-x-6 text-md font-medium">
             <li><a href="#" className="hover:text-gray-700 transition">Home</a></li>
             <li><a href="#" className="hover:text-gray-700 transition">Blog</a></li>
@@ -79,7 +79,7 @@ export default function BlogPost() {
           {paginatedPosts.map((post, index) => (
             <div key={`page-${currentPage}-index-${index}`} className={`transition-opacity duration-500 ease-in-out opacity-0 animate-fadeIn`} style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}>
               <header className="mb-6 text-center">
-                <h1 className="text-4xl font-semibold mb-3 leading-snug tracking-tight text-gray-900">
+                <h1 className="text-4xl mb-3 leading-snug tracking-tight text-gray-900">
                   {post.title}
                 </h1>
                 <div className="flex justify-center items-center text-sm text-gray-600 italic">
