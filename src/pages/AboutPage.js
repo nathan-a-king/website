@@ -47,6 +47,7 @@ export default function AboutPage() {
             <li>Interface patterns that make AI feel collaborative rather than transactional</li>
             <li>Tools that adapt to different thinking styles and creative processes</li>
             <li>Systems that preserve human agency while leveraging AI capabilities</li>
+            <li>Enhancing existing evaluations frameworks</li>
           </ul>
 
           <h2 className="text-3xl mb-6 text-gray-900 dark:text-gray-100">Let's Connect</h2>
