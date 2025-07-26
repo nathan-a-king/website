@@ -25,6 +25,35 @@ AI should enhance your workflow, not interrupt it. The next generation of AI too
 That's the leap we need to make: **from chatbot to creative partner**.
     `
   },
+  {    slug: "context-engineering",
+    title: "Context Engineering",
+    date: "July 12, 2025",
+    excerpt: "AI-first products demand a different approach. It's not just about embedding a model...",
+    content: `
+In the [previous article](https://nathanaking.com/journal/post-determinism-correctness-and-confidence), I explored how the rise of AI and large language models has transformed our understanding of software correctness from a binary concept to a spectrum of confidence. The article examined various approaches to measuring AI output reliability, from model-reported confidence metrics like token probabilities to external validation through semantic similarity scoring. We also discussed how domain specificity and input quality constraints can improve confidence scoring reliability. These concepts set the foundation for implementing practical confidence scoring in AI applications.
+
+While the corpus of information available to large language models is impressive, they often lack specific domain knowledge. When the LLM lacks the information necessary to fulfill the query, it will confabulate a plausible sounding answer. Therefore, our first task is to anticipate the information required for this assistant. We become [_context engineers_](https://blog.langchain.com/the-rise-of-context-engineering/), providing access to the relevant information without exposing too much irrelevant information.
+
+Being a context engineer means recognizing that the quality of an AI model’s response is often more dependent on the input context than the underlying model architecture. Unlike traditional software, where deterministic functions operate on fixed inputs, generative AI systems rely on probabilistic reasoning shaped by subtle cues in the prompt and available context. This shifts the developer’s role: instead of hardcoding logic, we sculpt the environment in which the model thinks. We design retrieval pipelines, manage prompt structure, and filter information windows so the model has access to exactly what it needs — no more, no less. This makes context engineering a hybrid discipline of UX design, information architecture, and knowledge curation, demanding both technical precision and editorial judgment.
+
+## Enter the Vector Store
+
+To engineer useful context, we need a mechanism for retrieving relevant information at the right time — and that’s where [vector stores](https://python.langchain.com/docs/concepts/vectorstores/) come in. A vector store allows us to represent chunks of text as high-dimensional embeddings, making it possible to search for semantically similar content rather than relying on exact keyword matches. Instead of manually curating prompts or hardcoding rules, we can embed documents, code snippets, FAQs, or product data, then query that store based on the user’s intent. This enables dynamic retrieval of the most relevant context, tailored to the specific question, which is then injected into the model’s prompt. In essence, vector stores make it possible to give an LLM a memory — not of everything, but of the right things at the right time.
+
+Traditional databases struggle in this role — they’re designed for structured queries and exact matches, not the fuzzy, meaning-based retrieval that LLMs require. They’re also too slow when dealing with the volume and variety of unstructured information modern applications demand.
+
+Vector stores solve this by enabling fast, semantic search over unstructured data. Here’s how they work:
+
+1. Raw text is transformed into _embeddings_ — high-dimensional numerical representations that capture the semantic meaning of the content.
+2. These embeddings are stored as vectors in the database, where their position in space reflects meaning.
+3. Vectors with similar meanings cluster near each other, even if the original text differs in wording.
+
+When a user submits a query, it’s also converted into an embedding and compared against the stored vectors. The most semantically similar chunks are retrieved and injected into the model’s context window — enabling it to reason over custom knowledge as if it were native to the model.
+
+Let's explore what this looks like in a simple implementation of an agent specializing in knowledge about Apple Silicon. I've stored over 65,000 lines of information about Apple Silicon in over a hundred different markdown documents and stored them in a list named \`documents\`.
+
+We'll begin by converting these markdown documents into embeddings. Here's what they look like. Our information has been reduced to pure mathematics:
+    `},
   {
     slug: "ai-first-workflows",
     title: "Designing for AI-First Workflows",
