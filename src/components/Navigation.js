@@ -52,6 +52,18 @@ export default function Navigation() {
               About
             </Link>
           </li>
+          <li>
+            <Link 
+              to="/contact"
+              className={`transition ${
+                isActive('/contact') 
+                  ? 'text-black' 
+                  : 'text-gray-600 hover:text-gray-700'
+              }`}
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

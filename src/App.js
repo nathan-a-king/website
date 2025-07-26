@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
 import PostPage from "./pages/PostPage";
 import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 import "./styles/fonts.css";
 import "./styles/animations.css";
 import "./styles/globals.css";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<PostPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>
