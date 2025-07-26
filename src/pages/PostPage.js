@@ -44,13 +44,13 @@ export default function PostPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-white text-black font-avenir">
+    <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       <main className="pt-28 px-6 py-12">
         <div className="max-w-3xl mx-auto">
           {/* Back to Blog Link */}
           <Link 
             to="/blog" 
-            className="inline-flex items-center text-gray-600 hover:text-black transition mb-8"
+            className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -58,23 +58,23 @@ export default function PostPage() {
 
           {/* Post Header */}
           <header className="mb-8 text-center opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
-            <h1 className="text-4xl mb-4 text-gray-900 leading-tight">
+            <h1 className="text-4xl mb-4 text-gray-900 dark:text-gray-100 leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center justify-center text-sm text-gray-600">
+            <div className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300">
               <CalendarDays className="w-4 h-4 mr-2" />
               <span>{post.date}</span>
             </div>
           </header>
 
           {/* Post Content */}
-          <Card className="border-none shadow-none opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-            <CardContent className="text-gray-800 leading-[1.75] tracking-normal">
+          <Card className="border-none shadow-none bg-transparent dark:bg-transparent opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+            <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
               <ReactMarkdown 
                 components={{
-                  h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
-                  h2: ({children}) => <h2 className="text-2xl mt-6 mb-3">{children}</h2>,
-                  h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>,
+                  h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
+                  h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
+                  h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-gray-900 dark:text-gray-100">{children}</h3>,
                   p: ({children, ...props}) => {
                     const isInBlockquote = props.node?.parent?.tagName === 'blockquote';
                     return (
@@ -84,7 +84,7 @@ export default function PostPage() {
                     );
                   },
                   blockquote: ({children}) => (
-                    <blockquote className="border-l-4 border-gray-300 pl-6 pr-4 my-4 italic text-lg bg-gray-50">
+                    <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-6 pr-4 my-4 italic text-lg bg-gray-50 dark:bg-gray-800">
                       {children}
                     </blockquote>
                   ),
@@ -93,11 +93,11 @@ export default function PostPage() {
                       <img 
                         src={src} 
                         alt={alt} 
-                        className="w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-200"
+                        className="w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
                         loading="lazy"
                       />
                       {alt && (
-                        <figcaption className="text-sm text-gray-600 text-center mt-3 italic">
+                        <figcaption className="text-sm text-gray-600 dark:text-gray-400 text-center mt-3 italic">
                           {alt}
                         </figcaption>
                       )}
@@ -117,7 +117,7 @@ export default function PostPage() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-200 mt-20 py-6 text-center text-sm text-gray-500">
+      <footer className="border-t border-gray-200 dark:border-gray-700 mt-20 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>
