@@ -41,7 +41,7 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4">
                 Why the future of AI isn't just smarter responses, but better interfaces for collaboration.
               </p>
-              <Link to="/blog" className="text-black font-medium hover:underline">
+              <Link to="/blog/beyond-chatbot" className="text-black font-medium hover:underline">
                 Read more →
               </Link>
             </div>
@@ -51,7 +51,7 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4">
                 Rethinking user experience when AI becomes a core part of the workflow.
               </p>
-              <Link to="/blog" className="text-black font-medium hover:underline">
+              <Link to="/blog/ai-first-workflows" className="text-black font-medium hover:underline">
                 Read more →
               </Link>
             </div>
@@ -61,7 +61,7 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4">
                 Moving beyond text boxes to interfaces that match how we actually think.
               </p>
-              <Link to="/blog" className="text-black font-medium hover:underline">
+              <Link to="/blog/chat-interface-limits" className="text-black font-medium hover:underline">
                 Read more →
               </Link>
             </div>

@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
+import PostPage from "./pages/PostPage";
 import AboutPage from "./pages/AboutPage";
 import "./styles/fonts.css";
 import "./styles/animations.css";
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<PostPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
