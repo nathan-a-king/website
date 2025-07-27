@@ -19,10 +19,10 @@ export default function PostPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-white text-black font-avenir">
+      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
         <main className="pt-28 px-6 py-12">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-gray-600">Loading post...</p>
+            <p className="text-gray-600 dark:text-gray-300">Loading post...</p>
           </div>
         </main>
       </div>
@@ -31,11 +31,11 @@ export default function PostPage() {
 
   if (!post) {
     return (
-      <div className="relative min-h-screen bg-white text-black font-avenir">
+      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
         <main className="pt-28 px-6 py-12">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl font-bold mb-4">Post Not Found</h1>
-            <Link to="/blog" className="text-black hover:underline">
+            <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Post Not Found</h1>
+            <Link to="/blog" className="text-black dark:text-white hover:underline">
               ← Back to Blog
             </Link>
           </div>
