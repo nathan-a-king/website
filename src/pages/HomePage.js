@@ -37,6 +37,15 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Apple is Missing the AI Race</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths.
+              </p>
+              <Link to="/blog/apple-missing-ai-race" className="text-black dark:text-white font-medium hover:underline">
+                Read more →
+              </Link>
+            </div>
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
               <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Beyond the Chatbot</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Why the future of AI isn't just smarter responses, but better interfaces for collaboration.
@@ -56,15 +65,6 @@ export default function HomePage() {
               </Link>
             </div>
             
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Interface Evolution</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Moving beyond text boxes to interfaces that match how we actually think.
-              </p>
-              <Link to="/blog/chat-interface-limits" className="text-black dark:text-white font-medium hover:underline">
-                Read more →
-              </Link>
-            </div>
           </div>
         </div>
       </section>

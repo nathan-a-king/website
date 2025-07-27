@@ -1,7 +1,25 @@
 // Fallback to inline content for now - the file-based system needs more setup
 const realPosts = [
   {
-slug: "beyond-the-chatbot",
+    slug: "apple-missing-ai-race",
+    title: "Apple is Missing the AI Race",
+    date: "July 27, 2025",
+    excerpt: "Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths.",
+    content: `
+Apple has two major advantages in the AI race. Their ARM-based SoC’s unified memory architecture allows the GPU and Neural Engine access to far more RAM than competitors. This architectural advantage allows excellent performance of smaller models running on device as the context window grows. Each token requires a key/value pair, which causes the memory footprint to quickly grow as individual conversations get longer. Apple is not taking advantage of their most valuable resource, the platform advantage – access to *all* of my personal data.  
+
+[Mark Gurman at Bloomberg reports:](https://www.bloomberg.com/news/articles/2025-02-14/apple-s-long-promised-ai-overhaul-for-siri-runs-into-bugs-possible-delays?srnd=phx-technology)
+
+> “The goal is to ultimately offer a more versatile Siri that can seamlessly tap into customers’ information and communication. For instance, users will be able to ask for a file or song that they discussed with a friend over text. Siri would then automatically retrieve that item. Apple also has demonstrated the ability for Siri to quickly locate someone’s driver’s license number by reviewing their photos.”
+
+This is Apple’s competitive differentiator and where Apple should have focused its resources from the start. Why can't I ask questions about my archived email or find correlations in exercise volume and sleep quality within the Health app?  
+
+Apple’s real AI advantage isn’t just hardware — it’s the platform. A company that prides itself on tight integration across devices should be leading in AI that understands *me*. The ability to surface insights from my personal data, securely and privately, is where Apple could create the most compelling user experience.
+    `
+
+  },
+  {
+    slug: "beyond-the-chatbot",
     title: "Beyond the Chatbot",
     date: "July 12, 2025",
     excerpt: "AI-first products demand a different approach. It's not just about embedding a model...",
@@ -80,40 +98,6 @@ he next generation of AI tools will be judged not by how well they chat, but by 
 - Respect user privacy and data sovereignty
 
 The chatbot era served its purpose—it showed us what was possible. Now it's time to build something better.
-    `
-  },
-  {
-    slug: "chat-interface-limits",
-    title: "Why the Chat Interface Is Holding Us Back",
-    date: "July 5, 2025",
-    excerpt: "Chat interfaces are flexible, but they're not always the right fit...",
-    content: `
-Chat interfaces are flexible, but they're not always the right fit. Sometimes, you need **structure**. 
-
-## Beyond the Text Box
-
-Think about how we actually organize thought:
-
-- **Tables** for comparing options
-- **Forms** for structured input
-- **Timelines** for sequential planning  
-- **Canvases** for spatial thinking
-- **Diagrams** for relationships
-
-When we constrain AI to a text box, we limit its potential. 
-
-> The challenge now is to design interfaces that surface the full power of the model—without drowning the user in complexity.
-
-### The Path Forward
-
-The next wave of AI interfaces will be:
-
-1. **Multi-modal** - Supporting text, images, voice, and gestures
-2. **Contextual** - Adapting to the task at hand
-3. **Collaborative** - Enabling real-time co-creation
-4. **Invisible** - Feeling natural and intuitive
-
-*The best interface is the one you don't notice.*
     `
   }
 ];
