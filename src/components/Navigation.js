@@ -60,18 +60,6 @@ export default function Navigation() {
                 About
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/contact"
-                className={`transition ${
-                  isActive('/contact') 
-                    ? 'text-black dark:text-white' 
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200'
-                }`}
-              >
-                Contact
-              </Link>
-            </li>
           </ul>
           <ThemeToggle />
         </div>
