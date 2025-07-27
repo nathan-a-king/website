@@ -76,25 +76,32 @@ export const ThemeProvider = ({ children }) => {
     const favicon = document.querySelector('link[rel="icon"]');
     if (!favicon) return;
 
-    // Create a canvas to generate a dynamic favicon
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
-
-    // Set background and text color based on theme
-    ctx.fillStyle = isDark ? '#1f2937' : '#ffffff';
-    ctx.fillRect(0, 0, 32, 32);
+    // Use the appropriate logo based on theme
+    const logoPath = isDark ? '/mac-logo-white.png' : '/mac-logo.png';
     
-    ctx.fillStyle = isDark ? '#ffffff' : '#1f2937';
-    ctx.font = 'bold 20px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('N', 16, 16);
+    // Create an image element to load the logo
+    const img = new Image();
+    img.onload = () => {
+      // Create canvas for favicon
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 32;
+      canvas.height = 32;
 
-    // Convert canvas to data URL and update favicon
-    const dataURL = canvas.toDataURL('image/png');
-    favicon.href = dataURL;
+      // Draw the logo image onto the canvas
+      ctx.drawImage(img, 0, 0, 32, 32);
+
+      // Convert canvas to data URL and update favicon
+      const dataURL = canvas.toDataURL('image/png');
+      favicon.href = dataURL;
+    };
+    
+    // Fallback: if logo fails to load, keep current favicon
+    img.onerror = () => {
+      console.warn('Logo image failed to load, keeping current favicon');
+    };
+    
+    img.src = logoPath;
   };
 
   const toggleTheme = () => {
