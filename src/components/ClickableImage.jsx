@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Maximize2 } from 'lucide-react';
-import ImageModal from './ImageModal';
+import ImageModal from './ImageModal.jsx';
 
 export default function ClickableImage({ src, alt, className = '' }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

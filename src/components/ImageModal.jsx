@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/ThemeContext.jsx';
 
 export default function ImageModal({ src, alt, isOpen, onClose }) {
   const { isDarkMode } = useTheme();

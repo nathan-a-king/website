@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "../contexts/ThemeContext";
-import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../contexts/ThemeContext.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 export default function Navigation() {
   const location = useLocation();

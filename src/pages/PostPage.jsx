@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CalendarDays, ArrowLeft } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
-import { Card, CardContent } from "../components/ui/card";
-import ClickableImage from '../components/ClickableImage';
+import { Card, CardContent } from "../components/ui/card.jsx";
+import ClickableImage from '../components/ClickableImage.jsx';
 import { getPostBySlug } from '../utils/posts';
 
 export default function PostPage() {

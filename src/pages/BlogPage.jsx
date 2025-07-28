@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "../components/ui/card";
+import { Card, CardContent } from "../components/ui/card.jsx";
 import { CalendarDays } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
-import ClickableImage from '../components/ClickableImage';
+import ClickableImage from '../components/ClickableImage.jsx';
 import { getAllPosts } from '../utils/posts';
 
 const POSTS_PER_PAGE = 10;

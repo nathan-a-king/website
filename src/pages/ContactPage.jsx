@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare } from "lucide-react";
-import { Card, CardContent } from "../components/ui/card";
+import { Card, CardContent } from "../components/ui/card.jsx";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
