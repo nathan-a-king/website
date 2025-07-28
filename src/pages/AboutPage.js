@@ -16,9 +16,9 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-700 dark:prose-p:text-gray-300">
           <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg mb-12 transition-colors">
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 m-0">
-              I'm Nate, a generative AI software engineer passionate about creating AI tools 
-              that feel like natural extensions of human creativity. My work focuses on designing 
-              interfaces that make AI accessible, powerful, and genuinely helpful in real-world workflows.
+              I'm Nate, a software engineer passionate about creating AI tools that feel
+              like natural extensions of human creativity. My work focuses on designing interfaces 
+              that make AI accessible, powerful, and genuinely helpful in real-world workflows.
             </p>
           </div>
 

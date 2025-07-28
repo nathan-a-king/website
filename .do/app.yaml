@@ -1,0 +1,14 @@
+name: nathan-king-website
+static_sites:
+- name: website
+  source_dir: /
+  github:
+    repo: nathan-a-king/website
+    branch: main
+    deploy_on_push: true
+  build_command: npm run build
+  output_dir: build
+  index_document: index.html
+  error_document: index.html
+  routes:
+  - path: /
