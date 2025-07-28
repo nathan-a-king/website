@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getAllPosts } from "../utils/posts";
 
 export default function HomePage() {
+  // Get the latest 3 blog posts
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Hero Section */}
@@ -36,35 +40,19 @@ export default function HomePage() {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Apple is Missing the AI Race</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths.
-              </p>
-              <Link to="/blog/apple-missing-ai-race" className="text-black dark:text-white font-medium hover:underline">
-                Read more →
-              </Link>
-            </div>
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Beyond the Chatbot</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Why the future of AI isn't just smarter responses, but better interfaces for collaboration.
-              </p>
-              <Link to="/blog/beyond-the-chatbot" className="text-black dark:text-white font-medium hover:underline">
-                Read more →
-              </Link>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">AI-First Design</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Rethinking user experience when AI becomes a core part of the workflow.
-              </p>
-              <Link to="/blog/ai-first-workflows" className="text-black dark:text-white font-medium hover:underline">
-                Read more →
-              </Link>
-            </div>
-            
+            {latestPosts.map((post, index) => (
+              <div key={post.slug} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {post.excerpt}
+                </p>
+                <Link to={`/blog/${post.slug}`} className="text-black dark:text-white font-medium hover:underline">
+                  Read more →
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
