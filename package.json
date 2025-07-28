@@ -19,7 +19,7 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "NODE_ENV=production vite build",
     "preview": "vite preview",
     "test": "react-scripts test",
     "serve": "serve -s build"
