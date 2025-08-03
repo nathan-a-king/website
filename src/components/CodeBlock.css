@@ -1,0 +1,7 @@
+/* CodeBlock custom styles to override syntax highlighter */
+.code-block-container pre,
+.code-block-container code,
+.code-block-container * {
+  font-size: .875rem !important;
+  line-height: 1.5 !important;
+}

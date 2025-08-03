@@ -1,12 +1,27 @@
 // Fallback to inline content for now - the file-based system needs more setup
 const realPosts = [
-  {
-    slug: "path-to-profitability",
-    title: "The Path to Profitability",
-    date: "July 28, 2025",
-    excerpt: "The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI.",
-    content: `
+{
+  slug: "path-to-profitability",
+  title: "The Path to Profitability",
+  date: "July 28, 2025",
+  excerpt: "The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI.",
+  content: `
 The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI. Just as Microsoft didn't win the PC era by making the best chips, today's AI leaders are racing not just to build better models, but to become the indispensable platform through which AI is accessed and deployed. Last quarter, over 50% of all venture capital funding went to AI-focused companies, totaling more than $60 billion of investment. The extreme rate with which VC firms are pouring money into Artificial Intelligence begs an important question: what is the path to profitability for companies like OpenAI?
+
+\`\`\`ts
+type RevenueModel = {
+  type: "subscription" | "usage";
+  fixedCosts: number;
+  marginalCosts: number;
+  freeUserSubsidy: number;
+};
+
+function isProfitable(model: RevenueModel, paidUsers: number): boolean {
+  const revenue = paidUsers * model.marginalCosts;
+  const breakEven = model.fixedCosts + model.freeUserSubsidy;
+  return revenue >= breakEven;
+}
+\`\`\`
 
 AI startups have a relatively straightforward revenue model – subscription-based pricing for access to cutting-edge models and usage-based pricing for access to the API. Extremely high R&D and capital costs make attracting more paid users a requirement, but doing this also increases their marginal costs of inference. Therefore, paid users must offset their own marginal costs while subsidizing the costs of free users before beginning to chip away at those massive fixed costs that investors are currently covering. How can these aggressive revenue numbers be achieved without the assistance of external capital?
 
@@ -25,8 +40,8 @@ It’s interesting to note the trend of OpenAI enhancing its API with features t
 But there’s another layer to this. We’re seeing the early signs of this platform consolidation. Just as Microsoft leveraged pre-installation deals and developer incentives to make Windows indispensable, today’s AI leaders are racing to become the default platform on which others build. Microsoft’s investment in OpenAI, Anthropic’s partnership with Amazon, and Google’s embedding of Gemini into its product suite all mirror those earlier moves—where distribution, not just innovation, becomes the true competitive edge. The players who control not just the models, but the channels of user interaction—browsers, operating systems, productivity tools, search, or even chip infrastructure—are best positioned to own the AI era.
 
 We’re entering a phase where control over context becomes as important as control over compute. Just as Windows became the context for productivity and the web browser the context for search, whoever owns the AI context—how, where, and why users invoke intelligence—will shape the future. That’s the real platform play.
-    `
-  },
+  `
+},
   {
     slug: "apple-missing-ai-race",
     title: "Apple is Missing the AI Race",

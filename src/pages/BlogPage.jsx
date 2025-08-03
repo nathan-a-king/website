@@ -3,6 +3,7 @@ import { Card, CardContent } from "../components/ui/card.jsx";
 import { CalendarDays } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import ClickableImage from '../components/ClickableImage.jsx';
+import CodeBlock from '../components/CodeBlock.tsx';
 import { getAllPosts } from '../utils/posts';
 
 const POSTS_PER_PAGE = 10;
@@ -76,6 +77,19 @@ export default function BlogPage() {
                       img: ({src, alt}) => (
                         <ClickableImage src={src} alt={alt} />
                       ),
+                      code: ({node, inline, className, children, ...props}) => {
+                        const match = /language-(\w+)/.exec(className || '');
+                        return !inline && match ? (
+                          <CodeBlock
+                            language={match[1]}
+                            value={String(children).replace(/\n$/, '')}
+                          />
+                        ) : (
+                          <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono" {...props}>
+                            {children}
+                          </code>
+                        );
+                      },
                       ul: ({children}) => <ul className="list-disc list-inside mb-4 space-y-1">{children}</ul>,
                       ol: ({children}) => <ol className="list-decimal list-inside mb-4 space-y-1">{children}</ol>,
                       li: ({children}) => <li className="mb-1">{children}</li>,
