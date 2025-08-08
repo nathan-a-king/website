@@ -1,4 +1,5 @@
 import React from "react";
+import Skills from "../components/Skills";
 
 export default function AboutPage() {
   return (
@@ -12,7 +13,7 @@ export default function AboutPage() {
       </header>
 
       {/* Content */}
-      <main className="px-6 pb-20 opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+      <main className="px-6 pb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-700 dark:prose-p:text-gray-300">
           <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg mb-12 transition-colors">
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 m-0">
@@ -68,7 +69,9 @@ export default function AboutPage() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-200 dark:border-gray-700 mt-20 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+      <Skills />
+
+      <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>
