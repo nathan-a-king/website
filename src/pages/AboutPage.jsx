@@ -1,4 +1,5 @@
 import React from "react";
+import Skills from "../components/Skills";
 
 export default function AboutPage() {
   return (
@@ -67,6 +68,8 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
+
+      <Skills />
 
       <footer className="border-t border-gray-200 dark:border-gray-700 mt-20 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
