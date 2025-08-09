@@ -16,41 +16,48 @@ export default function ResumePage() {
       <main className="px-6 pb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="max-w-4xl mx-auto">
           
-        {/* Contact Info */}
-        <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg mb-12 transition-colors">
-          <div className="flex flex-wrap justify-center gap-12 text-gray-700 dark:text-gray-300">
-            
-            <div className="text-center">
-              <Mail className="mx-auto mb-2 text-indigo-500" />
-              <div className="font-semibold">Email</div>
-              <div>me@nateking.dev</div>
-            </div>
-            
-            <div className="text-center">
-              <MapPin className="mx-auto mb-2 text-indigo-500" />
-              <div className="font-semibold">Location</div>
-              <div>Omaha, NE</div>
-            </div>
-            
-            <div className="text-center">
-              <Globe className="mx-auto mb-2 text-indigo-500" />
-              <div className="font-semibold">Portfolio</div>
-              <div>nateking.dev</div>
-            </div>
-            
-            <div className="text-center">
-              <Award className="mx-auto mb-2 text-indigo-500" />
-              <div className="font-semibold">Experience</div>
-              <div>7+ Years</div>
-            </div>
-
+      {/* Contact Info */}
+      <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg mb-12 transition-colors">
+        <div
+          className="flex flex-wrap justify-center gap-12 text-gray-700 dark:text-gray-300 opacity-0 animate-fadeIn"
+          style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}
+        >
+          <div className="text-center">
+            <Mail className="mx-auto mb-2 text-indigo-500" />
+            <div className="font-semibold">Email</div>
+            <div>me@nateking.dev</div>
           </div>
-
-          {/* Tagline */}
-          <p className="mt-6 text-center italic text-gray-600 dark:text-gray-400">
-            “Designing AI tools that feel less like software and more like conversation.”
-          </p>
+          <div className="text-center">
+            <MapPin className="mx-auto mb-2 text-indigo-500" />
+            <div className="font-semibold">Location</div>
+            <div>Omaha, NE</div>
+          </div>
+          <div className="text-center">
+            <Globe className="mx-auto mb-2 text-indigo-500" />
+            <div className="font-semibold">Portfolio</div>
+            <div>nateking.dev</div>
+          </div>
+          <div className="text-center">
+            <Award className="mx-auto mb-2 text-indigo-500" />
+            <div className="font-semibold">Experience</div>
+            <div>9+ Years</div>
+          </div>
         </div>
+
+        {/* Divider */}
+        <div
+          className="my-6 w-3/4 mx-auto h-px bg-gray-200 dark:bg-gray-700 origin-center scale-x-0 animate-drawLine"
+          style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
+        />
+
+        {/* Tagline */}
+        <p
+          className="text-center italic text-gray-600 dark:text-gray-400 opacity-0 animate-fadeUp"
+          style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
+        >
+          “Designing AI tools that feel less like software and more like conversation.”
+        </p>
+      </div>
 
           {/* Professional Summary */}
           <section className="mb-12">
@@ -89,10 +96,10 @@ export default function ResumePage() {
               {/* Job 2 */}
               <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-6">
                 <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Full Stack Developer</h3>
-                  <span className="text-gray-600 dark:text-gray-400">2019 - 2021</span>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Lead Software Engineer, Salesforce</h3>
+                  <span className="text-gray-600 dark:text-gray-400">2019 - 2025</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 mb-3">TechCorp Solutions · Palo Alto, CA</div>
+                <div className="text-gray-600 dark:text-gray-400 mb-3">FNBO · Omaha, NE</div>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                   <li>Built responsive web applications serving 100K+ users using React, Node.js, and PostgreSQL</li>
                   <li>Implemented automated testing pipelines reducing bug reports by 40%</li>
@@ -104,10 +111,10 @@ export default function ResumePage() {
               {/* Job 3 */}
               <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-6">
                 <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Software Engineer</h3>
-                  <span className="text-gray-600 dark:text-gray-400">2016 - 2019</span>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Senior System Administrator</h3>
+                  <span className="text-gray-600 dark:text-gray-400">2017 - 2019</span>
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 mb-3">StartupXYZ · San Francisco, CA</div>
+                <div className="text-gray-600 dark:text-gray-400 mb-3">FNBO · Omaha, NE</div>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                   <li>Developed MVP products from concept to launch in fast-paced startup environment</li>
                   <li>Created RESTful APIs and microservices architecture using Python and Flask</li>
@@ -186,7 +193,7 @@ export default function ResumePage() {
                   ))}
                 </div>
               </div>
-
+{/*
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Smart Code Review Tool</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
@@ -201,6 +208,7 @@ export default function ResumePage() {
                   ))}
                 </div>
               </div>
+*/}
             </div>
           </section>
 
