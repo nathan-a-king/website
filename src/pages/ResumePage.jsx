@@ -40,7 +40,7 @@ export default function ResumePage() {
           <div className="text-center">
             <Award className="mx-auto mb-2 text-indigo-500" />
             <div className="font-semibold">Experience</div>
-            <div>9+ Years</div>
+            <div>7+ Years</div>
           </div>
         </div>
 
@@ -101,10 +101,11 @@ export default function ResumePage() {
                 </div>
                 <div className="text-gray-600 dark:text-gray-400 mb-3">FNBO · Omaha, NE</div>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Built responsive web applications serving 100K+ users using React, Node.js, and PostgreSQL</li>
-                  <li>Implemented automated testing pipelines reducing bug reports by 40%</li>
-                  <li>Optimized database queries improving application performance by 60%</li>
-                  <li>Integrated third-party APIs and payment systems for e-commerce platforms</li>
+                  <li>Developed responsive Lightning Web Components (LWCs) with integrated AI capabilities</li>
+                  <li>Designed and optimized custom ETL pipelines to ensure timely, accurate data availability</li>
+                  <li>Optimized existing Salesforce workflows for improved efficiency</li>
+                  <li>Integrated third-party APIs into commercial lending applications</li>
+                  <li>Created RESTful APIs and microservices, integrating custom capabilities to extend platform functionality</li>
                 </ul>
               </div>
 
@@ -116,10 +117,9 @@ export default function ResumePage() {
                 </div>
                 <div className="text-gray-600 dark:text-gray-400 mb-3">FNBO · Omaha, NE</div>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Developed MVP products from concept to launch in fast-paced startup environment</li>
-                  <li>Created RESTful APIs and microservices architecture using Python and Flask</li>
-                  <li>Collaborated with designers to implement pixel-perfect user interfaces</li>
-                  <li>Participated in code reviews and agile development practices</li>
+                  <li>Contributed to the design and rollout of online checking and savings account opening capabilities</li>
+                  <li>Partnered with business units to translate requirements into technical solutions</li>
+                  <li>Served as subject matter expert (SME) on Salesforce capabilities, advising leadership on platform strategy.</li>
                 </ul>
               </div>
             </div>
