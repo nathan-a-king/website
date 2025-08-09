@@ -60,6 +60,18 @@ export default function Navigation() {
                 About
               </Link>
             </li>
+            <li>
+              <Link 
+                to="/resume"
+                className={`transition ${
+                  isActive('/resume') 
+                    ? 'text-black dark:text-white' 
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200'
+                }`}
+              >
+                Resume
+              </Link>
+            </li>
           </ul>
           <ThemeToggle />
         </div>
