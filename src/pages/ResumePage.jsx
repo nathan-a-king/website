@@ -118,21 +118,6 @@ export default function ResumePage() {
             </div>
           </section>
 
-          {/* Education */}
-          <section className="mb-12">
-            <h2 className="text-3xl mb-6 text-gray-900 dark:text-gray-100">Education</h2>
-            <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-6">
-              <div className="flex flex-wrap justify-between items-start mb-2">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Bachelor of Science in Computer Science</h3>
-                <span className="text-gray-600 dark:text-gray-400">2012 - 2016</span>
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 mb-3">Stanford University · Stanford, CA</div>
-              <p className="text-gray-700 dark:text-gray-300">
-                Concentration in Human-Computer Interaction · GPA: 3.8/4.0
-              </p>
-            </div>
-          </section>
-
           {/* Technical Skills */}
           <section className="mb-12">
             <h2 className="text-3xl mb-6 text-gray-900 dark:text-gray-100">Technical Skills</h2>
