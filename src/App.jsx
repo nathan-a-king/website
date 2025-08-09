@@ -8,6 +8,7 @@ import BlogPage from "./pages/BlogPage.jsx";
 import PostPage from "./pages/PostPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import ResumePage from "./pages/ResumePage.jsx";
 import "./App.css";
 import "./styles/fonts.css";
 import "./styles/animations.css";
@@ -27,6 +28,7 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<PostPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/resume" element={<ResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
