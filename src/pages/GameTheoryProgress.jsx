@@ -2,7 +2,7 @@ import React from "react";
 
 export default function GameTheoryProgress() {
   const data = {
-    title: "Game Theory",
+    title: "Draft",
     targetWords: 50000,
     currentWords: 33000,
     plannedChapters: 13,
@@ -35,7 +35,7 @@ export default function GameTheoryProgress() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       <header className="pt-32 pb-20 px-6 text-center opacity-0 animate-fadeIn" style={{ animationDelay: "0ms", animationFillMode: "forwards" }}>
-        <h1 className="text-5xl mb-4 text-gray-900 dark:text-gray-100">{data.title} — Progress</h1>
+        <h1 className="text-5xl mb-4 text-gray-900 dark:text-gray-100">{data.title} Progress</h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Tracking draft momentum, chapter milestones, and overall completion.
         </p>
@@ -75,76 +75,80 @@ export default function GameTheoryProgress() {
   <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
     <div className="relative">
       {/* Horizontal Timeline Container */}
-      <div className="flex items-center justify-between w-full pb-4">
-        {(() => {
-          const chapters = Array.from({ length: data.plannedChapters }).map((_, i) => {
-            const idx = i + 1;
-            if (idx <= data.draftedChapters) return { index: idx, status: "done" };
-            if (idx === data.draftedChapters + 1) return { index: idx, status: "wip" };
-            return { index: idx, status: "todo" };
-          });
+      <div className="overflow-x-auto">
+        <div className="flex items-center justify-between w-full pb-4 min-w-max md:min-w-0">
+          {(() => {
+            const chapters = Array.from({ length: data.plannedChapters }).map((_, i) => {
+              const idx = i + 1;
+              if (idx <= data.draftedChapters) return { index: idx, status: "done" };
+              if (idx === data.draftedChapters + 1) return { index: idx, status: "wip" };
+              return { index: idx, status: "todo" };
+            });
 
-          return chapters.map((chapter, i) => {
-            const isLast = i === chapters.length - 1;
-            
-            const getNodeStyles = () => {
-              switch (chapter.status) {
-                case "done":
-                  return "bg-green-500 text-white shadow-sm";
-                case "wip":
-                  return "bg-green-600 text-white shadow-sm animate-pulse";
-                default:
-                  return "bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300";
-              }
-            };
+            return chapters.map((chapter, i) => {
+              const isLast = i === chapters.length - 1;
+              
+              const getNodeStyles = () => {
+                switch (chapter.status) {
+                  case "done":
+                    return "bg-green-500 text-white shadow-sm";
+                  case "wip":
+                    return "bg-green-600 text-white shadow-sm animate-pulse";
+                  default:
+                    return "bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300";
+                }
+              };
 
-            return (
-              <div key={chapter.index} className={`flex items-center ${!isLast ? 'flex-1' : ''}`}>
-                {/* Chapter Node */}
-                <div className="flex flex-col items-center">
-                  <div 
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${getNodeStyles()}`}
-                  >
-                    {chapter.index}
-                  </div>
-                  <div className="mt-1 text-xs text-gray-500 dark:text-gray-500">
-                    {chapter.status === "done" && "✓"}
-                    {chapter.status === "wip" && "●"}
-                    {chapter.status === "todo" && "◯"}
-                  </div>
-                </div>
-                
-                {/* Connecting Line */}
-                {!isLast && (
-                  <div className="flex-1 mx-2">
+              return (
+                <div key={chapter.index} className={`flex items-center ${!isLast ? 'flex-1' : ''} ${isLast ? '' : 'min-w-0'}`}>
+                  {/* Chapter Node */}
+                  <div className="flex flex-col items-center flex-shrink-0">
                     <div 
-                      className={`h-0.5 w-full ${
-                        chapter.status === "done" 
-                          ? "bg-gradient-to-r from-green-500 to-green-400" 
-                          : "bg-gray-300 dark:bg-gray-600"
-                      }`}
-                    ></div>
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${getNodeStyles()}`}
+                    >
+                      {chapter.index}
+                    </div>
+                    <div className="mt-1 text-xs text-gray-500 dark:text-gray-500">
+                      {chapter.status === "done" && "✓"}
+                      {chapter.status === "wip" && "●"}
+                      {chapter.status === "todo" && "◯"}
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          });
-        })()}
+                  
+                  {/* Connecting Line */}
+                  {!isLast && (
+                    <div className="flex-1 mx-2 min-w-8">
+                      <div 
+                        className={`h-0.5 w-full ${
+                          chapter.status === "done" 
+                            ? "bg-gradient-to-r from-green-500 to-green-400" 
+                            : "bg-gray-300 dark:bg-gray-600"
+                        }`}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+              );
+            });
+          })()}
+        </div>
       </div>
       
       {/* Progress Summary */}
-      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600 flex items-center justify-between text-sm">
-        <span className="text-gray-600 dark:text-gray-400">
-          {data.draftedChapters} of {data.plannedChapters} chapters drafted
-        </span>
-        <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
-          <span className="flex items-center gap-1"><span className="text-green-500">✓</span> Complete</span>
-          <span className="flex items-center gap-1"><span className="text-green-600">●</span> In Progress</span>
-          <span className="flex items-center gap-1"><span className="text-gray-400">◯</span> Planned</span>
+      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
+          <span className="text-gray-600 dark:text-gray-400">
+            {data.draftedChapters} of {data.plannedChapters} chapters drafted
+          </span>
+          <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
+            <span className="flex items-center gap-1"><span className="text-green-500">✓</span> Complete</span>
+            <span className="flex items-center gap-1"><span className="text-green-600">●</span> In Progress</span>
+            <span className="flex items-center gap-1"><span className="text-gray-400">◯</span> Planned</span>
+          </div>
+          <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent font-semibold">
+            {Math.round((data.draftedChapters / data.plannedChapters) * 100)}% Complete
+          </span>
         </div>
-        <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent font-semibold">
-          {Math.round((data.draftedChapters / data.plannedChapters) * 100)}% Complete
-        </span>
       </div>
     </div>
   </div>
