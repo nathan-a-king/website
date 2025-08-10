@@ -9,6 +9,7 @@ import PostPage from "./pages/PostPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import ResumePage from "./pages/ResumePage.jsx";
+import GameTheoryProgress from "./pages/GameTheoryProgress.jsx";
 import "./App.css";
 import "./styles/fonts.css";
 import "./styles/animations.css";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/blog/:slug" element={<PostPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/resume" element={<ResumePage />} />
+            <Route path="/game-theory-progress" element={<GameTheoryProgress />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
