@@ -5,10 +5,12 @@ import ReactMarkdown from 'react-markdown';
 import ClickableImage from '../components/ClickableImage.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
 import { getAllPosts } from '../utils/posts';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const POSTS_PER_PAGE = 10;
 
 export default function BlogPage() {
+  usePageTitle("Blog");
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState([]);
 

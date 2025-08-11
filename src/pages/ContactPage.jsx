@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card.jsx";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function ContactPage() {
+  usePageTitle("Contact");
   const [formData, setFormData] = useState({
     name: '',
     subject: '',

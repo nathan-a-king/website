@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../utils/posts";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function HomePage() {
+  usePageTitle("Home");
+  
   // Get the latest 3 blog posts
   const latestPosts = getAllPosts().slice(0, 3);
 

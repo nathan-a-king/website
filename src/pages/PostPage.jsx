@@ -6,11 +6,14 @@ import { Card, CardContent } from "../components/ui/card.jsx";
 import ClickableImage from '../components/ClickableImage.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
 import { getPostBySlug } from '../utils/posts';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function PostPage() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  usePageTitle(post ? post.title : "Post");
 
   useEffect(() => {
     const foundPost = getPostBySlug(slug);

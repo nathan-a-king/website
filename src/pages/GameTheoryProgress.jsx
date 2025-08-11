@@ -1,6 +1,8 @@
 import React from "react";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function GameTheoryProgress() {
+  usePageTitle("Game Theory Progress");
   const data = {
     title: "Draft",
     targetWords: 50000,

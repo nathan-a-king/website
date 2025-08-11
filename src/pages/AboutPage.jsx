@@ -1,7 +1,9 @@
 import React from "react";
 import Skills from "../components/Skills";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function AboutPage() {
+  usePageTitle("About");
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Header */}

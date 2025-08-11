@@ -1,7 +1,9 @@
 import React from "react";
 import { Mail, MapPin, Globe, Award } from "lucide-react";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function ResumePage() {
+  usePageTitle("Resume");
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Header */}
