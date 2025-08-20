@@ -182,20 +182,19 @@ export default function ResumePage() {
             <h2 className="text-3xl mb-6 text-gray-900 dark:text-gray-100">Notable Projects</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">AI Collaboration Platform</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Interactive iOS AI Assistant App</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  Developed a real-time collaborative interface allowing seamless interaction between users and AI assistants 
-                  for creative workflows. Implemented WebSocket connections, state synchronization, and adaptive UI patterns.
+                  Developed a modern, SwiftUI-powered chat assistant app for iOS, integrating OpenAI Chat Completions. It provides a clean, multi-threaded chat experience with persistent history and is designed to be easily extensible for custom use cases.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {['React', 'TypeScript', 'WebSocket', 'Node.js', 'Redis'].map(tech => (
+                  {['SwiftUI', 'Amazon Bedrock', 'WebSocket'].map(tech => (
                     <span key={tech} className="bg-white dark:bg-gray-700 px-2 py-1 rounded text-xs text-gray-600 dark:text-gray-400">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-{/*
+{
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Smart Code Review Tool</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
@@ -210,7 +209,7 @@ export default function ResumePage() {
                   ))}
                 </div>
               </div>
-*/}
+}
             </div>
           </section>
 
