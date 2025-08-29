@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "../components/ui/card.jsx";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, Maximize2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import ClickableImage from '../components/ClickableImage.jsx';
+import ImageModal from '../components/ImageModal.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
 import { getAllPosts } from '../utils/posts';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -86,9 +87,42 @@ export default function BlogPage() {
                           {children}
                         </blockquote>
                       ),
-                      img: ({src, alt}) => (
-                        <ClickableImage src={src} alt={alt} />
-                      ),
+                      img: ({src, alt}) => {
+                        // Special layout for small images (ending with -small or -smallr before extension)
+                        const smallMatch = src.match(/-small\.\w+$/);
+                        const smallRightMatch = src.match(/-smallr\.\w+$/);
+                        
+                        if (smallMatch || smallRightMatch) {
+                          const [isModalOpen, setIsModalOpen] = React.useState(false);
+                          const floatClass = smallRightMatch ? "float-right w-1/3 ml-6 mb-4" : "float-left w-1/3 mr-6 mb-4";
+                          
+                          return (
+                            <>
+                              <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
+                                <div className="relative overflow-hidden rounded-lg">
+                                  <img 
+                                    src={src} 
+                                    alt={alt} 
+                                    className="w-full rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-transform duration-200 group-hover:scale-[1.02]"
+                                  />
+                                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+                                    <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
+                                      <Maximize2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <ImageModal 
+                                src={src}
+                                alt={alt}
+                                isOpen={isModalOpen}
+                                onClose={() => setIsModalOpen(false)}
+                              />
+                            </>
+                          );
+                        }
+                        return <ClickableImage src={src} alt={alt} />;
+                      },
                       code: ({node, inline, className, children, ...props}) => {
                         const match = /language-(\w+)/.exec(className || '');
                         return !inline && match ? (
