@@ -6,7 +6,7 @@ const realPosts = [
     date: "August 30, 2025",
     excerpt: "The start of a journey building GrindLab, an iOS app that uses computer vision to analyze coffee grind particles through the iPhone camera.",
     content: `
-![GrindLab Logo](/images/posts/grindlab-icon-small.jpeg)
+![GrindLab Logo](/images/posts/grindlab-icon-small.png)
 
 I'm excited to share a project I've been working on that combines two of my passions: great coffee and software development. **GrindLab** is an iPhone app that uses computer vision to analyze coffee grind size distribution, helps you log tasting notes, and provides personalized suggestions to improve your extraction.
 
