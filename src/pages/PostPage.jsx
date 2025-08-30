@@ -128,7 +128,7 @@ export default function PostPage() {
                               <img 
                                 src={src} 
                                 alt={alt} 
-                                className="w-full rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-transform duration-200 group-hover:scale-[1.02]"
+                                className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                               />
                               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
                                 <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">

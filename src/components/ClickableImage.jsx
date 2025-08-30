@@ -12,7 +12,7 @@ export default function ClickableImage({ src, alt, className = '' }) {
           <img 
             src={src} 
             alt={alt} 
-            className={`w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-transform duration-200 group-hover:scale-[1.02] ${className}`}
+            className={`w-full max-w-2xl mx-auto rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02] ${className}`}
             loading="lazy"
           />
           {/* Hover overlay */}
