@@ -1,29 +1,55 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "../components/ui/card.jsx";
 import { CalendarDays, Maximize2 } from "lucide-react";
-import ReactMarkdown from 'react-markdown';
+import { Card, CardContent } from "../components/ui/card.jsx";
+import LazyMarkdown from '../components/LazyMarkdown.jsx';
 import ClickableImage from '../components/ClickableImage.jsx';
 import ImageModal from '../components/ImageModal.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
-import { getAllPosts } from '../utils/posts';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { useFullPosts } from '../hooks/usePosts';
+import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
+import { BlogListStructuredData } from '../components/StructuredData';
 
 const POSTS_PER_PAGE = 10;
 
 export default function BlogPage() {
   usePageTitle("Blog");
   const [currentPage, setCurrentPage] = useState(1);
-  const [posts, setPosts] = useState([]);
+  const { posts, loading, error } = useFullPosts();
 
+  // Update SEO meta tags
   useEffect(() => {
-    // Load posts when component mounts
-    const allPosts = getAllPosts();
-    setPosts(allPosts);
+    const meta = generatePageMeta('blog');
+    updateDocumentMeta(meta);
   }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [currentPage]);
+
+  if (loading) {
+    return (
+      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
+        <main className="pt-28 px-6 py-12">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-gray-600 dark:text-gray-300">Loading posts...</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
+        <main className="pt-28 px-6 py-12">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-red-600 dark:text-red-400">Error loading posts: {error}</p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const paginatedPosts = posts.slice(
@@ -33,120 +59,129 @@ export default function BlogPage() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
+      <BlogListStructuredData posts={posts} />
       <main className="pt-28 px-6 py-12">
-        <div className="max-w-3xl mx-auto space-y-20">
+        <div className="max-w-3xl mx-auto">
           {paginatedPosts.map((post, index) => (
-            <div key={`page-${currentPage}-index-${index}`} className={`transition-opacity duration-500 ease-in-out opacity-0 animate-fadeIn`} style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}>
-              <header className="mb-6 text-center">
-                <h1 className="text-4xl mb-3 leading-snug tracking-tight text-gray-900 dark:text-gray-100">
-                  {post.title}
-                </h1>
-                <div className="flex justify-center items-center text-sm text-gray-600 dark:text-gray-300 italic">
-                  <CalendarDays className="w-4 h-4 mr-2" />
-                  <span>{post.date}</span>
-                </div>
-              </header>
-
-              <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
-                <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
-                  <ReactMarkdown 
-                    components={{
-                      // Custom styling for markdown elements
-                      h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
-                      h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
-                      h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-gray-900 dark:text-gray-100">{children}</h3>,
-                      a: ({children, href}) => (
-                        <a 
-                          href={href} 
-                          className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {children}
-                        </a>
-                      ),
-                      p: ({children, node, ...props}) => {
-                        // Check if this paragraph contains an image by looking at the node
-                        const hasImg = node?.children?.some(child => child.tagName === 'img');
-                        
-                        if (hasImg) {
-                          // Return the image directly without wrapping in p tag
-                          return <div className="mb-4">{children}</div>;
-                        }
-                        
-                        // Check if this paragraph is inside a blockquote
-                        const isInBlockquote = props.node?.parent?.tagName === 'blockquote';
-                        return (
-                          <p className={isInBlockquote ? "text-justify" : "mb-4 text-justify"}>
+            <div key={`page-${currentPage}-index-${index}`}>
+              <article className="mb-16">
+                {/* Post Header - matching PostPage exactly */}
+                <header className="mb-8 text-center">
+                  <h1 className="text-4xl mb-4 text-gray-900 dark:text-gray-100 leading-tight">
+                    {post.title}
+                  </h1>
+                  <div className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300">
+                    <CalendarDays className="w-4 h-4 mr-2" />
+                    <span>{post.date}</span>
+                  </div>
+                </header>
+                
+                {/* Post Content - matching PostPage Card wrapper */}
+                <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
+                  <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
+                    <LazyMarkdown 
+                      components={{
+                        h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
+                        h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
+                        h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-gray-900 dark:text-gray-100">{children}</h3>,
+                        a: ({children, href}) => (
+                          <a 
+                            href={href} 
+                            className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             {children}
-                          </p>
-                        );
-                      },
-                      blockquote: ({children}) => (
-                        <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-6 pr-4 my-4 italic text-lg bg-gray-50 dark:bg-gray-800">
-                          {children}
-                        </blockquote>
-                      ),
-                      img: ({src, alt}) => {
-                        // Special layout for small images (ending with -small or -smallr before extension)
-                        const smallMatch = src.match(/-small\.\w+$/);
-                        const smallRightMatch = src.match(/-smallr\.\w+$/);
-                        
-                        if (smallMatch || smallRightMatch) {
-                          const [isModalOpen, setIsModalOpen] = React.useState(false);
-                          const floatClass = smallRightMatch ? "float-right w-1/3 ml-6 mb-4" : "float-left w-1/3 mr-6 mb-4";
+                          </a>
+                        ),
+                        p: ({children, node, ...props}) => {
+                          // Check if this paragraph contains an image by looking at the node
+                          const hasImg = node?.children?.some(child => child.tagName === 'img');
                           
+                          if (hasImg) {
+                            // Return the image directly without wrapping in p tag
+                            return <div className="mb-4">{children}</div>;
+                          }
+                          
+                          const isInBlockquote = props.node?.parent?.tagName === 'blockquote';
                           return (
-                            <>
-                              <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
-                                <div className="relative overflow-hidden rounded-lg">
-                                  <img 
-                                    src={src} 
-                                    alt={alt} 
-                                    className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
-                                  />
-                                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-                                    <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
-                                      <Maximize2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                            <p className={isInBlockquote ? "text-justify" : "mb-4 text-justify"}>
+                              {children}
+                            </p>
+                          );
+                        },
+                        blockquote: ({children}) => (
+                          <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-6 pr-4 my-4 italic text-lg bg-gray-50 dark:bg-gray-800">
+                            {children}
+                          </blockquote>
+                        ),
+                        img: ({src, alt}) => {
+                          // Special layout for small images (ending with -small or -smallr before extension)
+                          const smallMatch = src.match(/-small\.\w+$/);
+                          const smallRightMatch = src.match(/-smallr\.\w+$/);
+                          
+                          if (smallMatch || smallRightMatch) {
+                            const [isModalOpen, setIsModalOpen] = React.useState(false);
+                            const floatClass = smallRightMatch ? "float-right w-1/3 ml-6 mb-4" : "float-left w-1/3 mr-6 mb-4";
+                            
+                            return (
+                              <>
+                                <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
+                                  <div className="relative overflow-hidden rounded-lg">
+                                    <img 
+                                      src={src} 
+                                      alt={alt} 
+                                      className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
+                                    />
+                                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+                                      <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
+                                        <Maximize2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                              <ImageModal 
-                                src={src}
-                                alt={alt}
-                                isOpen={isModalOpen}
-                                onClose={() => setIsModalOpen(false)}
-                              />
-                            </>
+                                <ImageModal 
+                                  src={src}
+                                  alt={alt}
+                                  isOpen={isModalOpen}
+                                  onClose={() => setIsModalOpen(false)}
+                                />
+                              </>
+                            );
+                          }
+                          return <ClickableImage src={src} alt={alt} />;
+                        },
+                        code: ({node, inline, className, children, ...props}) => {
+                          const match = /language-(\w+)/.exec(className || '');
+                          const language = match ? match[1] : '';
+                          const value = String(children).replace(/\n$/, '');
+                          
+                          if (!inline && match) {
+                            return <CodeBlock language={language} value={value} />;
+                          }
+                          
+                          return (
+                            <code className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+                              {children}
+                            </code>
                           );
-                        }
-                        return <ClickableImage src={src} alt={alt} />;
-                      },
-                      code: ({node, inline, className, children, ...props}) => {
-                        const match = /language-(\w+)/.exec(className || '');
-                        return !inline && match ? (
-                          <CodeBlock
-                            language={match[1]}
-                            value={String(children).replace(/\n$/, '')}
-                          />
-                        ) : (
-                          <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono" {...props}>
-                            {children}
-                          </code>
-                        );
-                      },
-                      ul: ({children}) => <ul className="list-disc list-inside mb-4 space-y-1">{children}</ul>,
-                      ol: ({children}) => <ol className="list-decimal list-inside mb-4 space-y-1">{children}</ol>,
-                      li: ({children}) => <li className="mb-1">{children}</li>,
-                      strong: ({children}) => <strong className="font-semibold">{children}</strong>,
-                      em: ({children}) => <em className="italic">{children}</em>,
-                    }}
-                  >
-                    {post.content}
-                  </ReactMarkdown>
-                </CardContent>
-              </Card>
+                        },
+                        ul: ({children}) => <ul className="mb-4 pl-6 space-y-1">{children}</ul>,
+                        ol: ({children}) => <ol className="mb-4 pl-6 space-y-1">{children}</ol>,
+                        li: ({children}) => <li className="list-disc marker:text-gray-400 dark:marker:text-gray-500">{children}</li>,
+                        strong: ({children}) => <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>,
+                        em: ({children}) => <em className="italic">{children}</em>
+                      }}
+                    >
+                      {post.content}
+                    </LazyMarkdown>
+                  </CardContent>
+                </Card>
+              </article>
+              
+              {index < paginatedPosts.length - 1 && (
+                <hr className="border-gray-200 dark:border-gray-700 mb-16" />
+              )}
             </div>
           ))}
 

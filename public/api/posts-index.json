@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "grindlab-optimization",
+    "title": "Design Diaries: Optimization",
+    "date": "September 4, 2025",
+    "excerpt": "Learning to respect mobile constraints. Optimization in GrindLab wasn't about brute force—it was about learning when to do less, smarter."
+  },
+  {
+    "slug": "start-your-engines",
+    "title": "Design Diaries: Start Your Engines",
+    "date": "August 31, 2025",
+    "excerpt": "A strong foundation is what turns ideas into tools people trust. Ask yourself: what is the one thing this product absolutely has to get right? Start there. Build around that."
+  },
+  {
+    "slug": "introducing-grindlab",
+    "title": "Design Diaries: Introducing GrindLab",
+    "date": "August 30, 2025",
+    "excerpt": "The start of a journey building GrindLab, an iOS app that uses computer vision to analyze coffee grind particles through the iPhone camera."
+  },
+  {
+    "slug": "meet-synthra",
+    "title": "Meet Synthra",
+    "date": "August 23, 2025",
+    "excerpt": "What should AI-first frameworks look like? Meet Synthra."
+  },
+  {
+    "slug": "voyage-context-3",
+    "title": "Voyage Context 3: The Future of RAG?",
+    "date": "August 3, 2025",
+    "excerpt": "With Voyage's new voyage-context-3 model, developers can simplify their pipelines while improving answer quality across complex documents."
+  },
+  {
+    "slug": "path-to-profitability",
+    "title": "The Path to Profitability",
+    "date": "July 28, 2025",
+    "excerpt": "The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI."
+  },
+  {
+    "slug": "apple-missing-ai-race",
+    "title": "Apple is Missing the AI Race",
+    "date": "July 27, 2025",
+    "excerpt": "Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths."
+  },
+  {
+    "slug": "beyond-the-chatbot",
+    "title": "Beyond the Chatbot",
+    "date": "July 12, 2025",
+    "excerpt": "AI-first products demand a different approach. It's not just about embedding a model..."
+  }
+]

@@ -10,7 +10,6 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import ResumePage from "./pages/ResumePage.jsx";
 import GameTheoryProgress from "./pages/GameTheoryProgress.jsx";
-import "./App.css";
 import "./styles/fonts.css";
 import "./styles/animations.css";
 import "./styles/globals.css";

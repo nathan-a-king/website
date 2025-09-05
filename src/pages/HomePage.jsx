@@ -1,13 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAllPosts } from "../utils/posts";
 import { usePageTitle } from "../hooks/usePageTitle";
+import { usePostsIndex, usePreloadPost } from "../hooks/usePosts";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function HomePage() {
   usePageTitle("Home");
+  const { posts, loading } = usePostsIndex();
+  const { preloadPost } = usePreloadPost();
   
-  // Get the latest 3 blog posts
-  const latestPosts = getAllPosts().slice(0, 3);
+  // Get latest 3 posts
+  const latestPosts = posts.slice(0, 3);
+
+  // Update SEO meta tags
+  React.useEffect(() => {
+    const meta = generatePageMeta('home');
+    updateDocumentMeta(meta);
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
@@ -43,19 +52,36 @@ export default function HomePage() {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {latestPosts.map((post, index) => (
-              <div key={post.slug} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {post.excerpt}
-                </p>
-                <Link to={`/blog/${post.slug}`} className="text-black dark:text-white font-medium hover:underline">
-                  Read more →
-                </Link>
-              </div>
-            ))}
+            {loading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 animate-pulse">
+                  <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4 w-3/4"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-20"></div>
+                </div>
+              ))
+            ) : (
+              latestPosts.map((post, index) => (
+                <div key={post.slug} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <Link 
+                    to={`/blog/${post.slug}`} 
+                    className="text-black dark:text-white font-medium hover:underline"
+                    onMouseEnter={() => preloadPost(post.slug)}
+                    onFocus={() => preloadPost(post.slug)}
+                  >
+                    Read more →
+                  </Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>

@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { CalendarDays, ArrowLeft, Maximize2 } from "lucide-react";
-import ReactMarkdown from 'react-markdown';
+import LazyMarkdown from '../components/LazyMarkdown.jsx';
 import { Card, CardContent } from "../components/ui/card.jsx";
 import ClickableImage from '../components/ClickableImage.jsx';
 import ImageModal from '../components/ImageModal.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
-import { getPostBySlug } from '../utils/posts';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { usePost } from '../hooks/usePosts';
+import { updateDocumentMeta, generatePostMeta } from '../utils/seo';
+import { BlogPostStructuredData } from '../components/StructuredData';
 
 export default function PostPage() {
   const { slug } = useParams();
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { post, loading, error } = usePost(slug);
 
   usePageTitle(post ? post.title : "Post");
 
-  useEffect(() => {
-    const foundPost = getPostBySlug(slug);
-    setPost(foundPost);
-    setLoading(false);
-  }, [slug]);
+  // Update SEO meta tags when post loads
+  React.useEffect(() => {
+    if (post) {
+      const meta = generatePostMeta(post);
+      updateDocumentMeta(meta);
+    }
+  }, [post]);
 
   if (loading) {
     return (
@@ -34,12 +37,13 @@ export default function PostPage() {
     );
   }
 
-  if (!post) {
+  if (error || (!loading && !post)) {
     return (
       <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
         <main className="pt-28 px-6 py-12">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Post Not Found</h1>
+            {error && <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>}
             <Link to="/blog" className="text-black dark:text-white hover:underline">
               ← Back to Blog
             </Link>
@@ -51,6 +55,7 @@ export default function PostPage() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
+      <BlogPostStructuredData post={post} />
       <main className="pt-28 px-6 py-12">
         <div className="max-w-3xl mx-auto">
           {/* Back to Blog Link */}
@@ -76,7 +81,7 @@ export default function PostPage() {
           {/* Post Content */}
           <Card className="border-none shadow-none bg-transparent dark:bg-transparent opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
             <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
-              <ReactMarkdown 
+              <LazyMarkdown 
                 components={{
                   h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
                   h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
@@ -169,7 +174,7 @@ export default function PostPage() {
                 }}
               >
                 {post.content}
-              </ReactMarkdown>
+              </LazyMarkdown>
             </CardContent>
           </Card>
         </div>

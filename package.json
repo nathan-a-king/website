@@ -9,7 +9,6 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "express": "^4.18.2",
-    "gray-matter": "^4.0.3",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -23,14 +22,19 @@
     "start": "node server.js",
     "dev": "vite",
     "build": "NODE_ENV=production vite build",
+    "build:analyze": "NODE_ENV=production ANALYZE=true vite build",
     "preview": "vite preview",
-    "test": "react-scripts test",
+    "prerender": "node scripts/prerender.js",
+    "build:full": "npm run build && npm run prerender",
+    "validate": "node scripts/validate-build.js",
+    "build:validate": "npm run build && npm run validate",
+    "new-post": "node scripts/new-post.js",
+    "test": "echo \"No tests configured\"",
     "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -48,8 +52,13 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.21",
+    "fast-glob": "^3.3.3",
+    "glob": "^11.0.3",
+    "gray-matter": "^4.0.3",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "vite": "^7.0.6"
+    "vite": "^7.0.6",
+    "vite-plugin-pwa": "^1.0.3",
+    "vite-plugin-static-copy": "^3.1.2"
   }
 }
