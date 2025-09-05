@@ -170,7 +170,8 @@ export default function BlogPage() {
                         ol: ({children}) => <ol className="mb-4 pl-6 space-y-1">{children}</ol>,
                         li: ({children}) => <li className="list-disc marker:text-gray-400 dark:marker:text-gray-500">{children}</li>,
                         strong: ({children}) => <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>,
-                        em: ({children}) => <em className="italic">{children}</em>
+                        em: ({children}) => <em className="italic">{children}</em>,
+                        hr: () => null // Remove any markdown-generated horizontal rules
                       }}
                     >
                       {post.content}
@@ -179,9 +180,6 @@ export default function BlogPage() {
                 </Card>
               </article>
               
-              {index < paginatedPosts.length - 1 && (
-                <hr className="border-gray-200 dark:border-gray-700 mb-16" />
-              )}
             </div>
           ))}
 

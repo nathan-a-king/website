@@ -21,16 +21,32 @@ const MarkdownSkeleton = () => (
   </div>
 );
 
-// Lazy-loaded markdown component
-export default function LazyMarkdown({ children, components, ...props }) {
+// Lazy-loaded markdown component with fade-in effect
+export default function LazyMarkdown({ children, components, className, ...props }) {
+  const [hasLoaded, setHasLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    // Small delay to ensure smooth transition after skeleton
+    const timer = setTimeout(() => {
+      setHasLoaded(true);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Suspense fallback={<MarkdownSkeleton />}>
-      <ReactMarkdown 
-        components={components}
-        {...props}
+      <div 
+        className={`transition-opacity duration-1000 ease-in-out ${
+          hasLoaded ? 'opacity-100' : 'opacity-0'
+        } ${className || ''}`}
       >
-        {children}
-      </ReactMarkdown>
+        <ReactMarkdown 
+          components={components}
+          {...props}
+        >
+          {children}
+        </ReactMarkdown>
+      </div>
     </Suspense>
   );
 }

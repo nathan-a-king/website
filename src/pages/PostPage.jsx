@@ -79,7 +79,7 @@ export default function PostPage() {
           </header>
 
           {/* Post Content */}
-          <Card className="border-none shadow-none bg-transparent dark:bg-transparent opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+          <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
             <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
               <LazyMarkdown 
                 components={{
