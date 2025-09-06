@@ -57,7 +57,7 @@ export function generatePostMeta(post) {
     title: `${post.title} | Nathan A. King`,
     description: post.excerpt,
     canonical: postUrl,
-    ogImage: `${baseUrl}/og-image.jpg`, // You could generate post-specific OG images
+    ogImage: post.firstImage || `${baseUrl}/og-image.jpg`,
     type: 'article'
   };
 }

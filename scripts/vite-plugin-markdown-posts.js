@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { glob } from 'glob';
+import { extractFirstImageFromMarkdown } from './extract-first-image.js';
 
 function markdownPostsPlugin() {
   let config;
@@ -32,12 +33,16 @@ function markdownPostsPlugin() {
       
       const slug = frontmatter.slug || path.basename(file, '.md');
       
+      // Extract first image from content
+      const firstImage = extractFirstImageFromMarkdown(markdownContent);
+      
       // Create post metadata for index
       const postMeta = {
         slug,
         title: frontmatter.title,
         date: frontmatter.date,
-        excerpt: frontmatter.excerpt
+        excerpt: frontmatter.excerpt,
+        firstImage
       };
       
       posts.push(postMeta);
