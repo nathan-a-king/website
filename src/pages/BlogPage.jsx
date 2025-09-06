@@ -10,7 +10,7 @@ import { useFullPosts } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
 import { BlogListStructuredData } from '../components/StructuredData';
 
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 5;
 
 export default function BlogPage() {
   usePageTitle("Blog");
