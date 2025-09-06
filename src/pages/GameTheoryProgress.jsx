@@ -6,9 +6,9 @@ export default function GameTheoryProgress() {
   const data = {
     title: "Draft",
     targetWords: 50000,
-    currentWords: 33000,
+    currentWords: 41000,
     plannedChapters: 13,
-    draftedChapters: 8,
+    draftedChapters: 10,
     outlineComplete: true,
     notes: [
       { label: "World & premise locked", done: true },
@@ -194,6 +194,18 @@ export default function GameTheoryProgress() {
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
                 <blockquote className="text-lg italic text-gray-700 dark:text-gray-300">
                   "In game theory, as in life, the most dangerous opponent is the one who has nothing left to lose."
+                </blockquote>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
+                <blockquote className="text-lg italic text-gray-700 dark:text-gray-300">
+                  "The Ellis House had been waiting for one hundred and fifty-two years, four months, and sixteen days. Not that it experienced time the way its occupants did. For the house, past and present existed simultaneously, overlapping like double-exposed photographs. In 1873, Charles Ellis had pressed his hand against the same desk William touched now. In 1928, Margaret Ellis had stood where Amelia stood, searching for the same answers. The wood remembered the weight of their hands, the walls held the echoes of their voices."
+                </blockquote>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
+                <blockquote className="text-lg italic text-gray-700 dark:text-gray-300">
+                  "From the shadows near the bookcase, a figure emerged. The pale light from the window caught her face in fragments—the curve of a cheekbone, the glint of eyes that had once looked across a game table with calculated caution. The years had changed her, but William would know that measured gaze anywhere."
                 </blockquote>
               </div>
             </div>
