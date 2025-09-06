@@ -97,11 +97,24 @@ export default function PostPage() {
                     </a>
                   ),
                   p: ({children, node, ...props}) => {
-                    // Check if this paragraph contains an image by looking at the node
-                    const hasImg = node?.children?.some(child => child.tagName === 'img');
+                    // Check if this paragraph contains images
+                    const imgCount = node?.children?.filter(child => child.tagName === 'img').length || 0;
                     
-                    if (hasImg) {
-                      // Return the image directly without wrapping in p tag
+                    if (imgCount > 1) {
+                      // Multiple images - display in a row
+                      return (
+                        <div className="flex gap-2 mb-4 overflow-x-auto">
+                          {React.Children.map(children, (child, index) => {
+                            // Wrap each image in a flex container
+                            if (child?.type?.name === 'img' || child?.props?.src) {
+                              return <div className="flex-1 min-w-0">{child}</div>;
+                            }
+                            return child;
+                          })}
+                        </div>
+                      );
+                    } else if (imgCount === 1) {
+                      // Single image - return without p tag wrapper
                       return <div className="mb-4">{children}</div>;
                     }
                     
