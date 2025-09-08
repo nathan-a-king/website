@@ -135,33 +135,53 @@ export default function PostPage() {
                   img: ({src, alt}) => {
                     // Check if this is a light mode image with a corresponding dark mode version
                     // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)
-                    let displaySrc = src;
+                    const [displaySrc, setDisplaySrc] = React.useState(src);
                     
-                    // Extract filename parts
-                    const pathParts = src.split('/');
-                    const filename = pathParts[pathParts.length - 1];
-                    const directory = pathParts.slice(0, -1).join('/');
-                    
-                    if (isDarkMode) {
-                      // Check if this is already a dark image
-                      if (!filename.includes('-dark-')) {
-                        // Convert to dark version by inserting -dark- after the first part
-                        // e.g., prose-smallr.png -> prose-dark-smallr.png
-                        const filenameParts = filename.split('-');
-                        if (filenameParts.length > 1) {
-                          // Insert -dark- after the first part
-                          filenameParts.splice(1, 0, 'dark');
-                          const darkFilename = filenameParts.join('-');
-                          displaySrc = directory ? `${directory}/${darkFilename}` : darkFilename;
+                    React.useEffect(() => {
+                      // Extract filename parts
+                      const pathParts = src.split('/');
+                      const filename = pathParts[pathParts.length - 1];
+                      const directory = pathParts.slice(0, -1).join('/');
+                      
+                      if (isDarkMode) {
+                        // Check if this is already a dark image
+                        if (!filename.includes('-dark-')) {
+                          // Convert to dark version by inserting -dark- after the first part
+                          // e.g., prose-smallr.png -> prose-dark-smallr.png
+                          const filenameParts = filename.split('-');
+                          if (filenameParts.length > 1) {
+                            // Insert -dark- after the first part
+                            filenameParts.splice(1, 0, 'dark');
+                            const darkFilename = filenameParts.join('-');
+                            const darkSrc = directory ? `${directory}/${darkFilename}` : darkFilename;
+                            
+                            // Check if dark version exists by trying to load it
+                            const img = new Image();
+                            img.onload = () => {
+                              // Dark version exists, use it
+                              setDisplaySrc(darkSrc);
+                            };
+                            img.onerror = () => {
+                              // Dark version doesn't exist, fallback to original
+                              setDisplaySrc(src);
+                            };
+                            img.src = darkSrc;
+                          } else {
+                            setDisplaySrc(src);
+                          }
+                        } else {
+                          setDisplaySrc(src);
+                        }
+                      } else {
+                        // In light mode, remove -dark- if present
+                        if (filename.includes('-dark-')) {
+                          const lightFilename = filename.replace('-dark-', '-');
+                          setDisplaySrc(directory ? `${directory}/${lightFilename}` : lightFilename);
+                        } else {
+                          setDisplaySrc(src);
                         }
                       }
-                    } else {
-                      // In light mode, remove -dark- if present
-                      if (filename.includes('-dark-')) {
-                        const lightFilename = filename.replace('-dark-', '-');
-                        displaySrc = directory ? `${directory}/${lightFilename}` : lightFilename;
-                      }
-                    }
+                    }, [src, isDarkMode]);
                     
                     // Special layout for small images (containing -small or -smallr)
                     const smallMatch = displaySrc.includes('-small');
