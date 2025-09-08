@@ -9,6 +9,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 import { useFullPosts } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
 import { BlogListStructuredData } from '../components/StructuredData';
+import { useTheme } from '../contexts/ThemeContext';
 
 const POSTS_PER_PAGE = 5;
 
@@ -16,6 +17,7 @@ export default function BlogPage() {
   usePageTitle("Blog");
   const [currentPage, setCurrentPage] = useState(1);
   const { posts, loading, error } = useFullPosts();
+  const { isDarkMode } = useTheme();
 
   // Update SEO meta tags
   useEffect(() => {
@@ -129,9 +131,39 @@ export default function BlogPage() {
                           </blockquote>
                         ),
                         img: ({src, alt}) => {
-                          // Special layout for small images (ending with -small or -smallr before extension)
-                          const smallMatch = src.match(/-small\.\w+$/);
-                          const smallRightMatch = src.match(/-smallr\.\w+$/);
+                          // Check if this is a light mode image with a corresponding dark mode version
+                          // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)
+                          let displaySrc = src;
+                          
+                          // Extract filename parts
+                          const pathParts = src.split('/');
+                          const filename = pathParts[pathParts.length - 1];
+                          const directory = pathParts.slice(0, -1).join('/');
+                          
+                          if (isDarkMode) {
+                            // Check if this is already a dark image
+                            if (!filename.includes('-dark-')) {
+                              // Convert to dark version by inserting -dark- after the first part
+                              // e.g., prose-smallr.png -> prose-dark-smallr.png
+                              const filenameParts = filename.split('-');
+                              if (filenameParts.length > 1) {
+                                // Insert -dark- after the first part
+                                filenameParts.splice(1, 0, 'dark');
+                                const darkFilename = filenameParts.join('-');
+                                displaySrc = directory ? `${directory}/${darkFilename}` : darkFilename;
+                              }
+                            }
+                          } else {
+                            // In light mode, remove -dark- if present
+                            if (filename.includes('-dark-')) {
+                              const lightFilename = filename.replace('-dark-', '-');
+                              displaySrc = directory ? `${directory}/${lightFilename}` : lightFilename;
+                            }
+                          }
+                          
+                          // Special layout for small images (containing -small or -smallr)
+                          const smallMatch = displaySrc.includes('-small');
+                          const smallRightMatch = displaySrc.includes('-smallr');
                           
                           if (smallMatch || smallRightMatch) {
                             const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -142,7 +174,7 @@ export default function BlogPage() {
                                 <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
                                   <div className="relative overflow-hidden rounded-lg">
                                     <img 
-                                      src={src} 
+                                      src={displaySrc} 
                                       alt={alt} 
                                       className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                                     />
@@ -154,7 +186,7 @@ export default function BlogPage() {
                                   </div>
                                 </div>
                                 <ImageModal 
-                                  src={src}
+                                  src={displaySrc}
                                   alt={alt}
                                   isOpen={isModalOpen}
                                   onClose={() => setIsModalOpen(false)}
@@ -162,7 +194,7 @@ export default function BlogPage() {
                               </>
                             );
                           }
-                          return <ClickableImage src={src} alt={alt} />;
+                          return <ClickableImage src={displaySrc} alt={alt} />;
                         },
                         code: ({node, inline, className, children, ...props}) => {
                           const match = /language-(\w+)/.exec(className || '');
@@ -193,6 +225,10 @@ export default function BlogPage() {
                 </Card>
               </article>
               
+              {/* Horizontal rule between posts (not after last post) */}
+              {index < paginatedPosts.length - 1 && (
+                <hr className="border-gray-200 dark:border-gray-700 my-12" />
+              )}
             </div>
           ))}
 

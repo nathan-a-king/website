@@ -10,10 +10,12 @@ import { usePageTitle } from '../hooks/usePageTitle';
 import { usePost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePostMeta } from '../utils/seo';
 import { BlogPostStructuredData } from '../components/StructuredData';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function PostPage() {
   const { slug } = useParams();
   const { post, loading, error } = usePost(slug);
+  const { isDarkMode } = useTheme();
 
   usePageTitle(post ? post.title : "Post");
 
@@ -131,9 +133,39 @@ export default function PostPage() {
                     </blockquote>
                   ),
                   img: ({src, alt}) => {
-                    // Special layout for small images (ending with -small or -smallr before extension)
-                    const smallMatch = src.match(/-small\.\w+$/);
-                    const smallRightMatch = src.match(/-smallr\.\w+$/);
+                    // Check if this is a light mode image with a corresponding dark mode version
+                    // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)
+                    let displaySrc = src;
+                    
+                    // Extract filename parts
+                    const pathParts = src.split('/');
+                    const filename = pathParts[pathParts.length - 1];
+                    const directory = pathParts.slice(0, -1).join('/');
+                    
+                    if (isDarkMode) {
+                      // Check if this is already a dark image
+                      if (!filename.includes('-dark-')) {
+                        // Convert to dark version by inserting -dark- after the first part
+                        // e.g., prose-smallr.png -> prose-dark-smallr.png
+                        const filenameParts = filename.split('-');
+                        if (filenameParts.length > 1) {
+                          // Insert -dark- after the first part
+                          filenameParts.splice(1, 0, 'dark');
+                          const darkFilename = filenameParts.join('-');
+                          displaySrc = directory ? `${directory}/${darkFilename}` : darkFilename;
+                        }
+                      }
+                    } else {
+                      // In light mode, remove -dark- if present
+                      if (filename.includes('-dark-')) {
+                        const lightFilename = filename.replace('-dark-', '-');
+                        displaySrc = directory ? `${directory}/${lightFilename}` : lightFilename;
+                      }
+                    }
+                    
+                    // Special layout for small images (containing -small or -smallr)
+                    const smallMatch = displaySrc.includes('-small');
+                    const smallRightMatch = displaySrc.includes('-smallr');
                     
                     if (smallMatch || smallRightMatch) {
                       const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -144,7 +176,7 @@ export default function PostPage() {
                           <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
                             <div className="relative overflow-hidden rounded-lg">
                               <img 
-                                src={src} 
+                                src={displaySrc} 
                                 alt={alt} 
                                 className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                               />
@@ -156,7 +188,7 @@ export default function PostPage() {
                             </div>
                           </div>
                           <ImageModal 
-                            src={src}
+                            src={displaySrc}
                             alt={alt}
                             isOpen={isModalOpen}
                             onClose={() => setIsModalOpen(false)}
@@ -164,7 +196,7 @@ export default function PostPage() {
                         </>
                       );
                     }
-                    return <ClickableImage src={src} alt={alt} />;
+                    return <ClickableImage src={displaySrc} alt={alt} />;
                   },
                   code: ({node, inline, className, children, ...props}) => {
                     const match = /language-(\w+)/.exec(className || '');
