@@ -90,8 +90,6 @@ export default function ResumePage() {
                   <li>Led development of AI-human collaboration interfaces used throughout the enterprise</li>
                   <li>Architected and built scalable React applications with focus on real-time AI interactions</li>
                   <li>Designed evaluation frameworks for measuring AI assistant effectiveness</li>
-                  <li>Collaborated with research teams to prototype novel interaction patterns</li>
-                  <li>Mentored junior engineers and established code quality standards</li>
                 </ul>
               </div>
 
@@ -108,6 +106,7 @@ export default function ResumePage() {
                   <li>Optimized existing Salesforce workflows for improved efficiency</li>
                   <li>Integrated third-party APIs into commercial lending applications</li>
                   <li>Created RESTful APIs and microservices, integrating custom capabilities to extend platform functionality</li>
+                  <li>Mentored junior engineers and established code quality standards</li>
                 </ul>
               </div>
 
