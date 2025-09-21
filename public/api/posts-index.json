@@ -1,5 +1,12 @@
 [
   {
+    "slug": "a-life-in-gigabytes",
+    "title": "A Life in Gigabytes",
+    "date": "September 21, 2025",
+    "excerpt": "After my estranged father died, I built an AI 'dad' from gigabytes of his documents. It didn't just answer questions—it gave me a second chance.",
+    "firstImage": "https://www.nateking.dev/public/images/posts/dad-portrait-small.jpeg"
+  },
+  {
     "slug": "post-determinism",
     "title": "Post Determinism",
     "date": "September 18, 2025",
