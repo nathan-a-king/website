@@ -13,7 +13,7 @@ I did what any AI software engineer might do when faced with grief and too much 
 
 ## The Archive of a Life
 
-![](/public/images/posts/dad-portrait-small.jpeg)
+![](/images/posts/dad-portrait-small.jpeg)
 
 The first time I opened the folders, I froze. There were too many files, too many windows into a life I thought I had lost the right to know.
 
