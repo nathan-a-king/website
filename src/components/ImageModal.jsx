@@ -13,20 +13,24 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
     };
 
     if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+
       document.addEventListener('keydown', handleEscape);
       // Prevent scrolling on both body and html
       document.body.style.overflow = 'hidden';
-      document.body.style.height = '100%';
       document.documentElement.style.overflow = 'hidden';
-      document.documentElement.style.height = '100%';
+
+      // Restore scroll position if it changed
+      if (window.scrollY !== scrollY) {
+        window.scrollTo(0, scrollY);
+      }
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
-      document.body.style.height = '';
       document.documentElement.style.overflow = '';
-      document.documentElement.style.height = '';
     };
   }, [isOpen, onClose]);
 
