@@ -53,6 +53,10 @@ export default function AboutPage() {
             <li>Enhancing existing evaluations frameworks</li>
           </ul>
 
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            My <a href="https://github.com/nathan-a-king" className="text-black dark:text-white font-medium hover:underline" target="_blank" rel="noopener noreferrer">GitHub profile</a> showcases some of my projects and experiments in this space.
+          </p>
+
           <h2 className="text-3xl mb-6 text-gray-900 dark:text-gray-100">Let's Connect</h2>
           
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
