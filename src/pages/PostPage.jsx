@@ -207,7 +207,7 @@ export default function PostPage() {
                               </div>
                             </div>
                           </div>
-                          <ImageModal 
+                          <ImageModal
                             src={displaySrc}
                             alt={alt}
                             isOpen={isModalOpen}

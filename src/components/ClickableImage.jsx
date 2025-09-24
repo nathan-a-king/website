@@ -9,9 +9,9 @@ export default function ClickableImage({ src, alt, className = '' }) {
     <>
       <div className="my-8 group cursor-pointer" onClick={() => setIsModalOpen(true)}>
         <div className="relative overflow-hidden rounded-lg">
-          <img 
-            src={src} 
-            alt={alt} 
+          <img
+            src={src}
+            alt={alt}
             className={`w-full max-w-2xl mx-auto rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02] ${className}`}
             loading="lazy"
           />
@@ -28,8 +28,8 @@ export default function ClickableImage({ src, alt, className = '' }) {
           </div>
         )}
       </div>
-      
-      <ImageModal 
+
+      <ImageModal
         src={src}
         alt={alt}
         isOpen={isModalOpen}
