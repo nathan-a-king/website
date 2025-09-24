@@ -188,14 +188,14 @@ export default function BlogPage() {
                           if (smallMatch || smallRightMatch) {
                             const [isModalOpen, setIsModalOpen] = React.useState(false);
                             const floatClass = smallRightMatch ? "float-right w-1/3 ml-6 mb-4" : "float-left w-1/3 mr-6 mb-4";
-                            
+
                             return (
                               <>
                                 <div className={`${floatClass} group cursor-pointer`} onClick={() => setIsModalOpen(true)}>
                                   <div className="relative overflow-hidden rounded-lg">
-                                    <img 
-                                      src={displaySrc} 
-                                      alt={alt} 
+                                    <img
+                                      src={displaySrc}
+                                      alt={alt}
                                       className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                                     />
                                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
@@ -205,7 +205,7 @@ export default function BlogPage() {
                                     </div>
                                   </div>
                                 </div>
-                                <ImageModal 
+                                <ImageModal
                                   src={displaySrc}
                                   alt={alt}
                                   isOpen={isModalOpen}
