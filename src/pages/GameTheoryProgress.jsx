@@ -93,11 +93,11 @@ export default function GameTheoryProgress() {
               const getNodeStyles = () => {
                 switch (chapter.status) {
                   case "done":
-                    return "bg-green-500 text-white shadow-sm";
+                    return "bg-green-500 text-white shadow-sm hover:bg-green-600 hover:scale-110 transition-all duration-200 cursor-pointer";
                   case "wip":
-                    return "bg-green-600 text-white shadow-sm animate-pulse";
+                    return "bg-green-600 text-white shadow-sm animate-pulse hover:bg-green-700 hover:scale-110 transition-all duration-200 cursor-pointer";
                   default:
-                    return "bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300";
+                    return "bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-400 dark:hover:bg-gray-500 hover:scale-110 transition-all duration-200 cursor-pointer";
                 }
               };
 
@@ -161,8 +161,8 @@ export default function GameTheoryProgress() {
             <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
               <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3">
                 {data.notes.map((n, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className={["mt-1 inline-block w-3 h-3 rounded-full", n.done ? "bg-green-500" : "bg-gray-400 dark:bg-gray-500"].join(" ")} aria-hidden />
+                  <li key={idx} className="flex items-start gap-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 cursor-default">
+                    <span className={["mt-1 inline-block w-3 h-3 rounded-full transition-transform duration-200", n.done ? "bg-green-500" : "bg-gray-400 dark:bg-gray-500"].join(" ")} aria-hidden />
                     <span className="text-gray-700 dark:text-gray-300">{n.label}</span>
                   </li>
                 ))}
@@ -230,7 +230,7 @@ export default function GameTheoryProgress() {
 
 function StatCard({ label, value, sub }) {
   return (
-    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors text-center">
+    <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-all duration-200 text-center hover:bg-gray-100 dark:hover:bg-gray-750 hover:shadow-lg hover:-translate-y-1 cursor-default">
       <div className="text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">{label}</div>
       <div className="text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-1">{value}</div>
       {sub && <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">{sub}</div>}
