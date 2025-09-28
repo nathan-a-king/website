@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CalendarDays } from "lucide-react";
+import { Card, CardContent } from "../components/ui/card.jsx";
 import { usePageTitle } from "../hooks/usePageTitle";
 import { usePostsIndex, usePreloadPost } from "../hooks/usePosts";
 import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
@@ -64,22 +66,33 @@ export default function HomePage() {
               ))
             ) : (
               latestPosts.map((post, index) => (
-                <div key={post.slug} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <Link 
-                    to={`/blog/${post.slug}`} 
-                    className="text-black dark:text-white font-medium hover:underline"
-                    onMouseEnter={() => preloadPost(post.slug)}
-                    onFocus={() => preloadPost(post.slug)}
-                  >
-                    Read more →
-                  </Link>
-                </div>
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="block h-full"
+                  onMouseEnter={() => preloadPost(post.slug)}
+                  onFocus={() => preloadPost(post.slug)}
+                >
+                  <Card className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-lg cursor-pointer h-full">
+                    <CardContent className="px-8 pt-12 pb-10 h-full flex flex-col">
+                      <article className="flex-1 flex flex-col">
+                        <header className="mb-6 text-center">
+                          <h3 className="text-2xl mb-4 text-gray-900 dark:text-gray-100 leading-tight">
+                            {post.title}
+                          </h3>
+                          <div className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300">
+                            <CalendarDays className="w-4 h-4 mr-2" />
+                            <time>{post.date}</time>
+                          </div>
+                        </header>
+
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                          {post.excerpt}
+                        </p>
+                      </article>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))
             )}
           </div>
