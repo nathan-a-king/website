@@ -1,5 +1,12 @@
 [
   {
+    "slug": "building-memory-for-writing",
+    "title": "Building Memory for Writing",
+    "date": "September 28, 2025",
+    "excerpt": "I built a RAG system to query my own writing. What started as a weekend experiment became a mirror for understanding my own voice.",
+    "firstImage": "https://www.nateking.dev/images/posts/mastra-document-ingestion.png"
+  },
+  {
     "slug": "a-life-in-gigabytes",
     "title": "A Life in Gigabytes",
     "date": "September 21, 2025",
