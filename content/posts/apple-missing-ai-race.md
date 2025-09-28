@@ -3,6 +3,7 @@ slug: apple-missing-ai-race
 title: Apple is Missing the AI Race
 date: July 27, 2025
 excerpt: "Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths."
+category: "AI"
 ---
 
 Apple has two major advantages in the AI race. Their ARM-based SoC's unified memory architecture allows the GPU and Neural Engine access to far more RAM than competitors. This architectural advantage allows excellent performance of smaller models running on device as the context window grows. Each token requires a key/value pair, which causes the memory footprint to quickly grow as individual conversations get longer. Apple is not taking advantage of their most valuable resource, the platform advantage – access to *all* of my personal data.  

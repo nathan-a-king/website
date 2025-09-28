@@ -3,6 +3,7 @@ slug: start-your-engines
 title: "Design Diaries: Start Your Engines"
 date: August 31, 2025
 excerpt: "A strong foundation is what turns ideas into tools people trust. Ask yourself: what is the one thing this product absolutely has to get right? Start there. Build around that."
+category: "Engineering"
 ---
 
 My mind filled with possibilities as I stared at a blank Xcode project that would later become **GrindLab.** It's difficult to find a point of focus in the early stages of any project. Spreading attention across too many features early almost guarantees burnout. My strategy to combat this is ruthlessly defining a *minimum viable product* (MVP) before writing a single line of code. What is the smallest unit of work that provides a valuable product for users? My app's fundamental reason for existing is to analyze coffee grounds. It simply can't succeed if it can't do that reliably. Thinking about this clarified my starting point—my app needs a reliable analysis engine.

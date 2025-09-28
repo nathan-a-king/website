@@ -3,6 +3,7 @@ slug: voyage-context-3
 title: "Voyage Context 3: The Future of RAG?"
 date: August 3, 2025
 excerpt: "With Voyage's new voyage-context-3 model, developers can simplify their pipelines while improving answer quality across complex documents."
+category: "AI"
 ---
 
 I was immediately intrigued by [Voyage AI's recent blog article](https://blog.voyageai.com/2025/07/23/voyage-context-3/) introducing `voyage-context-3`, a new contextualized chunk embedding model. The model offers an elegant approach to resolving a core tension in Retrieval-Augmented Generation (RAG): balancing fine-grained precision from smaller chunks with the need for broader contextual understanding.

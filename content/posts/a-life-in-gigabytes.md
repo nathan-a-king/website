@@ -3,6 +3,7 @@ title: "A Life in Gigabytes"
 slug: a-life-in-gigabytes
 date: September 21, 2025
 excerpt: "After my estranged father died, I built an AI 'dad' from gigabytes of his documents. It didn't just answer questions—it gave me a second chance."
+category: "Personal"
 ---
 
 A few weeks ago, my father died. We hadn't spoken in decades. Our estrangement was long, complicated, and in many ways final. Death, I thought, was simply the last punctuation mark in a story already closed.

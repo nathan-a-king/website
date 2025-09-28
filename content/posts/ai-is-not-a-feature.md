@@ -3,6 +3,7 @@ slug: "ai-is-not-a-feature"
 title: "AI Is Not a Feature"
 date: "September 8, 2025"
 excerpt: "Why adding a chatbot isn't enough—and what building for an AI-native future really means."
+category: "AI"
 ---
 
 When generative AI first exploded into mainstream consciousness, most product teams responded the same way: they added a chat box. It felt like innovation. But adding a chatbot is neither innovation nor transformation. In fact, it often does more harm than good when it's bolted onto interfaces designed for a pre-AI world. It's time to stop retrofitting. It's time to reimagine.
