@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Personal Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern personal website and blog built with React, Vite, and Tailwind CSS.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- **React 19** - Modern functional components with hooks
+- **Vite** - Fast build tool with optimized chunk splitting
+- **React Router** - Client-side routing
+- **Tailwind CSS** - Utility-first styling with dark mode
+- **Express** - Production server with SPA routing
+- **Markdown** - Blog content management
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🌓 Dark mode with system preference detection
+- 📝 Markdown-based blog with syntax highlighting
+- 🚀 Optimized build with manual chunk splitting
+- 📱 Fully responsive design
+- 🔍 SEO-friendly with pre-rendered sitemap and meta tags
+- ⚡ Client-side caching for improved performance
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Development
 
-### `npm test`
+```bash
+# Install dependencies
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Start development server (port 3000)
+npm run dev
 
-### `npm run build`
+# Run tests
+npm test
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Build for production
+npm run build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Preview production build
+npm run preview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Start production server (port 8080)
+npm start
+```
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+├── content/posts/        # Markdown blog posts
+├── public/              # Static assets
+├── scripts/             # Build scripts and plugins
+├── src/
+│   ├── components/      # React components
+│   ├── contexts/        # React contexts (theme, etc.)
+│   ├── hooks/          # Custom hooks
+│   ├── pages/          # Route-level components
+│   ├── styles/         # CSS files
+│   └── utils/          # Utility functions
+├── server.js           # Production Express server
+└── vite.config.js      # Vite configuration
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Adding Blog Posts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create a new markdown file in `content/posts/`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run new-post "Post Title" "Optional excerpt"
+```
 
-## Learn More
+Or manually create `content/posts/my-post.md`:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```markdown
+---
+slug: my-post
+title: "My Post Title"
+date: December 15, 2024
+excerpt: "Brief description for previews and SEO."
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Your markdown content here...
+```
 
-### Code Splitting
+## Build & Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# Build with validation
+npm run build:validate
 
-### Analyzing the Bundle Size
+# Analyze bundle size
+npm run build:analyze
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Validate build output
+npm run validate
+```
 
-### Making a Progressive Web App
+The build process:
+1. Processes markdown posts into JSON APIs
+2. Generates optimized production bundles
+3. Creates sitemap.xml and robots.txt
+4. Pre-renders SEO meta tags
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Configuration
 
-### Advanced Configuration
+- **CLAUDE.md** - Instructions for Claude Code
+- **vite.config.js** - Build configuration and plugins
+- **tailwind.config.js** - Tailwind and dark mode settings
+- **server.js** - Production server configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
