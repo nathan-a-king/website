@@ -42,6 +42,7 @@ function markdownPostsPlugin() {
         title: frontmatter.title,
         date: frontmatter.date,
         excerpt: frontmatter.excerpt,
+        category: frontmatter.category,
         firstImage
       };
       

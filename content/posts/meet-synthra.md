@@ -3,6 +3,7 @@ slug: meet-synthra
 title: Meet Synthra
 date: August 23, 2025
 excerpt: "What should AI-first frameworks look like? Meet Synthra."
+category: "AI"
 ---
 
 Developers love to hate frameworks, but they remain essential. Frameworks provide a structured foundation for organizing code, helping teams work faster and more effectively. They create a shared mental model that encourages consistent patterns and makes complex projects manageable. Think of them as scaffolding: a temporary structure that accelerates progress while improving code quality and maintainability.

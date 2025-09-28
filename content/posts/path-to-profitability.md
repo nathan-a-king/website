@@ -3,6 +3,7 @@ slug: path-to-profitability
 title: The Path to Profitability
 date: July 28, 2025
 excerpt: "The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI."
+category: "AI"
 ---
 
 The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI. Just as Microsoft didn't win the PC era by making the best chips, today's AI leaders are racing not just to build better models, but to become the indispensable platform through which AI is accessed and deployed. Last quarter, over 50% of all venture capital funding went to AI-focused companies, totaling more than $60 billion of investment. The extreme rate with which VC firms are pouring money into Artificial Intelligence begs an important question: what is the path to profitability for companies like OpenAI?

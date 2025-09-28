@@ -3,6 +3,7 @@ slug: beyond-the-chatbot
 title: Beyond the Chatbot
 date: July 12, 2025
 excerpt: "AI-first products demand a different approach. It's not just about embedding a model..."
+category: "AI"
 ---
 
 When ChatGPT first arrived, the chat interface felt fresh—almost magical. For the first time, anyone could type a question, a prompt, or even a vague musing into a box and get back something surprisingly coherent, sometimes even profound. It was playful, frictionless, and conversational.

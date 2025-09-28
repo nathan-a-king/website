@@ -3,6 +3,7 @@ slug: grindlab-flow
 title: "Design Diaries: The Flow of GrindLab"
 date: September 6, 2025
 excerpt: "Thoughtful UI design should transform complex workflow into a simple, frictionless user journey."
+category: "Engineering"
 ---
 
 The _flow_ of every user interface (UI) shapes the entire user experience. Every tap, swipe, and glance is part of a journey toward a user's goal. Good UI flow makes that journey feel natural—so natural the user barely notices it. Poor flow, on the other hand, shifts the focus from the experience to the interface itself. People rarely delete an app because the idea is fundamentally bad—they delete it because they feel lost, overwhelmed, or stuck. The question remained: how can I distill the inherently complex process in GrindLab into a simple, frictionless user journey? That's why flow has been at the center of my mind—and yet, it's still very much a work in progress.

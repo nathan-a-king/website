@@ -3,6 +3,7 @@ slug: "introducing-prose"
 title: "Introducing Prose"
 date: "September 9, 2025"
 excerpt: "Frustrated with bloated Markdown editors, I built Prose—a clean, distraction-free writing app that respects focus, typography, and simplicity."
+category: "Writing"
 ---
 
 ![Prose Logo](/images/posts/prose-smallr.png)

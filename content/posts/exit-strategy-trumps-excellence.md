@@ -3,6 +3,7 @@ slug: exit-strategy-trumps-excellence
 title: When Exit Strategy Trumps Excellence
 date: September 13, 2025
 excerpt: "Arc's death for a $610M exit perfectly captures Silicon Valley's disease: building for acquisitions, not users."
+category: "Engineering"
 ---
 
 The Browser Company emerged in 2019 with a mission that resonated deeply with anyone who'd grown frustrated with the stagnant browser landscape. Founded by Josh Miller and Hursh Agrawal, the company promised to reimagine the browser not as a mere window to the web, but as an "Internet Computer"—your home on the internet, crafted with the care and personality of products from Nintendo or Disney.
