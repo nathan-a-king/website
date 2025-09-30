@@ -155,7 +155,7 @@ export default function BlogPage() {
             ) : paginatedPosts.map((post, index) => (
               <Link key={`${searchQuery}-${selectedCategory}-${post.slug}`} to={`/blog/${post.slug}`} className="block h-full">
                 <Card
-                  className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-lg cursor-pointer opacity-0 animate-fadeIn h-full"
+                  className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 shadow-md hover:shadow-2xl cursor-pointer opacity-0 animate-fadeIn h-full"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
                 >
                   <CardContent className="px-8 pt-12 pb-10 h-full flex flex-col">

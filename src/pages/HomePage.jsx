@@ -73,7 +73,7 @@ export default function HomePage() {
                   onMouseEnter={() => preloadPost(post.slug)}
                   onFocus={() => preloadPost(post.slug)}
                 >
-                  <Card className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 hover:shadow-lg cursor-pointer h-full">
+                  <Card className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 shadow-md hover:shadow-2xl cursor-pointer h-full">
                     <CardContent className="px-8 pt-12 pb-10 h-full flex flex-col">
                       <article className="flex-1 flex flex-col">
                         <header className="mb-6 text-center">
