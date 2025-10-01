@@ -117,7 +117,7 @@ export default function BlogPage() {
                   onClick={() => setSelectedCategories(new Set())}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                     selectedCategories.size === 0
-                      ? "bg-blue-600 dark:bg-blue-500 text-white"
+                      ? "bg-black dark:bg-black text-white"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`}
                 >
@@ -137,7 +137,7 @@ export default function BlogPage() {
                     }}
                     className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                       selectedCategories.has(category)
-                        ? "bg-blue-600 dark:bg-blue-500 text-white"
+                        ? "bg-black dark:bg-black text-white"
                         : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                     }`}
                   >
@@ -157,7 +157,7 @@ export default function BlogPage() {
           </div>
 
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-12 opacity-0 animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+            <div className="text-center py-12 opacity-0 animate-fadeIn border-0 outline-none shadow-none" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
               <p className="text-gray-500 dark:text-gray-400 text-lg">
                 No posts found matching your search.
               </p>
@@ -172,7 +172,7 @@ export default function BlogPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fadeIn border-0 outline-none shadow-none" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
               {paginatedPosts.map((post, index) => (
               <Link key={`${searchQuery}-${Array.from(selectedCategories).join(',')}-${post.slug}`} to={`/blog/${post.slug}`} className="block h-full">
                 <Card
