@@ -3,7 +3,9 @@
   "title": "Apple is Missing the AI Race",
   "date": "July 27, 2025",
   "excerpt": "Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths.",
-  "categories": [],
+  "categories": [
+    "AI"
+  ],
   "firstImage": null,
   "content": "\nApple has two major advantages in the AI race. Their ARM-based SoC's unified memory architecture allows the GPU and Neural Engine access to far more RAM than competitors. This architectural advantage allows excellent performance of smaller models running on device as the context window grows. Each token requires a key/value pair, which causes the memory footprint to quickly grow as individual conversations get longer. Apple is not taking advantage of their most valuable resource, the platform advantage – access to *all* of my personal data.  \n\n[Mark Gurman at Bloomberg reports:](https://www.bloomberg.com/news/articles/2025-02-14/apple-s-long-promised-ai-overhaul-for-siri-runs-into-bugs-possible-delays?srnd=phx-technology)\n\n> \"The goal is to ultimately offer a more versatile Siri that can seamlessly tap into customers' information and communication. For instance, users will be able to ask for a file or song that they discussed with a friend over text. Siri would then automatically retrieve that item. Apple also has demonstrated the ability for Siri to quickly locate someone's driver's license number by reviewing their photos.\"\n\nThis is Apple's competitive differentiator and where Apple should have focused its resources from the start. Why can't I ask questions about my archived email or find correlations in exercise volume and sleep quality within the Health app?  \n\nApple's real AI advantage isn't just hardware — it's the platform. A company that prides itself on tight integration across devices should be leading in AI that understands *me*. The ability to surface insights from my personal data, securely and privately, is where Apple could create the most compelling user experience."
 }

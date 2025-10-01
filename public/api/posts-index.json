@@ -27,7 +27,9 @@
     "title": "Post Determinism",
     "date": "September 18, 2025",
     "excerpt": "AI is reshaping software from deterministic code to probabilistic systems. The future lies in blending logic with learning to build trustworthy tools.",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   },
   {
@@ -35,7 +37,9 @@
     "title": "When Exit Strategy Trumps Excellence",
     "date": "September 13, 2025",
     "excerpt": "Arc's death for a $610M exit perfectly captures Silicon Valley's disease: building for acquisitions, not users.",
-    "categories": [],
+    "categories": [
+      "Engineering"
+    ],
     "firstImage": null
   },
   {
@@ -43,7 +47,9 @@
     "title": "Introducing Prose",
     "date": "September 9, 2025",
     "excerpt": "Frustrated with bloated Markdown editors, I built Prose—a clean, distraction-free writing app that respects focus, typography, and simplicity.",
-    "categories": [],
+    "categories": [
+      "Writing"
+    ],
     "firstImage": "https://www.nateking.dev/images/posts/prose-smallr.png"
   },
   {
@@ -62,7 +68,9 @@
     "title": "Design Diaries: The Flow of GrindLab",
     "date": "September 6, 2025",
     "excerpt": "Thoughtful UI design should transform complex workflow into a simple, frictionless user journey.",
-    "categories": [],
+    "categories": [
+      "Engineering"
+    ],
     "firstImage": "https://www.nateking.dev/images/posts/grindlab.png"
   },
   {
@@ -70,7 +78,9 @@
     "title": "Design Diaries: Optimization",
     "date": "September 4, 2025",
     "excerpt": "Learning to respect mobile constraints. Optimization in GrindLab wasn't about brute force—it was about learning when to do less, smarter.",
-    "categories": [],
+    "categories": [
+      "Engineering"
+    ],
     "firstImage": null
   },
   {
@@ -78,7 +88,9 @@
     "title": "Design Diaries: Start Your Engines",
     "date": "August 31, 2025",
     "excerpt": "A strong foundation is what turns ideas into tools people trust. Ask yourself: what is the one thing this product absolutely has to get right? Start there. Build around that.",
-    "categories": [],
+    "categories": [
+      "Engineering"
+    ],
     "firstImage": null
   },
   {
@@ -97,7 +109,9 @@
     "title": "Meet Synthra",
     "date": "August 23, 2025",
     "excerpt": "What should AI-first frameworks look like? Meet Synthra.",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   },
   {
@@ -105,7 +119,9 @@
     "title": "Voyage Context 3: The Future of RAG?",
     "date": "August 3, 2025",
     "excerpt": "With Voyage's new voyage-context-3 model, developers can simplify their pipelines while improving answer quality across complex documents.",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   },
   {
@@ -113,7 +129,9 @@
     "title": "The Path to Profitability",
     "date": "July 28, 2025",
     "excerpt": "The next trillion-dollar tech company won't be built by creating the best AI model—it will be built by controlling how, where, and why people use AI.",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   },
   {
@@ -121,7 +139,9 @@
     "title": "Apple is Missing the AI Race",
     "date": "July 27, 2025",
     "excerpt": "Apple is failing to implement artificial intelligence in a way that plays to their greatest strengths.",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   },
   {
@@ -129,7 +149,9 @@
     "title": "Beyond the Chatbot",
     "date": "July 12, 2025",
     "excerpt": "AI-first products demand a different approach. It's not just about embedding a model...",
-    "categories": [],
+    "categories": [
+      "AI"
+    ],
     "firstImage": null
   }
 ]
