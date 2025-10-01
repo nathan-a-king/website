@@ -3,7 +3,7 @@ slug: introducing-grindlab
 title: "Design Diaries: Introducing GrindLab"
 date: August 30, 2025
 excerpt: "The start of a journey building GrindLab, an iOS app that uses computer vision to analyze coffee grind particles through the iPhone camera."
-category: "Engineering"
+categories: ["Engineering", "Product"]
 ---
 
 ![GrindLab Logo](/images/posts/grindlab-icon-small.png)
