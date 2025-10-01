@@ -3,7 +3,7 @@ slug: building-memory-for-writing
 title: "Building Memory for Writing"
 date: September 28, 2025
 excerpt: "I built a RAG system to query my own writing. What started as a weekend experiment became a mirror for understanding my own voice."
-category: "Writing"
+categories: ["Writing", "AI", "Engineering"]
 ---
 
 Writers accumulate words the way servers accumulate logs—relentlessly, continuously, without pause. Blog posts, essays, project documentation, half-finished drafts. Over years, it becomes a corpus. Over a career, it becomes overwhelming.

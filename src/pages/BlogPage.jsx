@@ -9,15 +9,23 @@ import { BlogListStructuredData } from '../components/StructuredData';
 
 const POSTS_PER_PAGE = 20;
 
-// Available categories
-const CATEGORIES = ["AI", "Personal", "Writing", "Engineering"];
-
 export default function BlogPage() {
   usePageTitle("Blog");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
   const { posts, loading, error } = usePostsIndex();
+
+  // Extract all unique categories from posts
+  const allCategories = React.useMemo(() => {
+    const categorySet = new Set();
+    posts.forEach(post => {
+      if (post.categories && Array.isArray(post.categories)) {
+        post.categories.forEach(cat => categorySet.add(cat));
+      }
+    });
+    return Array.from(categorySet).sort();
+  }, [posts]);
 
   // Update SEO meta tags
   useEffect(() => {
@@ -32,9 +40,9 @@ export default function BlogPage() {
   // Reset to first page when search query or category changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategories]);
 
-  // Filter posts based on search query and category
+  // Filter posts based on search query and categories
   const filteredPosts = posts.filter(post => {
     // Check search query
     const matchesSearch = !searchQuery || (() => {
@@ -46,10 +54,12 @@ export default function BlogPage() {
       );
     })();
 
-    // Check category
-    const matchesCategory = !selectedCategory || post.category === selectedCategory;
+    // Check categories - post must have ALL selected categories
+    const matchesCategories = selectedCategories.size === 0 ||
+      (post.categories && Array.isArray(post.categories) &&
+        Array.from(selectedCategories).every(cat => post.categories.includes(cat)));
 
-    return matchesSearch && matchesCategory;
+    return matchesSearch && matchesCategories;
   });
 
   if (loading) {
@@ -101,59 +111,70 @@ export default function BlogPage() {
             </div>
 
             {/* Category Pills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <button
-                onClick={() => setSelectedCategory("")}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === ""
-                    ? "bg-blue-600 dark:bg-blue-500 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }`}
-              >
-                All
-              </button>
-              {CATEGORIES.map((category) => (
+            {allCategories.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-2 mt-4">
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category === selectedCategory ? "" : category)}
+                  onClick={() => setSelectedCategories(new Set())}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                    selectedCategory === category
+                    selectedCategories.size === 0
                       ? "bg-blue-600 dark:bg-blue-500 text-white"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`}
                 >
-                  {category}
+                  All
                 </button>
-              ))}
-            </div>
+                {allCategories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => {
+                      const newCategories = new Set(selectedCategories);
+                      if (newCategories.has(category)) {
+                        newCategories.delete(category);
+                      } else {
+                        newCategories.add(category);
+                      }
+                      setSelectedCategories(newCategories);
+                    }}
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                      selectedCategories.has(category)
+                        ? "bg-blue-600 dark:bg-blue-500 text-white"
+                        : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            )}
 
-            {(searchQuery || selectedCategory) && (
+            {(searchQuery || selectedCategories.size > 0) && (
               <div className="text-center mt-4 text-sm text-gray-600 dark:text-gray-400">
                 Found {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
-                {selectedCategory && ` in ${selectedCategory}`}
+                {selectedCategories.size > 0 && ` with ${Array.from(selectedCategories).join(' + ')}`}
                 {searchQuery && ` matching "${searchQuery}"`}
               </div>
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-            {filteredPosts.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-gray-500 dark:text-gray-400 text-lg">
-                  No posts found matching your search.
-                </p>
-                <button
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSelectedCategory("");
-                  }}
-                  className="mt-4 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
-                >
-                  Clear filters
-                </button>
-              </div>
-            ) : paginatedPosts.map((post, index) => (
-              <Link key={`${searchQuery}-${selectedCategory}-${post.slug}`} to={`/blog/${post.slug}`} className="block h-full">
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-12 opacity-0 animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+              <p className="text-gray-500 dark:text-gray-400 text-lg">
+                No posts found matching your search.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedCategories(new Set());
+                }}
+                className="mt-4 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+              {paginatedPosts.map((post, index) => (
+              <Link key={`${searchQuery}-${Array.from(selectedCategories).join(',')}-${post.slug}`} to={`/blog/${post.slug}`} className="block h-full">
                 <Card
                   className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 shadow-md hover:shadow-2xl cursor-pointer opacity-0 animate-fadeIn h-full"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
@@ -177,8 +198,9 @@ export default function BlogPage() {
                   </CardContent>
                 </Card>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {totalPages > 1 && (
             <div className="flex justify-between items-center flex-wrap gap-4 pt-10">
