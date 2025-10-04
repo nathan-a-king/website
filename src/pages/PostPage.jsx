@@ -132,6 +132,7 @@ export default function PostPage() {
                       {children}
                     </blockquote>
                   ),
+                  hr: () => <hr className="my-8 border-gray-300 dark:border-gray-600" />,
                   img: ({src, alt}) => {
                     // Check if this is a light mode image with a corresponding dark mode version
                     // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)

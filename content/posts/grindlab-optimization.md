@@ -3,7 +3,7 @@ slug: grindlab-optimization
 title: "Design Diaries: Optimization"
 date: September 4, 2025
 excerpt: "Learning to respect mobile constraints. Optimization in GrindLab wasn't about brute force—it was about learning when to do less, smarter."
-category: "Engineering"
+categories: ["Design", "Engineering"]
 ---
 
 I knew I was facing an uphill battle when I began designing the coffee analysis engine in **GrindLab**. How do you run sophisticated particle analysis algorithms, often run by powerful desktop hardware, on a power-constrained iPhone? In my [previous post](https://www.nateking.dev/blog/start-your-engines), I briefly mentioned that my first implementation took fifteen minutes to process a single high-resolution image on an iPhone 15 Pro. This is the story of how I optimized a complex image processing pipeline to run smoothly on mobile hardware.
