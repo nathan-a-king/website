@@ -1,5 +1,16 @@
 [
   {
+    "slug": "nova-an-editor-with-a-soul",
+    "title": "Nova: An Editor with a Soul",
+    "date": "October 4, 2025",
+    "excerpt": "Panic’s Nova proves that developer tools can be beautiful — a code editor crafted with warmth, precision, and soul in a world that feels like it forgot how to care.",
+    "categories": [
+      "Design",
+      "Product"
+    ],
+    "firstImage": "https://www.nateking.dev/images/posts/nova.jpeg"
+  },
+  {
     "slug": "building-memory-for-writing",
     "title": "Building Memory for Writing",
     "date": "September 28, 2025",
@@ -48,7 +59,8 @@
     "date": "September 9, 2025",
     "excerpt": "Frustrated with bloated Markdown editors, I built Prose—a clean, distraction-free writing app that respects focus, typography, and simplicity.",
     "categories": [
-      "Writing"
+      "Writing",
+      "Engineering"
     ],
     "firstImage": "https://www.nateking.dev/images/posts/prose-smallr.png"
   },
@@ -57,10 +69,7 @@
     "title": "AI Is Not a Feature",
     "date": "September 8, 2025",
     "excerpt": "Why adding a chatbot isn't enough—and what building for an AI-native future really means.",
-    "categories": [
-      "AI",
-      "Product"
-    ],
+    "categories": [],
     "firstImage": null
   },
   {
@@ -69,6 +78,7 @@
     "date": "September 6, 2025",
     "excerpt": "Thoughtful UI design should transform complex workflow into a simple, frictionless user journey.",
     "categories": [
+      "Design",
       "Engineering"
     ],
     "firstImage": "https://www.nateking.dev/images/posts/grindlab.png"
@@ -79,6 +89,7 @@
     "date": "September 4, 2025",
     "excerpt": "Learning to respect mobile constraints. Optimization in GrindLab wasn't about brute force—it was about learning when to do less, smarter.",
     "categories": [
+      "Design",
       "Engineering"
     ],
     "firstImage": null
@@ -89,6 +100,7 @@
     "date": "August 31, 2025",
     "excerpt": "A strong foundation is what turns ideas into tools people trust. Ask yourself: what is the one thing this product absolutely has to get right? Start there. Build around that.",
     "categories": [
+      "Design",
       "Engineering"
     ],
     "firstImage": null
@@ -99,8 +111,8 @@
     "date": "August 30, 2025",
     "excerpt": "The start of a journey building GrindLab, an iOS app that uses computer vision to analyze coffee grind particles through the iPhone camera.",
     "categories": [
-      "Engineering",
-      "Product"
+      "Design",
+      "Engineering"
     ],
     "firstImage": "https://www.nateking.dev/images/posts/grindlab-icon-small.png"
   },
