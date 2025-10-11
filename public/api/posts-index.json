@@ -1,34 +1,5 @@
 [
   {
-    "slug": "hover-preloading-performance",
-    "title": "Making Fast Feel Instantaneous: Hover-Based Preloading",
-    "date": "October 11, 2025",
-    "excerpt": "My blog loaded in 348ms—fast by any standard. But with a single performance optimization, I made it feel instant. Here's how hover-based preloading turned milliseconds into magic.",
-    "categories": [],
-    "firstImage": null
-  },
-  {
-    "slug": "agent-builder",
-    "title": "Inside OpenAI's Agent Builder",
-    "date": "October 8, 2025",
-    "excerpt": "Test",
-    "categories": [
-      "AI"
-    ],
-    "firstImage": null
-  },
-  {
-    "slug": "grindlab-flow-2",
-    "title": "Design Diaries: From Flow to Cohesion",
-    "date": "October 6, 2025",
-    "excerpt": "Turning GrindLab's linear workflow into a cohesive experience where analysis, brewing, and reflection form one uninterrupted ritual.",
-    "categories": [
-      "Design",
-      "Engineering"
-    ],
-    "firstImage": null
-  },
-  {
     "slug": "nova-an-editor-with-a-soul",
     "title": "Nova: An Editor with a Soul",
     "date": "October 4, 2025",
