@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CalendarDays, ArrowRight, Search } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card.jsx";
 import { usePageTitle } from '../hooks/usePageTitle';
-import { usePostsIndex } from '../hooks/usePosts';
+import { usePostsIndex, usePreloadPost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
 import { BlogListStructuredData } from '../components/StructuredData';
 
@@ -15,6 +15,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const { posts, loading, error } = usePostsIndex();
+  const { preloadPost } = usePreloadPost();
 
   // Extract all unique categories from posts
   const allCategories = React.useMemo(() => {
@@ -174,7 +175,13 @@ export default function BlogPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 animate-fadeIn border-0 outline-none shadow-none" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
               {paginatedPosts.map((post, index) => (
-              <Link key={`${searchQuery}-${Array.from(selectedCategories).join(',')}-${post.slug}`} to={`/blog/${post.slug}`} className="block h-full">
+              <Link
+                key={`${searchQuery}-${Array.from(selectedCategories).join(',')}-${post.slug}`}
+                to={`/blog/${post.slug}`}
+                className="block h-full"
+                onMouseEnter={() => preloadPost(post.slug)}
+                onFocus={() => preloadPost(post.slug)}
+              >
                 <Card
                   className="border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 shadow-md hover:shadow-2xl cursor-pointer opacity-0 animate-fadeIn h-full"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
