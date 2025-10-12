@@ -65,38 +65,24 @@ Sitemap: https://www.nateking.dev/sitemap.xml`;
 
 async function injectMetaTags() {
   const indexHtmlPath = path.join(projectRoot, 'build/index.html');
-  
+
   if (!fs.existsSync(indexHtmlPath)) {
     console.error('build/index.html not found. Make sure to run the build first.');
     return;
   }
 
   let html = fs.readFileSync(indexHtmlPath, 'utf8');
-  
-  // Enhanced meta tags for SEO
+
+  // Minimal meta tags that won't conflict with runtime updates
+  // Only include static, site-wide meta that doesn't change per route
   const metaTags = `
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Nathan A. King - AI Engineer, Designer, and Developer exploring the intersection of AI, design, and human creativity.">
-  <meta name="keywords" content="AI, Machine Learning, Design, Development, Software Engineering, Technology Blog">
+  <!-- Static Site-Wide Meta Tags -->
   <meta name="author" content="Nathan A. King">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.nateking.dev/">
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Nathan A. King - AI Engineer & Designer">
-  <meta property="og:description" content="Exploring the intersection of AI, design, and human creativity. Building the next generation of intelligent interfaces.">
-  <meta property="og:url" content="https://www.nateking.dev/">
   <meta property="og:site_name" content="Nathan A. King">
-  <meta property="og:image" content="https://www.nateking.dev/og-image.jpg">
-  
-  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nathan A. King - AI Engineer & Designer">
-  <meta name="twitter:description" content="Exploring the intersection of AI, design, and human creativity.">
-  <meta name="twitter:image" content="https://www.nateking.dev/og-image.jpg">
-  
-  <!-- Structured Data -->
+
+  <!-- Structured Data (Person/Author info - static across site) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -117,9 +103,10 @@ async function injectMetaTags() {
 
   // Inject meta tags before the closing </head> tag
   html = html.replace('</head>', `${metaTags}\n</head>`);
-  
+
   fs.writeFileSync(indexHtmlPath, html);
-  console.log('✓ Enhanced index.html with SEO meta tags');
+  console.log('✓ Enhanced index.html with minimal static SEO meta tags');
+  console.log('  (Route-specific meta will be managed by runtime SEO utilities)');
 }
 
 async function prerender() {
