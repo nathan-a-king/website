@@ -65,6 +65,29 @@ function validateBuild() {
   }
   console.log('✅ Static SEO meta tags present');
   console.log('   (Route-specific meta managed by runtime)');
+
+  // Validate structured data JSON-LD
+  const ldJsonMatch = indexContent.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (ldJsonMatch) {
+    try {
+      const structuredData = JSON.parse(ldJsonMatch[1]);
+      if (!structuredData['@context']) {
+        console.error('❌ Structured data missing required @context');
+        process.exit(1);
+      }
+      if (!structuredData['@type']) {
+        console.error('❌ Structured data missing required @type');
+        process.exit(1);
+      }
+      console.log(`✅ Structured data valid (@type: ${structuredData['@type']})`);
+    } catch (e) {
+      console.error(`❌ Invalid JSON in structured data: ${e.message}`);
+      process.exit(1);
+    }
+  } else {
+    console.error('❌ No structured data script found');
+    process.exit(1);
+  }
   
   // Check sitemap
   const sitemapPath = path.join(buildDir, 'sitemap.xml');
