@@ -2,7 +2,7 @@
   {
     "slug": "inside-agent-builder",
     "title": "Inside OpenAI's Agent Builder",
-    "date": "October 8, 2025",
+    "date": "October 11, 2025",
     "excerpt": "OpenAI's Agent Builder isn't just catching up to frameworks like LangGraph — it's a bid to own the entire agent development lifecycle, from prototype to production.",
     "categories": [
       "AI"
