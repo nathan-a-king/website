@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card.jsx";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function ContactPage() {
-  usePageTitle("Contact");
   const [formData, setFormData] = useState({
     name: '',
     subject: '',
@@ -12,6 +11,12 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Update SEO meta tags
+  React.useEffect(() => {
+    const meta = generatePageMeta('contact');
+    updateDocumentMeta(meta);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({

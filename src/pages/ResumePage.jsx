@@ -1,9 +1,14 @@
 import React from "react";
 import { Mail, MapPin, Globe, Award } from "lucide-react";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function ResumePage() {
-  usePageTitle("Resume");
+  // Update SEO meta tags
+  React.useEffect(() => {
+    const meta = generatePageMeta('Resume', 'Resume and professional experience of Nathan A. King - AI Engineer & Designer.');
+    updateDocumentMeta(meta);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Header */}
