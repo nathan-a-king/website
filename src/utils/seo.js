@@ -21,10 +21,11 @@ export function updateDocumentMeta({ title, description, canonical, ogImage, typ
     if (!meta) {
       meta = document.createElement('meta');
       meta.setAttribute(attribute, property);
-      meta.setAttribute('data-managed', 'runtime');
       document.head.appendChild(meta);
     }
 
+    // Always mark as runtime-managed (handles both new and existing tags)
+    meta.setAttribute('data-managed', 'runtime');
     meta.setAttribute('content', content);
   };
 
@@ -37,9 +38,10 @@ export function updateDocumentMeta({ title, description, canonical, ogImage, typ
     if (!link) {
       link = document.createElement('link');
       link.setAttribute('rel', 'canonical');
-      link.setAttribute('data-managed', 'runtime');
       document.head.appendChild(link);
     }
+    // Always mark as runtime-managed (handles both new and existing tags)
+    link.setAttribute('data-managed', 'runtime');
     link.setAttribute('href', canonical);
   }
 
