@@ -73,14 +73,21 @@ async function injectMetaTags() {
 
   let html = fs.readFileSync(indexHtmlPath, 'utf8');
 
+  // Check if meta tags have already been injected (idempotency check)
+  if (html.includes('<!-- PRERENDER_META_INJECTED -->')) {
+    console.log('✓ Static SEO meta tags already present, skipping injection');
+    return;
+  }
+
   // Minimal meta tags that won't conflict with runtime updates
   // Only include static, site-wide meta that doesn't change per route
   const metaTags = `
-  <!-- Static Site-Wide Meta Tags -->
-  <meta name="author" content="Nathan A. King">
-  <meta name="robots" content="index, follow">
-  <meta property="og:site_name" content="Nathan A. King">
-  <meta name="twitter:card" content="summary_large_image">
+  <!-- PRERENDER_META_INJECTED -->
+  <!-- Static Site-Wide Meta Tags (managed at build time) -->
+  <meta name="author" content="Nathan A. King" data-managed="static">
+  <meta name="robots" content="index, follow" data-managed="static">
+  <meta property="og:site_name" content="Nathan A. King" data-managed="static">
+  <meta name="twitter:card" content="summary_large_image" data-managed="static">
 
   <!-- Structured Data (Person/Author info - static across site) -->
   <script type="application/ld+json">
