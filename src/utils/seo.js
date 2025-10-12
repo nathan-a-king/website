@@ -77,14 +77,16 @@ export function generatePageMeta(pageName, customDescription) {
     home: 'Nathan A. King - AI Engineer & Designer exploring the intersection of AI, design, and human creativity.',
     blog: 'Read the latest thoughts and insights on AI, design, and technology by Nathan A. King.',
     about: 'Learn about Nathan A. King, an AI Engineer and Designer passionate about building intelligent interfaces.',
-    contact: 'Get in touch with Nathan A. King for collaborations, consulting, or just to say hello.'
+    contact: 'Get in touch with Nathan A. King for collaborations, consulting, or just to say hello.',
+    resume: 'Resume and professional experience of Nathan A. King - AI Engineer & Designer.'
   };
 
   const titles = {
     home: 'Nathan A. King - AI Engineer & Designer',
     blog: 'Blog | Nathan A. King',
-    about: 'About | Nathan A. King', 
-    contact: 'Contact | Nathan A. King'
+    about: 'About | Nathan A. King',
+    contact: 'Contact | Nathan A. King',
+    resume: 'Resume | Nathan A. King'
   };
 
   return {
