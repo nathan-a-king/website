@@ -1,24 +1,30 @@
 // SEO utilities for dynamic meta tag generation
 
+/**
+ * Updates document meta tags in an idempotent way.
+ * Uses data-managed="runtime" attribute to mark runtime-managed tags.
+ * This prevents conflicts with static meta tags injected at build time.
+ */
 export function updateDocumentMeta({ title, description, canonical, ogImage, type = 'website' }) {
   // Update document title
   if (title) {
     document.title = title;
   }
 
-  // Helper function to update or create meta tags
+  // Helper function to update or create meta tags with proper marking
   const setMetaTag = (property, content, useProperty = false) => {
     if (!content) return;
-    
+
     const attribute = useProperty ? 'property' : 'name';
     let meta = document.querySelector(`meta[${attribute}="${property}"]`);
-    
+
     if (!meta) {
       meta = document.createElement('meta');
       meta.setAttribute(attribute, property);
+      meta.setAttribute('data-managed', 'runtime');
       document.head.appendChild(meta);
     }
-    
+
     meta.setAttribute('content', content);
   };
 
@@ -31,6 +37,7 @@ export function updateDocumentMeta({ title, description, canonical, ogImage, typ
     if (!link) {
       link = document.createElement('link');
       link.setAttribute('rel', 'canonical');
+      link.setAttribute('data-managed', 'runtime');
       document.head.appendChild(link);
     }
     link.setAttribute('href', canonical);

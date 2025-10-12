@@ -44,24 +44,27 @@ function validateBuild() {
   const postFiles = fs.readdirSync(postsDir).filter(f => f.endsWith('.json'));
   console.log(`✅ Found ${postFiles.length} post files`);
   
-  // Validate index.html has SEO tags
+  // Validate index.html has static SEO tags
+  // Note: Route-specific tags (og:title, og:description, canonical, etc.)
+  // are managed by runtime SEO utilities
   const indexPath = path.join(buildDir, 'index.html');
   const indexContent = fs.readFileSync(indexPath, 'utf8');
-  
-  const seoChecks = [
-    'og:title',
-    'twitter:card',
-    'application/ld+json',
-    'canonical'
+
+  const staticSeoChecks = [
+    { check: 'twitter:card', description: 'Twitter Card type' },
+    { check: 'application/ld+json', description: 'Structured data' },
+    { check: 'og:site_name', description: 'Open Graph site name' },
+    { check: 'name="author"', description: 'Author meta tag' }
   ];
-  
-  for (const check of seoChecks) {
+
+  for (const { check, description } of staticSeoChecks) {
     if (!indexContent.includes(check)) {
-      console.error(`❌ Missing SEO element: ${check}`);
+      console.error(`❌ Missing static SEO element: ${description} (${check})`);
       process.exit(1);
     }
   }
-  console.log('✅ SEO meta tags present');
+  console.log('✅ Static SEO meta tags present');
+  console.log('   (Route-specific meta managed by runtime)');
   
   // Check sitemap
   const sitemapPath = path.join(buildDir, 'sitemap.xml');
