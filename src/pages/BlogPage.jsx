@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CalendarDays, ArrowRight, Search } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card.jsx";
-import { usePageTitle } from '../hooks/usePageTitle';
 import { usePostsIndex, usePreloadPost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
 import { BlogListStructuredData } from '../components/StructuredData';
@@ -10,7 +9,6 @@ import { BlogListStructuredData } from '../components/StructuredData';
 const POSTS_PER_PAGE = 20;
 
 export default function BlogPage() {
-  usePageTitle("Blog");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState(new Set());

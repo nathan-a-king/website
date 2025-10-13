@@ -6,7 +6,6 @@ import { Card, CardContent } from "../components/ui/card.jsx";
 import ClickableImage from '../components/ClickableImage.jsx';
 import ImageModal from '../components/ImageModal.jsx';
 import CodeBlock from '../components/CodeBlock.tsx';
-import { usePageTitle } from '../hooks/usePageTitle';
 import { usePost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePostMeta } from '../utils/seo';
 import { BlogPostStructuredData } from '../components/StructuredData';
@@ -16,8 +15,6 @@ export default function PostPage() {
   const { slug } = useParams();
   const { post, loading, error } = usePost(slug);
   const { isDarkMode } = useTheme();
-
-  usePageTitle(post ? post.title : "Post");
 
   // Update SEO meta tags when post loads
   React.useEffect(() => {

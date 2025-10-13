@@ -1,8 +1,13 @@
 import React from "react";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function GameTheoryProgress() {
-  usePageTitle("Game Theory Progress");
+  // Update SEO meta tags
+  React.useEffect(() => {
+    updateDocumentMeta(generatePageMeta('game-theory-progress', 'Track the progress of the Game Theory novel draft by Nathan A. King.'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const data = {
     title: "Draft",
     targetWords: 50000,

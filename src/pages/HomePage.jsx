@@ -2,22 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CalendarDays } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card.jsx";
-import { usePageTitle } from "../hooks/usePageTitle";
 import { usePostsIndex, usePreloadPost } from "../hooks/usePosts";
 import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function HomePage() {
-  usePageTitle("Home");
   const { posts, loading } = usePostsIndex();
   const { preloadPost } = usePreloadPost();
-  
+
   // Get latest 3 posts
   const latestPosts = posts.slice(0, 3);
 
   // Update SEO meta tags
   React.useEffect(() => {
-    const meta = generatePageMeta('home');
-    updateDocumentMeta(meta);
+    updateDocumentMeta(generatePageMeta('home'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

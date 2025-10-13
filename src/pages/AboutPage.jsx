@@ -1,9 +1,14 @@
 import React from "react";
 import Skills from "../components/Skills";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function AboutPage() {
-  usePageTitle("About");
+  // Update SEO meta tags
+  React.useEffect(() => {
+    updateDocumentMeta(generatePageMeta('about'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Header */}

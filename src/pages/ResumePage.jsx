@@ -1,9 +1,14 @@
 import React from "react";
 import { Mail, MapPin, Globe, Award } from "lucide-react";
-import { usePageTitle } from "../hooks/usePageTitle";
+import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function ResumePage() {
-  usePageTitle("Resume");
+  // Update SEO meta tags
+  React.useEffect(() => {
+    updateDocumentMeta(generatePageMeta('resume'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
       {/* Header */}
@@ -193,11 +198,11 @@ export default function ResumePage() {
                   ))}
                 </div>
               </div>
-{
+
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Smart Code Review Tool</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  Built an AI-powered code review system that analyzes pull requests and provides contextual feedback. 
+                  Built an AI-powered code review system that analyzes pull requests and provides contextual feedback.
                   Integrated with GitHub API and custom ML models for code quality assessment.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -208,7 +213,7 @@ export default function ResumePage() {
                   ))}
                 </div>
               </div>
-}
+
             </div>
           </section>
 
