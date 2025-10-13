@@ -4,11 +4,10 @@ import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function ResumePage() {
   // Update SEO meta tags
-  const meta = React.useMemo(() => generatePageMeta('resume'), []);
-
   React.useEffect(() => {
-    updateDocumentMeta(meta);
-  }, [meta]);
+    updateDocumentMeta(generatePageMeta('resume'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">

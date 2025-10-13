@@ -13,11 +13,10 @@ export default function HomePage() {
   const latestPosts = posts.slice(0, 3);
 
   // Update SEO meta tags
-  const meta = React.useMemo(() => generatePageMeta('home'), []);
-
   React.useEffect(() => {
-    updateDocumentMeta(meta);
-  }, [meta]);
+    updateDocumentMeta(generatePageMeta('home'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
