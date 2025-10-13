@@ -4,25 +4,59 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 8080;
 
+// Cache the base HTML file at startup to avoid blocking on every request
+const htmlPath = path.join(__dirname, 'build', 'index.html');
+let baseHtml;
+
+try {
+  baseHtml = fs.readFileSync(htmlPath, 'utf8');
+  console.log('✓ Cached base HTML file');
+} catch (error) {
+  console.error('Failed to load base HTML file:', error);
+  process.exit(1);
+}
+
 // Serve static files from the build directory
 app.use(express.static(path.join(__dirname, 'build')));
 
+// Helper function to escape HTML to prevent XSS attacks
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (char) => map[char]);
+}
+
 // Helper function to inject meta tags into HTML
 function injectMetaTags(html, meta) {
+  // Escape all dynamic content to prevent XSS
+  const escapedTitle = escapeHtml(meta.title);
+  const escapedDescription = escapeHtml(meta.description);
+  const escapedCanonical = escapeHtml(meta.canonical);
+  const escapedType = escapeHtml(meta.type);
+  const escapedOgImage = escapeHtml(meta.ogImage);
+
+  // Remove existing title tag to prevent duplicates
+  html = html.replace(/<title>.*?<\/title>/i, '');
+
   // Find the closing </head> tag and inject meta tags before it
   const metaTags = `
   <!-- Dynamic SEO Meta Tags (injected server-side) -->
-  <meta property="og:title" content="${meta.title}" data-managed="server">
-  <meta property="og:description" content="${meta.description}" data-managed="server">
-  <meta property="og:url" content="${meta.canonical}" data-managed="server">
-  <meta property="og:type" content="${meta.type}" data-managed="server">
-  <meta property="og:image" content="${meta.ogImage}" data-managed="server">
-  <meta name="twitter:title" content="${meta.title}" data-managed="server">
-  <meta name="twitter:description" content="${meta.description}" data-managed="server">
-  <meta name="twitter:image" content="${meta.ogImage}" data-managed="server">
-  <meta name="description" content="${meta.description}" data-managed="server">
-  <link rel="canonical" href="${meta.canonical}" data-managed="server">
-  <title>${meta.title}</title>
+  <meta property="og:title" content="${escapedTitle}" data-managed="server">
+  <meta property="og:description" content="${escapedDescription}" data-managed="server">
+  <meta property="og:url" content="${escapedCanonical}" data-managed="server">
+  <meta property="og:type" content="${escapedType}" data-managed="server">
+  <meta property="og:image" content="${escapedOgImage}" data-managed="server">
+  <meta name="twitter:title" content="${escapedTitle}" data-managed="server">
+  <meta name="twitter:description" content="${escapedDescription}" data-managed="server">
+  <meta name="twitter:image" content="${escapedOgImage}" data-managed="server">
+  <meta name="description" content="${escapedDescription}" data-managed="server">
+  <link rel="canonical" href="${escapedCanonical}" data-managed="server">
+  <title>${escapedTitle}</title>
 `;
 
   return html.replace('</head>', `${metaTags}\n</head>`);
@@ -72,23 +106,29 @@ function generatePageMeta(pageName) {
 
 // Handle React routing - serve index.html with dynamic meta tags for non-asset requests
 app.get('*', (req, res) => {
-  // Check if the request is for a file that should exist
-  const filePath = path.join(__dirname, 'build', req.path);
-
   // If it's a request for a static asset and it doesn't exist, return 404
   if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/)) {
     return res.status(404).send('File not found');
   }
 
-  // Read the base HTML file
-  const htmlPath = path.join(__dirname, 'build', 'index.html');
-  let html = fs.readFileSync(htmlPath, 'utf8');
+  // Use the cached base HTML (no file I/O on every request)
+  let html = baseHtml;
 
   // Check if this is a blog post route
   const blogPostMatch = req.path.match(/^\/blog\/([^/]+)$/);
 
   if (blogPostMatch) {
     const slug = blogPostMatch[1];
+
+    // Validate slug to prevent path traversal attacks
+    // Only allow alphanumeric characters, hyphens, and underscores
+    if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+      // Invalid slug, serve default blog page meta
+      const meta = generatePageMeta('blog');
+      html = injectMetaTags(html, meta);
+      return res.send(html);
+    }
+
     const postPath = path.join(__dirname, 'build', 'api', 'posts', `${slug}.json`);
 
     // Try to load the post data
