@@ -3,10 +3,14 @@ import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function GameTheoryProgress() {
   // Update SEO meta tags
+  const meta = React.useMemo(() =>
+    generatePageMeta('game-theory-progress', 'Track the progress of the Game Theory novel draft by Nathan A. King.'),
+    []
+  );
+
   React.useEffect(() => {
-    const meta = generatePageMeta('game-theory-progress', 'Track the progress of the Game Theory novel draft by Nathan A. King.');
     updateDocumentMeta(meta);
-  }, []);
+  }, [meta]);
 
   const data = {
     title: "Draft",

@@ -13,10 +13,11 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   // Update SEO meta tags
+  const meta = React.useMemo(() => generatePageMeta('contact'), []);
+
   React.useEffect(() => {
-    const meta = generatePageMeta('contact');
     updateDocumentMeta(meta);
-  }, []);
+  }, [meta]);
 
   const handleChange = (e) => {
     setFormData({

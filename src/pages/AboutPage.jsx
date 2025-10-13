@@ -4,10 +4,11 @@ import { updateDocumentMeta, generatePageMeta } from "../utils/seo";
 
 export default function AboutPage() {
   // Update SEO meta tags
+  const meta = React.useMemo(() => generatePageMeta('about'), []);
+
   React.useEffect(() => {
-    const meta = generatePageMeta('about');
     updateDocumentMeta(meta);
-  }, []);
+  }, [meta]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
