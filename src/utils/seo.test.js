@@ -250,6 +250,20 @@ describe('generatePostMeta', () => {
     expect(meta.ogImage).toBe('https://www.nateking.dev/images/custom-image.jpg');
   });
 
+  it('should provide safe fallbacks when post fields are missing', () => {
+    const post = {
+      title: 'Fallback Post'
+    };
+
+    const meta = generatePostMeta(post);
+
+    expect(meta.title).toBe('Fallback Post | Nathan A. King');
+    expect(meta.description).toBe('');
+    expect(meta.canonical).toBe('https://www.nateking.dev');
+    expect(meta.ogImage).toBe('https://www.nateking.dev/og-image.jpg');
+    expect(meta.type).toBe('article');
+  });
+
   it('should handle post with all fields', () => {
     const post = {
       slug: 'comprehensive-post',
