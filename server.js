@@ -20,7 +20,13 @@ try {
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Helper function to escape HTML to prevent XSS attacks
-function escapeHtml(text) {
+function escapeHtml(value) {
+  if (value === null || value === undefined) {
+    return '';
+  }
+
+  const text = typeof value === 'string' ? value : String(value);
+
   const map = {
     '&': '&amp;',
     '<': '&lt;',
@@ -28,6 +34,7 @@ function escapeHtml(text) {
     '"': '&quot;',
     "'": '&#039;'
   };
+
   return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
@@ -65,13 +72,14 @@ function injectMetaTags(html, meta) {
 // Helper function to generate meta tags for a post
 function generatePostMeta(post) {
   const baseUrl = 'https://www.nateking.dev';
-  const postUrl = `${baseUrl}/blog/${post.slug}`;
+  const slug = post && post.slug ? post.slug : '';
+  const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
 
   return {
-    title: `${post.title} | Nathan A. King`,
-    description: post.excerpt,
-    canonical: postUrl,
-    ogImage: post.firstImage || `${baseUrl}/og-image.jpg`,
+    title: post && post.title ? `${post.title} | Nathan A. King` : 'Nathan A. King',
+    description: (post && (post.excerpt || post.description)) || '',
+    canonical: postUrl || baseUrl,
+    ogImage: (post && post.firstImage) || `${baseUrl}/og-image.jpg`,
     type: 'article'
   };
 }
