@@ -60,13 +60,14 @@ export function updateDocumentMeta({ title, description, canonical, ogImage, typ
 
 export function generatePostMeta(post) {
   const baseUrl = 'https://www.nateking.dev';
-  const postUrl = `${baseUrl}/blog/${post.slug}`;
-  
+  const slug = post && post.slug ? post.slug : '';
+  const postUrl = slug ? `${baseUrl}/blog/${slug}` : baseUrl;
+
   return {
-    title: `${post.title} | Nathan A. King`,
-    description: post.excerpt,
+    title: post && post.title ? `${post.title} | Nathan A. King` : 'Nathan A. King',
+    description: (post && (post.excerpt || post.description)) || '',
     canonical: postUrl,
-    ogImage: post.firstImage || `${baseUrl}/og-image.jpg`,
+    ogImage: (post && post.firstImage) || `${baseUrl}/og-image.jpg`,
     type: 'article'
   };
 }
