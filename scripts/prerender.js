@@ -25,6 +25,7 @@ async function generateStaticRoutes() {
       '/blog', // Blog listing page
       '/about', // About page
       '/contact', // Contact page
+      '/resume', // Resume page
       ...postsIndex.map(post => `/blog/${post.slug}`) // Individual post pages
     ];
     
