@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+        <div className="min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 transition-colors">
           <ScrollToTop />
           <Navigation />
           <Routes>

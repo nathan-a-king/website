@@ -16,14 +16,14 @@ export default function ClickableImage({ src, alt, className = '' }) {
             loading="lazy"
           />
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-            <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
-              <Maximize2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-15 transition-all duration-200 flex items-center justify-center">
+            <div className="bg-white/90 dark:bg-brand-ink/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
+              <Maximize2 className="w-5 h-5 text-brand-charcoal dark:text-gray-100" />
             </div>
           </div>
         </div>
         {alt && (
-          <div className="text-sm text-gray-600 dark:text-gray-400 text-center mt-3 italic">
+          <div className="text-sm text-brand-charcoal/70 dark:text-gray-200 text-center mt-3 italic">
             {alt}
           </div>
         )}
