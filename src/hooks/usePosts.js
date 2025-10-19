@@ -59,17 +59,23 @@ export function usePost(slug) {
     if (!postSlug) return;
 
     try {
-      setLoading(true);
-      setError(null);
-
-      // Check cache first
       const cacheKey = postSlug;
       const cachedPost = postCache.get(cacheKey);
       const now = Date.now();
-      
-      if (cachedPost && (now - cachedPost.timestamp) < CACHE_DURATION) {
+      const hasCachedPost = Boolean(cachedPost);
+      const isCacheFresh = hasCachedPost && (now - cachedPost.timestamp) < CACHE_DURATION;
+
+      setError(null);
+
+      if (hasCachedPost) {
+        // Immediately show cached data to avoid flashing the loading fallback.
         setPost(cachedPost.data);
         setLoading(false);
+      } else {
+        setLoading(true);
+      }
+
+      if (isCacheFresh) {
         return;
       }
 
@@ -83,7 +89,7 @@ export function usePost(slug) {
       // Update cache
       postCache.set(cacheKey, {
         data: postData,
-        timestamp: now
+        timestamp: Date.now()
       });
       
       setPost(postData);
