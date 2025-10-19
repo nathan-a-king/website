@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react';
 
 // Lazy load ReactMarkdown and related components
 const ReactMarkdown = lazy(() => import('react-markdown'));
-const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
 
 // Loading fallback component
 const MarkdownSkeleton = () => (

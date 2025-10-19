@@ -1,15 +1,16 @@
-import React from "react";
+import React, { lazy } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CalendarDays, ArrowLeft, Maximize2 } from "lucide-react";
 import LazyMarkdown from '../components/LazyMarkdown.jsx';
 import { Card, CardContent } from "../components/ui/card.jsx";
 import ClickableImage from '../components/ClickableImage.jsx';
 import ImageModal from '../components/ImageModal.jsx';
-import CodeBlock from '../components/CodeBlock.tsx';
 import { usePost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePostMeta } from '../utils/seo';
 import { BlogPostStructuredData } from '../components/StructuredData';
 import { useTheme } from '../contexts/ThemeContext';
+
+const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
 
 export default function PostPage() {
   const { slug } = useParams();
