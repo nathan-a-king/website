@@ -4,8 +4,11 @@
     "title": "GrindLab: Pre-Release TestFlight",
     "date": "October 19, 2025",
     "excerpt": "GrindLab is officially in private TestFlight. After years of experiments, refactors, and espresso-fueled debugging sessions, it’s finally ready for its first real-world test.",
-    "categories": [],
-    "firstImage": "https://www.nateking.dev/images/posts/grindlab-welcome-smallr.png"
+    "categories": [
+      "Design",
+      "Engineering"
+    ],
+    "firstImage": "https://www.nateking.dev/images/posts/grindlab-welcome-smallr.webp"
   },
   {
     "slug": "inside-agent-builder",

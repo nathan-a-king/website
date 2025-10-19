@@ -3,9 +3,10 @@ slug: grindlab-testflight
 title: "GrindLab: Pre-Release TestFlight"
 date: October 19, 2025
 excerpt: "GrindLab is officially in private TestFlight. After years of experiments, refactors, and espresso-fueled debugging sessions, it’s finally ready for its first real-world test."
+categories: ["Design", "Engineering"]
 ---
 
-![](/images/posts/grindlab-welcome-smallr.png)
+![](/images/posts/grindlab-welcome-smallr.webp)
 
 I’m happy to announce that **GrindLab** is officially in private, pre-release TestFlight.
 I anticipate this beta stage will last a few months, with GrindLab tentatively planned for release at the beginning of January 2026. It will be a free app on the iOS App Store.
