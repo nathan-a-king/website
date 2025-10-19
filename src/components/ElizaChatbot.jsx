@@ -799,7 +799,6 @@ const ElizaChatbot = () => {
           onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
           placeholder="Please state your problem"
           style={styles.input}
-          autoFocus
         />
         <button 
           onClick={handleSubmit}
