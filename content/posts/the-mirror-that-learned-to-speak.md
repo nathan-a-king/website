@@ -79,8 +79,7 @@ This blog can't resurrect the original time-sharing terminal, but it can offer t
 
 ## Closing Reflection
 
-ELIZA didn't understand, yet people found comfort in her words.  
-GPT understands patterns far deeper than ELIZA ever could, yet still less than the people who use it.
+ELIZA didn't understand, yet people found comfort in her words. Modern LLMs understand patterns far deeper than ELIZA ever could, yet still less than the people who use it.
 
 What's changed is not the presence of intelligence, but the **sophistication of our reflection** — and perhaps that's enough. Every tool humanity has created, from language to mathematics, has been a form of cognitive scaffolding, a way to think beyond our natural limits.
 
