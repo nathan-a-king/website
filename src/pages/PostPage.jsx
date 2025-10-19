@@ -26,10 +26,10 @@ export default function PostPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
-        <main className="pt-28 px-6 py-12">
+      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+        <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-gray-600 dark:text-gray-300">Loading post...</p>
+            <p className="text-brand-charcoal/70 dark:text-gray-200">Loading post...</p>
           </div>
         </main>
       </div>
@@ -38,12 +38,12 @@ export default function PostPage() {
 
   if (error || (!loading && !post)) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
-        <main className="pt-28 px-6 py-12">
+      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+        <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Post Not Found</h1>
+            <h1 className="text-2xl font-bold mb-4 text-brand-charcoal dark:text-white">Post Not Found</h1>
             {error && <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>}
-            <Link to="/blog" className="text-black dark:text-white hover:underline">
+            <Link to="/blog" className="text-brand-primary dark:text-white hover:underline">
               ← Back to Blog
             </Link>
           </div>
@@ -53,14 +53,14 @@ export default function PostPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white font-avenir transition-colors">
+    <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
       <BlogPostStructuredData post={post} />
-      <main className="pt-28 px-6 py-12">
+      <main className="pt-36 px-6 sm:px-10 pb-14">
         <div className="max-w-3xl mx-auto">
           {/* Back to Blog Link */}
           <Link 
             to="/blog" 
-            className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition mb-8"
+            className="inline-flex items-center text-brand-charcoal/70 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white transition mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -68,10 +68,10 @@ export default function PostPage() {
 
           {/* Post Header */}
           <header className="mb-8 text-center opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
-            <h1 className="text-4xl mb-4 text-gray-900 dark:text-gray-100 leading-tight">
+            <h1 className="text-4xl mb-4 text-brand-charcoal dark:text-white leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex items-center justify-center text-sm text-brand-charcoal/70 dark:text-gray-200">
               <CalendarDays className="w-4 h-4 mr-2" />
               <span>{post.date}</span>
             </div>
@@ -79,16 +79,16 @@ export default function PostPage() {
 
           {/* Post Content */}
           <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
-            <CardContent className="text-gray-800 dark:text-gray-200 leading-[1.75] tracking-normal">
+            <CardContent className="text-brand-charcoal dark:text-gray-200 leading-[1.75] tracking-normal">
               <LazyMarkdown 
                 components={{
-                  h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>,
-                  h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h2>,
-                  h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-gray-900 dark:text-gray-100">{children}</h3>,
+                  h1: ({children}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-brand-charcoal dark:text-white">{children}</h1>,
+                  h2: ({children}) => <h2 className="text-2xl mt-6 mb-3 text-brand-charcoal dark:text-white">{children}</h2>,
+                  h3: ({children}) => <h3 className="text-xl font-medium mt-4 mb-2 text-brand-charcoal dark:text-white">{children}</h3>,
                   a: ({children, href}) => (
                     <a 
                       href={href} 
-                      className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                      className="text-brand-primary dark:text-brand-primary underline hover:text-brand-primary/80 dark:hover:text-white transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -125,11 +125,11 @@ export default function PostPage() {
                     );
                   },
                   blockquote: ({children}) => (
-                    <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-6 pr-4 my-4 italic text-lg bg-gray-50 dark:bg-gray-800">
+                    <blockquote className="border-l-4 border-brand-primary/35 dark:border-brand-primary/50 pl-6 pr-4 py-4 my-6 italic text-lg bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded-2xl shadow-lg text-brand-charcoal/80 dark:text-gray-200">
                       {children}
                     </blockquote>
                   ),
-                  hr: () => <hr className="my-8 border-gray-300 dark:border-gray-600" />,
+                  hr: () => <hr className="my-10 border-brand-charcoal/15 dark:border-brand-charcoal/35" />,
                   img: ({src, alt}) => {
                     // Check if this is a light mode image with a corresponding dark mode version
                     // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)
@@ -199,8 +199,8 @@ export default function PostPage() {
                                 className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                               />
                               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-                                <div className="bg-white dark:bg-gray-800 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
-                                  <Maximize2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                                <div className="bg-white/90 dark:bg-brand-ink/70 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
+                                  <Maximize2 className="w-5 h-5 text-brand-charcoal dark:text-gray-200" />
                                 </div>
                               </div>
                             </div>
@@ -224,7 +224,7 @@ export default function PostPage() {
                         value={String(children).replace(/\n$/, '')}
                       />
                     ) : (
-                      <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono" {...props}>
+                      <code className="bg-brand-highlight/80 dark:bg-brand-charcoal/50 text-brand-charcoal dark:text-gray-100 px-1 py-0.5 rounded text-sm font-mono" {...props}>
                         {children}
                       </code>
                     );
@@ -243,7 +243,7 @@ export default function PostPage() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-200 dark:border-gray-700 mt-20 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+      <footer className="border-t border-brand-charcoal/10 dark:border-brand-charcoal/45 mt-20 py-6 text-center text-sm text-brand-charcoal/60 dark:text-gray-200">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>
