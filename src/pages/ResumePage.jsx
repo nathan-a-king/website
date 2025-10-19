@@ -186,6 +186,20 @@ export default function ResumePage() {
             <h2 className="text-3xl mb-6 text-brand-charcoal dark:text-white">Notable Projects</h2>
             <div className="space-y-6">
               <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
+                <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white mb-2">GrindLab</h3>
+                <p className="text-brand-charcoal/80 dark:text-gray-200 mb-3">
+                  Built an iOS/SwiftUI app that analyzes coffee grind consistency using computer vision. The app uses the device camera to capture images of coffee grounds and provides detailed analysis including particle size distribution, uniformity metrics, and brewing recommendations.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['SwiftUI'].map(tech => (
+                    <span key={tech} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-2 py-1 rounded text-xs text-brand-charcoal/70 dark:text-gray-200">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
                 <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white mb-2">Interactive iOS AI Assistant App</h3>
                 <p className="text-brand-charcoal/80 dark:text-gray-200 mb-3">
                   Developed a modern, SwiftUI-powered chat assistant app for iOS, integrating OpenAI Chat Completions. It provides a clean, multi-threaded chat experience with persistent history and is designed to be easily extensible for custom use cases.
