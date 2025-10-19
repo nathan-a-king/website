@@ -7,22 +7,22 @@ import { usePreloadPost } from '../hooks/usePosts';
 
 // Post card skeleton
 const PostCardSkeleton = () => (
-  <Card className="border border-gray-200 dark:border-gray-700 shadow-sm bg-white dark:bg-gray-800 p-6">
+  <Card className="border border-brand-charcoal/10 dark:border-brand-charcoal/40 shadow-sm bg-white dark:bg-brand-ink/45 p-6">
     <CardContent className="p-0 animate-pulse">
-      <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
-      <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2 w-24"></div>
+      <div className="h-6 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded mb-3"></div>
+      <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded mb-2 w-24"></div>
       <div className="space-y-2 mb-4">
-        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
-        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+        <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded"></div>
+        <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded w-5/6"></div>
       </div>
-      <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-20"></div>
+      <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded w-20"></div>
     </CardContent>
   </Card>
 );
 
 // Actual post card content
 const PostCardContent = ({ post, preloadPost }) => (
-  <Card className="border border-gray-200 dark:border-gray-700 shadow-sm bg-white dark:bg-gray-800 p-6">
+  <Card className="border border-brand-charcoal/10 dark:border-brand-charcoal/40 shadow-sm bg-white dark:bg-brand-ink/45 p-6 transition-colors">
     <CardContent className="p-0">
       <Link 
         to={`/blog/${post.slug}`} 
@@ -30,17 +30,17 @@ const PostCardContent = ({ post, preloadPost }) => (
         onMouseEnter={() => preloadPost(post.slug)}
         onFocus={() => preloadPost(post.slug)}
       >
-        <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h2 className="text-2xl font-semibold mb-3 text-brand-charcoal dark:text-white group-hover:text-brand-primary dark:group-hover:text-white transition-colors">
           {post.title}
         </h2>
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 mb-3">
+        <div className="flex items-center text-sm text-brand-charcoal/70 dark:text-gray-200 mb-3">
           <CalendarDays className="w-4 h-4 mr-2" />
           <span>{post.date}</span>
         </div>
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+        <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed mb-4">
           {post.excerpt}
         </p>
-        <span className="text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:underline">
+        <span className="text-brand-primary dark:text-white text-sm font-medium group-hover:underline">
           Read more →
         </span>
       </Link>

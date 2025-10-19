@@ -6,16 +6,16 @@ export default function Skills() {
   const skillsData = getAllSkills();
 
   return (
-    <section className="py-16 px-6">
+    <section className="py-24 px-6 sm:px-10">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl mb-12 text-center text-gray-900 dark:text-gray-100">
+        <h2 className="text-3xl mb-12 text-center text-brand-charcoal dark:text-white">
           Skills & Expertise
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillsData.map((category, categoryIndex) => (
-            <div key={category.category} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-colors">
-              <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100 pb-2 border-b border-gray-200 dark:border-gray-700">
+            <div key={category.category} className="bg-white/90 dark:bg-brand-ink/45 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
+              <h3 className="text-lg font-semibold mb-6 text-brand-charcoal dark:text-white pb-2 border-b border-brand-charcoal/10 dark:border-brand-charcoal/35">
                 {category.category}
               </h3>
               
