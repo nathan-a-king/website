@@ -24,13 +24,13 @@ export default function Navigation() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" onClick={closeMobileMenu}>
-            <img 
-              src="/mac-logo.png" 
-              alt="Nathan A. King" 
+            <img
+              src="/mac-logo.png"
+              alt="Nathan A. King"
               className={`h-12 w-auto transition-all duration-200 ${isDarkMode ? 'brightness-0 invert' : ''}`}
             />
           </Link>
-          
+
           {/* Desktop Navigation Links and Theme Toggle */}
           <div className="hidden md:flex items-center space-x-8">
             <ul className="flex space-x-6 text-sm font-medium tracking-wide">
@@ -85,16 +85,15 @@ export default function Navigation() {
             </ul>
             <ThemeToggle />
           </div>
-        </div>
 
-        {/* Mobile Menu Button and Theme Toggle */}
-        <div className="md:hidden mt-4 flex justify-end">
-          <div className="flex items-center space-x-4">
+          {/* Mobile Theme Toggle and Menu Button */}
+          <div className="md:hidden flex items-center space-x-4">
             <ThemeToggle />
             <button
               onClick={toggleMobileMenu}
               className="p-2 rounded-md text-brand-charcoal/70 dark:text-gray-200 hover:text-brand-charcoal dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <div className="w-6 h-6 flex flex-col justify-center space-y-1">
                 <span className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
@@ -104,6 +103,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
+
       </div>
 
       {/* Mobile Menu Overlay */}
