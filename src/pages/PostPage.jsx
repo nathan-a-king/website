@@ -62,7 +62,7 @@ export default function PostPage() {
       );
     },
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-brand-primary/35 dark:border-brand-primary/50 pl-6 pr-4 py-4 my-6 italic text-lg bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded-2xl shadow-lg text-brand-charcoal/80 dark:text-gray-200">
+      <blockquote className="border-l-4 border-brand-primary dark:border-brand-primary/80 pl-6 my-6 italic text-lg text-brand-charcoal/80 dark:text-gray-200">
         {children}
       </blockquote>
     ),

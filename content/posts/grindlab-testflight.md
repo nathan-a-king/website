@@ -43,7 +43,7 @@ If you’re interested in helping shape GrindLab, reach out — your feedback wi
 
 A beta isn’t just about finding bugs; it’s about refining intuition. Every dataset, every brew, every small inconsistency teaches the app (and me) something new.
 
-The goal has always been more than an app. GrindLab is part of a broader philosophy: **bridging craft and computation**. Thank you to everyone who’s followed the project so far. The next few months will be about testing, listening, and polishing — bringing GrindLab from prototype to polished companion for coffee enthusiasts everywhere.
+The goal has always been more than an app. GrindLab is part of a broader philosophy: bridging the art and science of coffee. Thank you to everyone who’s followed the project so far. The next few months will be about testing, listening, and polishing — bringing GrindLab from prototype to polished companion for coffee enthusiasts everywhere.
 
 ---
 
