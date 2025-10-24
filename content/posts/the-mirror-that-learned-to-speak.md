@@ -3,6 +3,7 @@ slug: the-mirror-that-learned-to-speak
 title: "The Mirror That Learned to Speak"
 date: October 20, 2025
 excerpt: "From ELIZA's typed reflections to today's generative AI, our conversations with machines have always revealed more about us than about them. What began as a parlor experiment became a mirror for the human need to be understood."
+categories: ["AI"]
 ---
 
 > *ELIZA never understood a word we said. GPT sounds like it does. The difference matters less than we think.*
