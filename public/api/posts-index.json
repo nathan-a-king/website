@@ -1,5 +1,16 @@
 [
   {
+    "slug": "the-myth-of-hallucination",
+    "title": "The Myth of Hallucination",
+    "date": "October 25, 2025",
+    "excerpt": "When language models fabricate facts or generate false citations, they're not malfunctioning. They're exposing our failure to communicate. The real problem isn't teaching machines to think, but teaching engineers to speak.",
+    "categories": [
+      "AI",
+      "Engineering"
+    ],
+    "firstImage": null
+  },
+  {
     "slug": "the-mirror-that-learned-to-speak",
     "title": "The Mirror That Learned to Speak",
     "date": "October 20, 2025",
