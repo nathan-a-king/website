@@ -1,5 +1,16 @@
 [
   {
+    "slug": "ai-learning-about-you",
+    "title": "AI Isn't Learning About You",
+    "date": "October 26, 2025",
+    "excerpt": "AI assistants don't learn about you—they're stateless engines reading notes from a database. This architectural reality explains everything from memory failures to future possibilities.",
+    "categories": [
+      "AI",
+      "Engineering"
+    ],
+    "firstImage": null
+  },
+  {
     "slug": "the-myth-of-hallucination",
     "title": "The Myth of Hallucination",
     "date": "October 25, 2025",
