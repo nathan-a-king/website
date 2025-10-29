@@ -5,6 +5,7 @@ import { Card, CardContent } from "../components/ui/card.jsx";
 import { usePostsIndex, usePreloadPost } from '../hooks/usePosts';
 import { updateDocumentMeta, generatePageMeta } from '../utils/seo';
 import { BlogListStructuredData } from '../components/StructuredData';
+import BackgroundPattern from "../components/BackgroundPattern.jsx";
 
 const POSTS_PER_PAGE = 20;
 
@@ -92,20 +93,21 @@ export default function BlogPage() {
   );
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+    <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors overflow-hidden">
+      <BackgroundPattern variant="dots" className="text-brand-charcoal" />
       <BlogListStructuredData posts={posts} />
-      <main className="pt-36 px-6 sm:px-10 pb-14">
+      <main className="pt-36 px-6 sm:px-10 pb-14 relative">
         <div className="max-w-4xl mx-auto">
           {/* Search Bar */}
           <div className="mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
             <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-brand-charcoal/40 dark:text-gray-200 pointer-events-none" />
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-brand-primary/40 dark:text-brand-accent/60 pointer-events-none" />
               <input
                 type="text"
                 placeholder="Search posts by title, content, or date..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/90 dark:bg-brand-ink/45 border border-brand-charcoal/10 dark:border-brand-charcoal/40 rounded-full text-brand-charcoal dark:text-gray-200 placeholder-brand-charcoal/50 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/60 dark:focus:ring-brand-primary/35 focus:border-transparent transition-all backdrop-blur-sm"
+                className="w-full pl-14 pr-6 py-4 bg-white/95 dark:bg-brand-ink/60 border-2 border-brand-charcoal/10 dark:border-brand-charcoal/30 rounded-full text-brand-charcoal dark:text-gray-200 placeholder-brand-charcoal/50 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 dark:focus:ring-brand-primary/30 focus:border-brand-primary/30 dark:focus:border-brand-primary/40 transition-all backdrop-blur-sm shadow-soft focus:shadow-soft-lg"
               />
             </div>
 
@@ -114,10 +116,10 @@ export default function BlogPage() {
               <div className="flex flex-wrap justify-center gap-2 mt-4">
                 <button
                   onClick={() => setSelectedCategories(new Set())}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all border ${
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${
                     selectedCategories.size === 0
-                      ? "bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20"
-                      : "bg-white/80 dark:bg-brand-ink/45 border-brand-charcoal/15 dark:border-brand-charcoal/40 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight/70 dark:hover:bg-brand-charcoal/45"
+                      ? "bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5"
+                      : "bg-white/90 dark:bg-brand-ink/60 border-brand-charcoal/10 dark:border-brand-charcoal/30 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft"
                   }`}
                 >
                   All
@@ -134,10 +136,10 @@ export default function BlogPage() {
                       }
                       setSelectedCategories(newCategories);
                     }}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all border ${
+                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${
                       selectedCategories.has(category)
-                        ? "bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20"
-                        : "bg-white/80 dark:bg-brand-ink/45 border-brand-charcoal/15 dark:border-brand-charcoal/40 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight/70 dark:hover:bg-brand-charcoal/45"
+                        ? "bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5"
+                        : "bg-white/90 dark:bg-brand-ink/60 border-brand-charcoal/10 dark:border-brand-charcoal/30 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft"
                     }`}
                   >
                     {category}
@@ -181,24 +183,33 @@ export default function BlogPage() {
                 onFocus={() => preloadPost(post.slug)}
               >
                 <Card
-                  className="border border-brand-charcoal/10 dark:border-brand-charcoal/40 hover:border-brand-primary/35 dark:hover:border-brand-primary/50 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer opacity-0 animate-fadeIn h-full bg-white/90 dark:bg-brand-ink/50 rounded-3xl"
+                  className="relative border-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 hover:border-brand-primary/40 dark:hover:border-brand-primary/50 transition-all duration-300 shadow-soft-lg hover:shadow-soft-xl hover:-translate-y-1 cursor-pointer opacity-0 animate-fadeIn h-full bg-white/95 dark:bg-brand-ink/60 rounded-3xl overflow-hidden"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
                 >
                   <CardContent className="px-8 pt-12 pb-10 h-full flex flex-col">
                     <article className="flex-1 flex flex-col">
                       <header className="mb-6 text-center">
-                        <h2 className="text-4xl mb-4 text-brand-charcoal dark:text-white leading-tight group-hover:text-brand-primary dark:group-hover:text-white transition-colors">
+                        <h2 className="text-4xl mb-4 text-brand-charcoal dark:text-white leading-tight group-hover:text-brand-primary dark:group-hover:text-brand-accent transition-colors duration-200">
                           {post.title}
                         </h2>
                         <div className="flex items-center justify-center text-sm text-brand-charcoal/70 dark:text-gray-200">
-                          <CalendarDays className="w-4 h-4 mr-2" />
+                          <CalendarDays className="w-4 h-4 mr-2 group-hover:text-brand-primary dark:group-hover:text-brand-accent transition-colors" />
                           <time>{post.date}</time>
                         </div>
                       </header>
 
-                      <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed">
+                      <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed mb-6">
                         {post.excerpt}
                       </p>
+
+                      <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/20">
+                        <span className="inline-flex items-center text-sm font-medium text-brand-primary dark:text-brand-accent group-hover:gap-2 transition-all">
+                          Read more
+                          <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
                     </article>
                   </CardContent>
                 </Card>
@@ -212,7 +223,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 rounded-full border text-sm font-medium bg-white/90 dark:bg-brand-ink/45 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/15 dark:border-brand-charcoal/40 hover:bg-brand-highlight/70 dark:hover:bg-brand-charcoal/40 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-6 py-2.5 rounded-full border-2 text-sm font-medium bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all shadow-soft hover:shadow-soft-lg"
               >
                 Previous
               </button>
@@ -222,7 +233,7 @@ export default function BlogPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${currentPage === page ? 'bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/15' : 'bg-white/90 dark:bg-brand-ink/45 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/15 dark:border-brand-charcoal/40 hover:bg-brand-highlight/70 dark:hover:bg-brand-charcoal/40'}`}
+                    className={`px-5 py-2.5 rounded-full border-2 text-sm font-medium transition-all ${currentPage === page ? 'bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5' : 'bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft'}`}
                   >
                     {page}
                   </button>
@@ -232,7 +243,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 rounded-full border text-sm font-medium bg-white/90 dark:bg-brand-ink/45 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/15 dark:border-brand-charcoal/40 hover:bg-brand-highlight/70 dark:hover:bg-brand-charcoal/40 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-6 py-2.5 rounded-full border-2 text-sm font-medium bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all shadow-soft hover:shadow-soft-lg"
               >
                 Next
               </button>

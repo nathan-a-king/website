@@ -20,7 +20,7 @@ export default function Navigation() {
   
   return (
     <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4 flex justify-center pointer-events-none">
-      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-white/70 dark:bg-brand-ink/40 border border-brand-charcoal/10 dark:border-brand-charcoal/40 backdrop-blur-xl backdrop-saturate-150 rounded-pill shadow-pill transition-all duration-300">
+      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-white/80 dark:bg-brand-ink/50 border-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 backdrop-blur-xl backdrop-saturate-150 rounded-pill shadow-soft-lg transition-all duration-300">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" onClick={closeMobileMenu}>
@@ -108,7 +108,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/70 dark:bg-brand-ink/40 border-t border-brand-charcoal/10 dark:border-brand-charcoal/40 backdrop-blur-xl backdrop-saturate-150 shadow-xl pointer-events-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/85 dark:bg-brand-ink/60 border-t-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 backdrop-blur-xl backdrop-saturate-150 shadow-soft-xl pointer-events-auto">
           <div className="max-w-5xl mx-auto px-6 py-4">
             <ul className="flex flex-col space-y-4 text-md font-medium">
               <li>
