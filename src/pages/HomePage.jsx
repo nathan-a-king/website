@@ -32,7 +32,6 @@ export default function HomePage() {
       <section className="relative pt-44 pb-28 px-6 sm:px-10 opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full bg-white/90 dark:bg-brand-ink/60 border border-brand-primary/20 dark:border-brand-primary/30 backdrop-blur-sm text-xs uppercase tracking-[0.35em] font-semibold text-brand-charcoal/70 dark:text-gray-200 shadow-soft">
-            <Sparkles className="w-3.5 h-3.5 text-brand-primary dark:text-brand-accent" />
             <span>Strategist. Designer. Engineer.</span>
           </div>
           <p className="text-xl sm:text-2xl text-brand-charcoal/80 dark:text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -104,7 +103,7 @@ export default function HomePage() {
                           {post.excerpt}
                         </p>
 
-                        <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/20">
+                        <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/30">
                           <span className="inline-flex items-center text-sm font-medium text-brand-primary dark:text-brand-accent group-hover:gap-2 transition-all">
                             Read more
                             <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -126,11 +125,6 @@ export default function HomePage() {
       <section className="py-24 px-6 sm:px-10 opacity-0 animate-fadeIn" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
         <div className="max-w-3xl mx-auto">
           <div className="relative bg-white/60 dark:bg-brand-ink/40 backdrop-blur-sm rounded-3xl border-2 border-brand-charcoal/10 dark:border-brand-charcoal/30 p-10 sm:p-12 shadow-soft-lg">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="w-12 h-12 bg-brand-primary/10 dark:bg-brand-primary/20 rounded-full flex items-center justify-center border-2 border-white dark:border-brand-ink shadow-soft">
-                <Sparkles className="w-6 h-6 text-brand-primary dark:text-brand-accent" />
-              </div>
-            </div>
             <div className="text-center space-y-6">
               <h2 className="text-3xl font-semibold text-brand-charcoal dark:text-white">
                 Building the Future of Human-AI Collaboration

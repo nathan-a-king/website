@@ -202,7 +202,7 @@ export default function BlogPage() {
                         {post.excerpt}
                       </p>
 
-                      <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/20">
+                      <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/30">
                         <span className="inline-flex items-center text-sm font-medium text-brand-primary dark:text-brand-accent group-hover:gap-2 transition-all">
                           Read more
                           <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
