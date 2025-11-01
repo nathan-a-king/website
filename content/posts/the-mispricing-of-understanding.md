@@ -64,7 +64,7 @@ And **for civilization**, the stakes are higher still. When learning velocity be
 
 Seen from above, the economy begins to look like an endless auction. Each model release resets the bidding; the currency is mastery. Corporations, institutions, and individuals compete for temporary ownership of leverage before the next upgrade changes the rules. Those who can learn fastest win the current round; no one wins forever.
 
-**If the auction describes the mechanism—an endless contest of adaptation—the paradox describes its outcome: the contest hardens into hierarchy once learning itself becomes measurable.**
+If the auction describes the mechanism—an endless contest of adaptation—the paradox describes its outcome: the contest hardens into hierarchy once learning itself becomes measurable.
 
 ### The Coming Paradox
 
@@ -78,11 +78,11 @@ If the twentieth century was defined by access to energy and the twenty-first by
 
 Generative AI ensures that any fixed skill will eventually be automated. The only defensible advantage is the rate of re-skilling—the compound interest of comprehension. When intelligence is cheap and understanding expensive, learning speed becomes destiny.
 
-The models will continue to improve; the market will continue to misprice; and the rest of us will race, not against the machines, but against our own inertia. In the Learning-Rate Economy, every mind is both asset and algorithm. The price of compute will fluctuate. **The price of understanding will only rise—and that’s the one market no algorithm can clear.**
+The models will continue to improve; the market will continue to misprice; and the rest of us will race, not against the machines, but against our own inertia. In the Learning-Rate Economy, every mind is both asset and algorithm. The price of compute will fluctuate. The price of understanding will only rise—and that’s the one market no algorithm can clear.
 
-* * *
+---
 
-### **Works Cited**
+### Works Cited
 
 - Brynjolfsson, Erik et al. “Generative AI at Work.” _Stanford Institute for Economic Policy Research (SIEPR)_, 2023. [https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers](https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers)
 - Federal Reserve Bank of St. Louis. _The Impact of Generative AI on Work Productivity._ Feb 2025. [https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity](https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity)
