@@ -1,5 +1,6 @@
 import React from 'react';
-import logger from '../utils/logger';
+import { useLocation } from 'react-router-dom';
+import logger, { formatError } from '../utils/logger';
 
 /**
  * Error Boundary component to catch and handle React errors gracefully
@@ -31,13 +32,10 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log error to error tracking service
-    logger.error('React Error Boundary caught an error', {
-      error: error.message,
-      stack: error.stack,
-      componentStack: errorInfo.componentStack,
-      errorInfo: JSON.stringify(errorInfo)
-    });
+    // Log error to error tracking service with standardized format
+    logger.error('React Error Boundary caught an error', formatError(error, {
+      componentStack: errorInfo?.componentStack || 'No component stack available'
+    }));
 
     // Store error details in state for development debugging
     this.setState({
@@ -49,6 +47,16 @@ class ErrorBoundary extends React.Component {
     // if (window.Sentry) {
     //   Sentry.captureException(error, { contexts: { react: { componentStack: errorInfo.componentStack } } });
     // }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Reset error state when location changes (route navigation)
+    // This requires passing location as a prop from parent
+    if (this.props.location && prevProps.location !== this.props.location) {
+      if (this.state.hasError) {
+        this.handleReset();
+      }
+    }
   }
 
   handleReset = () => {
@@ -94,9 +102,9 @@ class ErrorBoundary extends React.Component {
                     Error Details (Development Only)
                   </h2>
                   <p className="text-sm text-red-700 dark:text-red-300 mb-2 font-mono break-all">
-                    {this.state.error.toString()}
+                    {this.state.error?.toString?.() || this.state.error?.message || 'Unknown error occurred'}
                   </p>
-                  {this.state.errorInfo && (
+                  {this.state.errorInfo?.componentStack && (
                     <details className="text-xs text-red-600 dark:text-red-400">
                       <summary className="cursor-pointer font-semibold mb-2">
                         Component Stack Trace
@@ -146,4 +154,14 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default ErrorBoundary;
+/**
+ * Wrapper component that provides location to ErrorBoundary
+ * This enables automatic error state reset on route changes
+ */
+function ErrorBoundaryWithRouter(props) {
+  const location = useLocation();
+  return <ErrorBoundary location={location} {...props} />;
+}
+
+export default ErrorBoundaryWithRouter;
+export { ErrorBoundary };

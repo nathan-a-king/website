@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { formatError } = require('./utils/logger');
 const logger = require('./utils/logger');
 const app = express();
 const port = process.env.PORT || 8080;
@@ -13,7 +14,7 @@ try {
   baseHtml = fs.readFileSync(htmlPath, 'utf8');
   logger.info('Successfully cached base HTML file');
 } catch (error) {
-  logger.error('Failed to load base HTML file', { error: error.message, stack: error.stack });
+  logger.error('Failed to load base HTML file', formatError(error, { htmlPath }));
   process.exit(1);
 }
 
@@ -147,7 +148,7 @@ app.get('*', (req, res) => {
         const meta = generatePostMeta(post);
         html = injectMetaTags(html, meta);
       } catch (error) {
-        logger.error('Error loading post data', { slug, error: error.message });
+        logger.error('Error loading post data', formatError(error, { slug, postPath }));
         // Fall back to default meta tags
         const meta = generatePageMeta('blog');
         html = injectMetaTags(html, meta);

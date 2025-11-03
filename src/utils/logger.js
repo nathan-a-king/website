@@ -34,13 +34,20 @@ const logger = {
     if (isDev) {
       console.error(`[${getTimestamp()}] [ERROR]`, message, ...args);
     } else {
-      // In production, send to error tracking service
-      // Example: Sentry.captureException(new Error(message), { extra: args });
+      // CRITICAL: In production, still log to console.error until error tracking is integrated
+      // This ensures errors are not silently swallowed
+      console.error(`[${getTimestamp()}] [ERROR]`, message, ...args);
 
-      // For now, silently track errors without console pollution
-      // You can replace this with your error tracking service
-      if (window.__ERROR_TRACKER__) {
-        window.__ERROR_TRACKER__.captureError(message, args);
+      // Future: Send to error tracking service when integrated
+      // Example integrations:
+      if (window.Sentry) {
+        window.Sentry.captureException(new Error(message), {
+          extra: args[0] || {}
+        });
+      } else if (window.LogRocket) {
+        window.LogRocket.captureException(new Error(message), {
+          extra: args[0] || {}
+        });
       }
     }
   },
@@ -76,5 +83,21 @@ const logger = {
   }
 };
 
+/**
+ * Helper function to format error objects consistently
+ *
+ * Usage:
+ * logger.error('Failed to load data', formatError(err));
+ * logger.error('Failed to load data', formatError(err, { userId: 123 }));
+ */
+const formatError = (error, additionalContext = {}) => {
+  return {
+    error: error?.message || error?.toString?.() || 'Unknown error',
+    stack: error?.stack || 'No stack trace available',
+    name: error?.name || 'Error',
+    ...additionalContext
+  };
+};
+
 export default logger;
-export { LogLevel };
+export { LogLevel, formatError };
