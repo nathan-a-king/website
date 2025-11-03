@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import logger from '../utils/logger';
 
 // Simple in-memory cache for posts
 const postCache = new Map();
@@ -37,6 +38,7 @@ export function usePostsIndex() {
         
         setPosts(postsData);
       } catch (err) {
+        logger.error('Failed to fetch posts index', { error: err.message, stack: err.stack });
         setError(err.message);
       } finally {
         setLoading(false);
@@ -93,6 +95,7 @@ export function usePost(slug) {
       
       setPost(postData);
     } catch (err) {
+      logger.error('Failed to fetch post', { slug: postSlug, error: err.message, stack: err.stack });
       setError(err.message);
     } finally {
       setLoading(false);
@@ -131,7 +134,8 @@ export function usePreloadPost() {
         });
       }
     } catch (err) {
-      // Silently fail for preloading
+      // Silently fail for preloading - only log in development
+      logger.debug('Post preload failed', { slug, error: err.message });
     }
   }, []);
 
