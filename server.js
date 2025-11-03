@@ -10,9 +10,7 @@ let baseHtml;
 
 try {
   baseHtml = fs.readFileSync(htmlPath, 'utf8');
-  console.log('✓ Cached base HTML file');
 } catch (error) {
-  console.error('Failed to load base HTML file:', error);
   process.exit(1);
 }
 
@@ -146,7 +144,6 @@ app.get('*', (req, res) => {
         const meta = generatePostMeta(post);
         html = injectMetaTags(html, meta);
       } catch (error) {
-        console.error(`Error loading post ${slug}:`, error);
         // Fall back to default meta tags
         const meta = generatePageMeta('blog');
         html = injectMetaTags(html, meta);
@@ -181,5 +178,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on port ${port}`);
+  // Server started
 });

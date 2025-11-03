@@ -37,7 +37,6 @@ export function usePostsIndex() {
         
         setPosts(postsData);
       } catch (err) {
-        console.error('Error fetching posts:', err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -94,7 +93,6 @@ export function usePost(slug) {
       
       setPost(postData);
     } catch (err) {
-      console.error('Error fetching post:', err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -134,7 +132,6 @@ export function usePreloadPost() {
       }
     } catch (err) {
       // Silently fail for preloading
-      console.debug('Preload failed for:', slug, err);
     }
   }, []);
 

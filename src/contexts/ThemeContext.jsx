@@ -98,7 +98,7 @@ export const ThemeProvider = ({ children }) => {
     
     // Fallback: if logo fails to load, keep current favicon
     img.onerror = () => {
-      console.warn('Logo image failed to load, keeping current favicon');
+      // Silently keep current favicon
     };
     
     img.src = logoPath;
