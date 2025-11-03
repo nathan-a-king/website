@@ -6,33 +6,33 @@ excerpt: "Generative AI evolves faster than we can learn to use it. The result: 
 categories: ["AI"]
 ---
 
-The defining feature of generative AI isn’t its scale, speed, or cost. It’s that it evolves faster than we can learn to use it.
+The defining feature of generative AI isn't its scale, speed, or cost. It's that it evolves faster than we can learn to use it.
 
-Every few months, the models change—smarter, broader, more fluent—while human understanding advances in slow, uneven steps. Capability races ahead; comprehension limps behind. This isn’t a phase. It’s a permanent state of economic imbalance: a world where intelligence compounds faster than education, where the price of computation falls while the value of cognition soars. Companies pour billions into building these systems; users rent them for twenty dollars a month. On paper, that looks irrational. In reality, it’s a glimpse of a new kind of economy—one governed not by capital, but by _learning velocity._
+Every few months, the models change—smarter, broader, more fluent—while human understanding advances in slow, uneven steps. Capability races ahead; comprehension limps behind. This isn't a phase. It's a permanent state of economic imbalance: a world where intelligence compounds faster than education, where the price of computation falls while the value of cognition soars. Companies pour billions into building these systems; users rent them for twenty dollars a month. On paper, that looks irrational. In reality, it's a glimpse of a new kind of economy—one governed not by capital, but by _learning velocity._
 
 ### The Disequilibrium
 
 That mismatch creates a structural mispricing: **cognitive arbitrage.** In finance, arbitrage means profiting from temporary price gaps. Here, it means capturing value from permanent comprehension gaps—the difference between what the machine can do and what the user can imagine doing with it. The faster the system learns, the larger the spread.
 
-Unlike traditional arbitrage, this one doesn’t close. Every time literacy improves, capability jumps ahead again. The result is an endless series of value imbalances: a permanent economy of underused intelligence.
+Unlike traditional arbitrage, this one doesn't close. Every time literacy improves, capability jumps ahead again. The result is an endless series of value imbalances: a permanent economy of underused intelligence.
 
 ### The Counterargument: Maybe It Should Be Cheap
 
-Skeptics argue that AI’s cheapness isn’t a flaw but a fair reflection of quality. When text, images, and code can be produced infinitely, the marginal unit of intelligence should indeed cost pennies. Why pay more for something abundant?
+Skeptics argue that AI's cheapness isn't a flaw but a fair reflection of quality. When text, images, and code can be produced infinitely, the marginal unit of intelligence should indeed cost pennies. Why pay more for something abundant?
 
-There’s truth in that. Abundance devalues quantity. But the true premium has shifted from production to discernment. When anyone can generate content, the differentiator isn’t output—it’s _orchestration._ Meaning doesn’t scale automatically; wisdom remains scarce. So while raw cognition becomes cheap, **curated comprehension** becomes priceless.
+There's truth in that. Abundance devalues quantity. But the true premium has shifted from production to discernment. When anyone can generate content, the differentiator isn't output—it's _orchestration._ Meaning doesn't scale automatically; wisdom remains scarce. So while raw cognition becomes cheap, curated comprehension becomes priceless.
 
-That inversion is why the technology’s mispricing matters more than earlier revolutions. The printing press democratized access; the internet democratized publication; generative AI democratizes creation. Each lowered the barrier to output. None reduced the need for judgment. We are rich in answers and poor in sense, and the market hasn’t yet found a way to price the difference.
+That inversion is why the technology's mispricing matters more than earlier revolutions. The printing press democratized access; the internet democratized publication; generative AI democratizes creation. Each lowered the barrier to output. None reduced the need for judgment. We are rich in answers and poor in sense, and the market hasn't yet found a way to price the difference.
 
 ### The Evidence
 
-You can see the gap in the data. A knowledge worker earning fifty dollars an hour who saves five hours a week with a large language model realizes roughly a thousand dollars in monthly value for a twenty-dollar subscription—a fifty-to-one return. MIT Sloan found forty-percent productivity gains for skilled professionals using generative AI; Stanford economists observed thirty-five-percent improvements among call-center agents; the Federal Reserve measured average weekly time savings of around five percent across occupations. McKinsey projects trillions in potential annual uplift; Goldman Sachs predicts a seven-percent boost to global GDP.
+You can see the gap in the data. A knowledge worker earning fifty dollars an hour who saves five hours a week with a large language model realizes roughly a thousand dollars in monthly value for a twenty-dollar subscription—a fifty-to-one return. MIT Sloan found forty-percent productivity gains for skilled professionals using generative AI¹; Stanford economists observed thirty-five-percent improvements among call-center agents²; the Federal Reserve measured average weekly time savings of around five percent across occupations³. McKinsey projects trillions in potential annual uplift⁴; Goldman Sachs predicts a seven-percent boost to global GDP⁵.
 
 Together, these figures describe one of the greatest value spreads in history. They are proof of the arbitrage, not the cause. The market undercharges because it is pricing comprehension, not capability—and comprehension is the bottleneck.
 
 ### Return on Cognition
 
-If capital once measured _return on investment_ and cloud computing measured _return on infrastructure_, the emerging metric is **Return on Cognition (RoC)**: the rate at which you can learn to collaborate with intelligent systems relative to everyone else. The scarce resource isn’t processing power—it’s adaptability.
+If capital once measured _return on investment_ and cloud computing measured _return on infrastructure_, the emerging metric is **Return on Cognition (RoC)**: the rate at which you can learn to collaborate with intelligent systems relative to everyone else. The scarce resource isn't processing power—it's adaptability.
 
 High-RoC individuals and organizations compound advantage because each new improvement in understanding amplifies the output of improving tools. Low-RoC actors fall exponentially behind: same model, same access, different literacy—radically different results.
 
@@ -40,7 +40,7 @@ This pattern scales upward. Nations now compete less on hardware or data than on
 
 ### When the Market Starts to Notice
 
-Today, markets can’t see cognition. Token counts, seat licenses, API calls—they measure usage, not understanding. A user who builds a multi-step reasoning workflow pays the same as someone who asks for a haiku. To the ledger, both are “one request.” The result is a global subsidy: billions in compute quietly fund humanity’s crash course in post-human reasoning.
+Today, markets can't see cognition. Token counts, seat licenses, API calls—they measure usage, not understanding. A user who builds a multi-step reasoning workflow pays the same as someone who asks for a haiku. To the ledger, both are "one request." The result is a global subsidy: billions in compute quietly fund humanity's crash course in post-human reasoning.
 
 But what happens when the market _can_ see cognition? When systems learn to measure learning—tracking prompt evolution, adaptation speed, feedback sophistication—pricing will differentiate. High-literacy users and institutions will command better tools, faster access, higher costs justified by higher RoC. Personalized pricing of comprehension will end the subsidy and concentrate value among the fastest learners.
 
@@ -50,15 +50,15 @@ At that point, _Return on Cognition becomes an asset class._
 
 There will be no price correction—only a learning correction. We are entering what might be called the **Learning-Rate Economy**, where the primary determinant of prosperity is how quickly individuals, institutions, and societies can adapt.
 
-**For individuals**, learning becomes capital. “Lifelong learning” stops being a moral slogan and becomes an economic law. The only durable edge is the speed at which you can update your models of the world. The cognitive elite will be defined not by what they know, but by how fast they can forget and relearn.
+**For individuals**, learning becomes capital. "Lifelong learning" stops being a moral slogan and becomes an economic law. The only durable edge is the speed at which you can update your models of the world. The cognitive elite will be defined not by what they know, but by how fast they can forget and relearn.
 
 **For education**, this means treating classrooms like laboratories, not lecture halls—students iterating on prompts, tracing reasoning paths, and measuring how their understanding evolves. Curriculum would reward adaptation speed and error recovery as much as accuracy. Learning velocity itself becomes the grade.
 
-**For institutions**, learning velocity becomes a management metric. Imagine a “Chief Learning Rate Officer,” responsible for ensuring human capability compounds as fast as the software stack evolves. The firms that measure and optimize for RoC—training loops, cross-disciplinary synthesis, rapid retraining—will outperform those still managing static job roles.
+**For institutions**, learning velocity becomes a management metric. Imagine a "Chief Learning Rate Officer," responsible for ensuring human capability compounds as fast as the software stack evolves. The firms that measure and optimize for RoC—training loops, cross-disciplinary synthesis, rapid retraining—will outperform those still managing static job roles.
 
-**For governance**, adaptation becomes policy. Regulation that lags by years is regulation that doesn’t exist. Governments will need to legislate like software—iteratively, versioned, continuously updated. The public sector’s learning rate will determine its legitimacy.
+**For governance**, adaptation becomes policy. Regulation that lags by years is regulation that doesn't exist. Governments will need to legislate like software—iteratively, versioned, continuously updated. The public sector's learning rate will determine its legitimacy.
 
-And **for civilization**, the stakes are higher still. When learning velocity becomes measurable and stratified, inequality hardens into cognition itself. The gap won’t just be between rich and poor, but between fast and slow learners. Education and access to adaptation tools become existential infrastructure. If intelligence is abundant but understanding scarce, the world divides not by wealth but by wisdom.
+And **for civilization**, the stakes are higher still. When learning velocity becomes measurable and stratified, inequality hardens into cognition itself. The gap won't just be between rich and poor, but between fast and slow learners. Education and access to adaptation tools become existential infrastructure. If intelligence is abundant but understanding scarce, the world divides not by wealth but by wisdom.
 
 ### The Auction of Cognition
 
@@ -70,7 +70,7 @@ If the auction describes the mechanism—an endless contest of adaptation—the 
 
 So what happens when Return on Cognition becomes visible—when learning velocity is tracked, verified, and rewarded? The cognitive arbitrage ends for most and concentrates for a few. Markets will finally know how to price comprehension, and in doing so will destroy its egalitarian phase. The very act of measuring RoC turns learning into capital, and capital into hierarchy.
 
-Generative AI began as a subsidy for intelligence; it may end as a marketplace for understanding. The question that follows is no longer “What can this technology do?” but “Who gets to keep up?”
+Generative AI began as a subsidy for intelligence; it may end as a marketplace for understanding. The question that follows is no longer "What can this technology do?" but "Who gets to keep up?"
 
 If the twentieth century was defined by access to energy and the twenty-first by access to data, the next will be defined by access to adaptation—the right to learn at the speed of the machine. Every policy, every institution, every life will orbit that new gravity well.
 
@@ -78,14 +78,18 @@ If the twentieth century was defined by access to energy and the twenty-first by
 
 Generative AI ensures that any fixed skill will eventually be automated. The only defensible advantage is the rate of re-skilling—the compound interest of comprehension. When intelligence is cheap and understanding expensive, learning speed becomes destiny.
 
-The models will continue to improve; the market will continue to misprice; and the rest of us will race, not against the machines, but against our own inertia. In the Learning-Rate Economy, every mind is both asset and algorithm. The price of compute will fluctuate. The price of understanding will only rise—and that’s the one market no algorithm can clear.
+The models will continue to improve; the market will continue to misprice; and the rest of us will race, not against the machines, but against our own inertia. In the Learning-Rate Economy, every mind is both asset and algorithm. The price of compute will fluctuate. The price of understanding will only rise—and that's the one market no algorithm can clear.
 
 ---
 
 ### Works Cited
 
-- Brynjolfsson, Erik et al. “Generative AI at Work.” _Stanford Institute for Economic Policy Research (SIEPR)_, 2023. [https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers](https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers)
-- Federal Reserve Bank of St. Louis. _The Impact of Generative AI on Work Productivity._ Feb 2025. [https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity](https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity)
-- Goldman Sachs Research. _Generative AI Could Raise Global GDP by 7 Percent._ Apr 2023. [https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent](https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent)
-- McKinsey & Company. _The Economic Potential of Generative AI: The Next Productivity Frontier._ Jun 2023. [https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier](https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier)
-- Noy, Shakked, and Whitney Zhang. “Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence.” _MIT Sloan School of Management_, 2023. [https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity](https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity)
+¹ Noy, Shakked, and Whitney Zhang. "Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence." _MIT Sloan School of Management_, 2023. [https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity](https://mitsloan.mit.edu/ideas-made-to-matter/how-generative-ai-can-boost-highly-skilled-workers-productivity)
+
+² Brynjolfsson, Erik et al. "Generative AI at Work." _Stanford Institute for Economic Policy Research (SIEPR)_, 2023. [https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers](https://siepr.stanford.edu/news/generative-ai-boost-can-boost-productivity-without-replacing-workers)
+
+³ Federal Reserve Bank of St. Louis. _The Impact of Generative AI on Work Productivity._ Feb 2025. [https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity](https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity)
+
+⁴ McKinsey & Company. _The Economic Potential of Generative AI: The Next Productivity Frontier._ Jun 2023. [https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier](https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier)
+
+⁵ Goldman Sachs Research. _Generative AI Could Raise Global GDP by 7 Percent._ Apr 2023. [https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent](https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent)
