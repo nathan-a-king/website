@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import logger from '../utils/logger';
 
 const ThemeContext = createContext();
 
@@ -98,7 +99,7 @@ export const ThemeProvider = ({ children }) => {
     
     // Fallback: if logo fails to load, keep current favicon
     img.onerror = () => {
-      console.warn('Logo image failed to load, keeping current favicon');
+      logger.warn('Failed to load logo for favicon', { logoPath });
     };
     
     img.src = logoPath;
