@@ -18,9 +18,9 @@ import "./styles/typography.css";
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider>
-        <Router>
+    <ThemeProvider>
+      <Router>
+        <ErrorBoundary>
           <div className="min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 transition-colors">
             <ScrollToTop />
             <Navigation />
@@ -33,9 +33,9 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </div>
-        </Router>
-      </ThemeProvider>
-    </ErrorBoundary>
+        </ErrorBoundary>
+      </Router>
+    </ThemeProvider>
   );
 }
 
