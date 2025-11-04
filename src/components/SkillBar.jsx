@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function SkillBar({ name, level, delay = 0 }) {
   const [animatedLevel, setAnimatedLevel] = useState(0);
@@ -22,9 +22,9 @@ export default function SkillBar({ name, level, delay = 0 }) {
         </span>
       </div>
       
-      <div className="w-full bg-brand-highlight/80 dark:bg-brand-charcoal/50 rounded-full h-2">
+      <div className="w-full bg-brand-soft dark:bg-brand-charcoal/50 rounded-full h-2">
         <div
-          className="bg-brand-primary dark:bg-white h-2 rounded-full transition-all duration-1000 ease-out"
+          className="bg-brand-terracotta dark:bg-brand-terracotta h-2 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${animatedLevel}%` }}
         />
       </div>
