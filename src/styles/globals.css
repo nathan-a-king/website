@@ -20,12 +20,12 @@
 
 /* Dark mode variables */
 .dark {
-  --color-bg: #1A1A18;
-  --color-text-primary: #FAF9F5;
-  --color-text-secondary: #C5C4BF;
-  --color-text-tertiary: #9A9995;
+  --color-bg: #252522;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E5E4E0;
+  --color-text-tertiary: #B5B4B0;
   --color-border: rgba(250, 249, 245, 0.15);
-  --color-surface: #262624;
+  --color-surface: #323230;
 }
 
 * {

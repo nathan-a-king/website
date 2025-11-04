@@ -11,9 +11,10 @@ module.exports = {
         brand: {
           cream: '#FAF9F5',        // Warm background (inspired by claude.ai)
           charcoal: '#141413',     // Primary text
-          ink: '#1A1A18',          // Darker text/backgrounds
+          ink: '#252522',          // Darker text/backgrounds (lighter for dark mode)
+          surface: '#323230',      // Dark mode surface color
           gray: {
-            light: '#73726C',      // Secondary text
+            light: '#A8A7A3',      // Secondary text (brighter for dark mode)
             medium: '#3D3D3A',     // Medium emphasis text
             border: 'rgba(31, 30, 29, 0.15)', // Subtle borders
           },
