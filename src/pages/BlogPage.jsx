@@ -64,10 +64,10 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-brand-charcoal/70 dark:text-gray-200">Loading posts...</p>
+            <p className="text-brand-gray-medium dark:text-brand-gray-light">Loading posts...</p>
           </div>
         </main>
       </div>
@@ -76,7 +76,7 @@ export default function BlogPage() {
 
   if (error) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-red-600 dark:text-red-400">Error loading posts: {error}</p>
@@ -93,7 +93,7 @@ export default function BlogPage() {
   );
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors overflow-hidden">
+    <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors overflow-hidden">
       <BackgroundPattern variant="dots" className="text-brand-charcoal" />
       <BlogListStructuredData posts={posts} />
       <main className="pt-36 px-6 sm:px-10 pb-14 relative">
@@ -101,13 +101,13 @@ export default function BlogPage() {
           {/* Search Bar */}
           <div className="mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
             <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-brand-primary/40 dark:text-brand-accent/60 pointer-events-none" />
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-brand-gray-light pointer-events-none" />
               <input
                 type="text"
                 placeholder="Search posts by title, content, or date..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-4 bg-white/95 dark:bg-brand-ink/60 border-2 border-brand-charcoal/10 dark:border-brand-charcoal/30 rounded-full text-brand-charcoal dark:text-gray-200 placeholder-brand-charcoal/50 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 dark:focus:ring-brand-primary/30 focus:border-brand-primary/30 dark:focus:border-brand-primary/40 transition-all backdrop-blur-sm shadow-soft focus:shadow-soft-lg"
+                className="w-full pl-14 pr-6 py-4 bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/15 rounded-lg text-brand-charcoal dark:text-brand-cream placeholder-brand-gray-light dark:placeholder-brand-gray-light focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta/40 transition-all"
               />
             </div>
 
@@ -116,10 +116,10 @@ export default function BlogPage() {
               <div className="flex flex-wrap justify-center gap-2 mt-4">
                 <button
                   onClick={() => setSelectedCategories(new Set())}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     selectedCategories.size === 0
-                      ? "bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5"
-                      : "bg-white/90 dark:bg-brand-ink/60 border-brand-charcoal/10 dark:border-brand-charcoal/30 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft"
+                      ? "bg-brand-charcoal border-brand-charcoal text-brand-cream"
+                      : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-gray-border dark:border-white/15 text-brand-gray-medium dark:text-brand-gray-light hover:bg-brand-cream dark:hover:bg-white/5"
                   }`}
                 >
                   All
@@ -136,10 +136,10 @@ export default function BlogPage() {
                       }
                       setSelectedCategories(newCategories);
                     }}
-                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       selectedCategories.has(category)
-                        ? "bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5"
-                        : "bg-white/90 dark:bg-brand-ink/60 border-brand-charcoal/10 dark:border-brand-charcoal/30 text-brand-charcoal/70 dark:text-gray-200 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft"
+                        ? "bg-brand-charcoal border-brand-charcoal text-brand-cream"
+                        : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-gray-border dark:border-white/15 text-brand-gray-medium dark:text-brand-gray-light hover:bg-brand-cream dark:hover:bg-white/5"
                     }`}
                   >
                     {category}
@@ -149,7 +149,7 @@ export default function BlogPage() {
             )}
 
             {(searchQuery || selectedCategories.size > 0) && (
-              <div className="text-center mt-4 text-sm text-brand-charcoal/70 dark:text-gray-200">
+              <div className="text-center mt-4 text-sm text-brand-gray-medium dark:text-brand-gray-light">
                 Found {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
                 {selectedCategories.size > 0 && ` with ${Array.from(selectedCategories).join(' + ')}`}
                 {searchQuery && ` matching "${searchQuery}"`}
@@ -159,7 +159,7 @@ export default function BlogPage() {
 
           {filteredPosts.length === 0 ? (
             <div className="text-center py-12 opacity-0 animate-fadeIn border-0 outline-none shadow-none" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-              <p className="text-brand-charcoal/60 dark:text-gray-200 text-lg">
+              <p className="text-brand-gray-medium dark:text-brand-gray-light text-lg">
                 No posts found matching your search.
               </p>
               <button
@@ -167,7 +167,7 @@ export default function BlogPage() {
                   setSearchQuery("");
                   setSelectedCategories(new Set());
                 }}
-                className="mt-4 text-brand-primary dark:text-white hover:text-brand-primary/80 dark:hover:text-gray-100 underline"
+                className="mt-4 text-brand-terracotta hover:text-brand-terracotta/80 underline"
               >
                 Clear filters
               </button>
@@ -183,27 +183,27 @@ export default function BlogPage() {
                 onFocus={() => preloadPost(post.slug)}
               >
                 <Card
-                  className="relative border-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 hover:border-brand-primary/40 dark:hover:border-brand-primary/50 transition-all duration-300 shadow-soft-lg hover:shadow-soft-xl hover:-translate-y-1 cursor-pointer opacity-0 animate-fadeIn h-full bg-white/95 dark:bg-brand-ink/60 rounded-3xl overflow-hidden"
+                  className="relative border border-brand-gray-border dark:border-white/10 hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 transition-all duration-200 cursor-pointer opacity-0 animate-fadeIn h-full bg-brand-cream dark:bg-brand-ink rounded-lg overflow-hidden"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
                 >
-                  <CardContent className="px-8 pt-12 pb-10 h-full flex flex-col">
+                  <CardContent className="px-6 pt-8 pb-6 h-full flex flex-col">
                     <article className="flex-1 flex flex-col">
-                      <header className="mb-6 text-center">
-                        <h2 className="text-4xl mb-4 text-brand-charcoal dark:text-white leading-tight group-hover:text-brand-primary dark:group-hover:text-brand-accent transition-colors duration-200">
+                      <header className="mb-4">
+                        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-charcoal dark:text-brand-cream leading-snug group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors duration-200">
                           {post.title}
                         </h2>
-                        <div className="flex items-center justify-center text-sm text-brand-charcoal/70 dark:text-gray-200">
-                          <CalendarDays className="w-4 h-4 mr-2 group-hover:text-brand-primary dark:group-hover:text-brand-accent transition-colors" />
+                        <div className="flex items-center text-sm text-brand-gray-light dark:text-brand-gray-light">
+                          <CalendarDays className="w-4 h-4 mr-2" />
                           <time>{post.date}</time>
                         </div>
                       </header>
 
-                      <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed mb-6">
+                      <p className="text-brand-gray-medium dark:text-brand-gray-light leading-relaxed mb-4 text-sm">
                         {post.excerpt}
                       </p>
 
-                      <div className="mt-auto pt-4 border-t border-brand-charcoal/5 dark:border-brand-charcoal/30">
-                        <span className="inline-flex items-center text-sm font-medium text-brand-primary dark:text-brand-accent group-hover:gap-2 transition-all">
+                      <div className="mt-auto pt-4 border-t border-brand-gray-border dark:border-white/10">
+                        <span className="inline-flex items-center text-sm font-medium text-brand-charcoal dark:text-brand-cream group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-all">
                           Read more
                           <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -223,7 +223,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-6 py-2.5 rounded-full border-2 text-sm font-medium bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all shadow-soft hover:shadow-soft-lg"
+                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream border-brand-gray-border dark:border-white/15 hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 Previous
               </button>
@@ -233,7 +233,7 @@ export default function BlogPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`px-5 py-2.5 rounded-full border-2 text-sm font-medium transition-all ${currentPage === page ? 'bg-brand-primary border-brand-primary text-white shadow-primary hover:shadow-primary-lg hover:-translate-y-0.5' : 'bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 shadow-soft'}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${currentPage === page ? 'bg-brand-charcoal text-brand-cream' : 'bg-brand-soft dark:bg-brand-ink/80 text-brand-charcoal dark:text-brand-cream border border-brand-gray-border dark:border-white/15 hover:bg-brand-cream dark:hover:bg-white/5'}`}
                   >
                     {page}
                   </button>
@@ -243,7 +243,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-6 py-2.5 rounded-full border-2 text-sm font-medium bg-white/95 dark:bg-brand-ink/60 text-brand-charcoal dark:text-gray-200 border-brand-charcoal/10 dark:border-brand-charcoal/30 hover:bg-brand-highlight dark:hover:bg-brand-charcoal/50 hover:border-brand-primary/30 dark:hover:border-brand-primary/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all shadow-soft hover:shadow-soft-lg"
+                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream border-brand-gray-border dark:border-white/15 hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 Next
               </button>
@@ -252,7 +252,7 @@ export default function BlogPage() {
         </div>
       </main>
 
-      <footer className="border-t border-brand-charcoal/10 dark:border-brand-charcoal/45 mt-20 py-6 text-center text-sm text-brand-charcoal/60 dark:text-gray-200">
+      <footer className="border-t border-brand-gray-border dark:border-white/10 mt-20 py-6 text-center text-sm text-brand-gray-light dark:text-brand-gray-light">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>

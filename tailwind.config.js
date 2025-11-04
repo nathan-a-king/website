@@ -9,26 +9,47 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          primary: "#4B6F93",
-          charcoal: "#262E38",
-          ink: "#161D27",
-          highlight: "#E3EAF4",
-          accent: "#5A8AB4",
-          soft: "#F5F8FB",
+          cream: '#FAF9F5',        // Warm background (inspired by claude.ai)
+          charcoal: '#141413',     // Primary text
+          ink: '#1A1A18',          // Darker text/backgrounds
+          gray: {
+            light: '#73726C',      // Secondary text
+            medium: '#3D3D3A',     // Medium emphasis text
+            border: 'rgba(31, 30, 29, 0.15)', // Subtle borders
+          },
+          terracotta: '#CC6B4A',   // Primary accent
+          blue: '#2E5A91',         // Secondary accent
+          purple: '#9B8FD6',       // Tertiary accent
+          soft: '#F8F7F4',         // Light subtle backgrounds
         },
       },
       boxShadow: {
-        pill: "0 16px 40px rgba(13, 15, 18, 0.14)",
-        'soft': '0 2px 8px rgba(75, 111, 147, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06)',
-        'soft-lg': '0 10px 30px rgba(75, 111, 147, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)',
-        'soft-xl': '0 20px 50px rgba(75, 111, 147, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1)',
-        'primary': '0 4px 14px rgba(75, 111, 147, 0.25)',
-        'primary-lg': '0 8px 24px rgba(75, 111, 147, 0.3)',
-        'inner-soft': 'inset 0 1px 3px rgba(0, 0, 0, 0.05)',
-        'glow': '0 0 20px rgba(75, 111, 147, 0.15)',
+        'subtle': '0 1px 2px rgba(0, 0, 0, 0.04)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.06)',
+        'sm': '0 2px 4px rgba(0, 0, 0, 0.04)',
+        'md': '0 4px 8px rgba(0, 0, 0, 0.08)',
+        'inner-soft': 'inset 0 1px 2px rgba(0, 0, 0, 0.04)',
       },
       borderRadius: {
-        pill: "9999px",
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'lg': '12px',
+        'xl': '16px',
+      },
+      borderWidth: {
+        DEFAULT: '1px',
+        '0.5': '0.5px',
+        '2': '2px',
+      },
+      fontFamily: {
+        'sans': ['Avenir', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'serif': ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+      },
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
       },
       backdropBlur: {
         'xs': '2px',

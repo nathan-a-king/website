@@ -20,7 +20,7 @@ export default function Navigation() {
   
   return (
     <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4 flex justify-center pointer-events-none">
-      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-white/80 dark:bg-brand-ink/50 border-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 backdrop-blur-xl backdrop-saturate-150 rounded-pill shadow-soft-lg transition-all duration-300">
+      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/10 rounded-lg shadow-card transition-all duration-300">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" onClick={closeMobileMenu}>
@@ -35,48 +35,48 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <ul className="flex space-x-6 text-sm font-medium tracking-wide">
               <li>
-                <Link 
+                <Link
                   to="/"
                   className={`transition-colors ${
-                    isActive('/') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Home
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/blog"
                   className={`transition-colors ${
-                    isActive('/blog') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/blog')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/about"
                   className={`transition-colors ${
-                    isActive('/about') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/about')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   About
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/resume"
                   className={`transition-colors ${
-                    isActive('/resume') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/resume')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Resume
@@ -91,7 +91,7 @@ export default function Navigation() {
             <ThemeToggle />
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-brand-charcoal/70 dark:text-gray-200 hover:text-brand-charcoal dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
+              className="p-2 rounded-md text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -108,56 +108,56 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/85 dark:bg-brand-ink/60 border-t-2 border-brand-charcoal/10 dark:border-brand-charcoal/35 backdrop-blur-xl backdrop-saturate-150 shadow-soft-xl pointer-events-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-cream dark:bg-brand-ink border-t border-brand-gray-border dark:border-white/10 shadow-md pointer-events-auto">
           <div className="max-w-5xl mx-auto px-6 py-4">
             <ul className="flex flex-col space-y-4 text-md font-medium">
               <li>
-                <Link 
+                <Link
                   to="/"
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
-                    isActive('/') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Home
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/blog"
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
-                    isActive('/blog') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/blog')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/about"
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
-                    isActive('/about') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/about')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   About
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/resume"
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
-                    isActive('/resume') 
-                      ? 'text-brand-primary dark:text-white' 
-                      : 'text-brand-charcoal/80 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white'
+                    isActive('/resume')
+                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
+                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
                   }`}
                 >
                   Resume

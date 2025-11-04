@@ -19,13 +19,13 @@ export default function PostPage() {
   const { post, loading, error } = usePost(slug);
   const { isDarkMode } = useTheme();
   const markdownComponents = React.useMemo(() => ({
-    h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4 text-brand-charcoal dark:text-white">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-2xl mt-6 mb-3 text-brand-charcoal dark:text-white">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-xl font-medium mt-4 mb-2 text-brand-charcoal dark:text-white">{children}</h3>,
+    h1: ({ children }) => <h1 className="text-3xl font-serif font-light mt-8 mb-4 text-brand-charcoal dark:text-brand-cream">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-2xl font-serif font-light mt-6 mb-3 text-brand-charcoal dark:text-brand-cream">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-xl font-serif font-normal mt-4 mb-2 text-brand-charcoal dark:text-brand-cream">{children}</h3>,
     a: ({ children, href }) => (
       <a
         href={href}
-        className="text-brand-primary dark:text-brand-primary underline hover:text-brand-primary/80 dark:hover:text-white transition-colors"
+        className="text-brand-terracotta dark:text-brand-terracotta underline hover:text-brand-terracotta/80 transition-colors"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -62,11 +62,11 @@ export default function PostPage() {
       );
     },
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-brand-primary dark:border-brand-primary/80 pl-6 my-6 italic text-lg text-brand-charcoal/80 dark:text-gray-200">
+      <blockquote className="border-l-4 border-brand-terracotta pl-6 my-6 italic text-lg text-brand-gray-medium dark:text-brand-gray-light">
         {children}
       </blockquote>
     ),
-    hr: () => <hr className="my-10 border-brand-charcoal/15 dark:border-brand-charcoal/35" />,
+    hr: () => <hr className="my-10 border-brand-gray-border dark:border-white/10" />,
     img: ({ src, alt }) => {
       // Check if this is a light mode image with a corresponding dark mode version
       // Dark mode images should have -dark- in the name (e.g., prose-dark-smallr.png)
@@ -136,8 +136,8 @@ export default function PostPage() {
                   className="w-full rounded-lg shadow-sm transition-transform duration-200 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-                  <div className="bg-white/90 dark:bg-brand-ink/70 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
-                    <Maximize2 className="w-5 h-5 text-brand-charcoal dark:text-gray-200" />
+                  <div className="bg-brand-cream/90 dark:bg-brand-ink/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
+                    <Maximize2 className="w-5 h-5 text-brand-charcoal dark:text-brand-cream" />
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function PostPage() {
           value={String(children).replace(/\n$/, '')}
         />
       ) : (
-        <code className="bg-brand-highlight/80 dark:bg-brand-charcoal/50 text-brand-charcoal dark:text-gray-100 px-1 py-0.5 rounded text-sm font-mono" {...props}>
+        <code className="bg-brand-soft dark:bg-white/10 text-brand-charcoal dark:text-brand-cream px-1 py-0.5 rounded text-sm font-mono" {...props}>
           {children}
         </code>
       );
@@ -189,10 +189,10 @@ export default function PostPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-brand-charcoal/70 dark:text-gray-200">Loading post...</p>
+            <p className="text-brand-gray-medium dark:text-brand-gray-light">Loading post...</p>
           </div>
         </main>
       </div>
@@ -201,12 +201,12 @@ export default function PostPage() {
 
   if (error || (!loading && !post)) {
     return (
-      <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl font-bold mb-4 text-brand-charcoal dark:text-white">Post Not Found</h1>
+            <h1 className="text-2xl font-serif font-light mb-4 text-brand-charcoal dark:text-brand-cream">Post Not Found</h1>
             {error && <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>}
-            <Link to="/blog" className="text-brand-primary dark:text-white hover:underline">
+            <Link to="/blog" className="text-brand-terracotta hover:underline">
               ← Back to Blog
             </Link>
           </div>
@@ -216,14 +216,14 @@ export default function PostPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+    <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
       <BlogPostStructuredData post={post} />
       <main className="pt-36 px-6 sm:px-10 pb-14">
         <div className="max-w-3xl mx-auto">
           {/* Back to Blog Link */}
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center text-brand-charcoal/70 dark:text-gray-200 hover:text-brand-primary dark:hover:text-white transition mb-8"
+          <Link
+            to="/blog"
+            className="inline-flex items-center text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream transition mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -231,10 +231,10 @@ export default function PostPage() {
 
           {/* Post Header */}
           <header className="mb-8 text-center opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
-            <h1 className="text-4xl mb-4 text-brand-charcoal dark:text-white leading-tight">
+            <h1 className="text-4xl font-serif font-light mb-4 text-brand-charcoal dark:text-brand-cream leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center justify-center text-sm text-brand-charcoal/70 dark:text-gray-200">
+            <div className="flex items-center justify-center text-sm text-brand-gray-light dark:text-brand-gray-light">
               <CalendarDays className="w-4 h-4 mr-2" />
               <span>{post.date}</span>
             </div>
@@ -242,7 +242,7 @@ export default function PostPage() {
 
           {/* Post Content */}
           <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
-            <CardContent className="text-brand-charcoal dark:text-gray-200 leading-[1.75] tracking-normal">
+            <CardContent className="text-brand-gray-medium dark:text-brand-gray-light leading-[1.75] tracking-normal">
               {postSegments.length > 0 && postSegments.map((segment, index) => {
                 const hasContent = segment.trim().length > 0;
                 const isLast = index === postSegments.length - 1;
@@ -267,7 +267,7 @@ export default function PostPage() {
         </div>
       </main>
 
-      <footer className="border-t border-brand-charcoal/10 dark:border-brand-charcoal/45 mt-20 py-6 text-center text-sm text-brand-charcoal/60 dark:text-gray-200">
+      <footer className="border-t border-brand-gray-border dark:border-white/10 mt-20 py-6 text-center text-sm text-brand-gray-light dark:text-brand-gray-light">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>
