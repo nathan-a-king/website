@@ -4,8 +4,28 @@
     <meta charset="utf-8" />
     <link rel="icon" href="/mac-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#252522" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Set theme-color and dark mode BEFORE any other meta tags load
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark) || (savedTheme === 'system' && prefersDark);
+
+        // Set color-scheme CSS property (Safari respects this for toolbar color)
+        document.documentElement.style.setProperty('color-scheme', isDark ? 'dark' : 'light');
+
+        // Create theme-color meta tag with correct color immediately
+        const meta = document.createElement('meta');
+        meta.name = 'theme-color';
+        meta.content = isDark ? '#252522' : '#FAF9F5';
+        document.head.appendChild(meta);
+
+        // Apply dark class to html element
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <!-- Description, canonical, and other route-specific meta tags managed by runtime SEO utilities -->
     <link rel="apple-touch-icon" href="/mac-logo.png" />
     <link rel="manifest" href="/manifest.json" />
