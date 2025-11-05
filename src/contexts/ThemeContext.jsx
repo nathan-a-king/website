@@ -59,9 +59,10 @@ export const ThemeProvider = ({ children }) => {
     }
     
     // Update meta theme-color for mobile browsers
+    // Dynamically set theme-color based on current theme (handles both system preference and manual toggles)
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', isDarkMode ? '#111827' : '#ffffff');
+      metaThemeColor.setAttribute('content', isDarkMode ? '#252522' : '#FAF9F5');
     }
     
     // Update favicon based on theme
