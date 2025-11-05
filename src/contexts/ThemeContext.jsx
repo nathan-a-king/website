@@ -57,18 +57,24 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    
-    // Update meta theme-color for mobile browsers
-    // Dynamically set theme-color based on current theme (handles both system preference and manual toggles)
-    const metaThemeColorLight = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: light)"]');
-    const metaThemeColorDark = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]');
 
-    if (metaThemeColorLight && metaThemeColorDark) {
-      // Update both meta tags to ensure consistency
-      metaThemeColorLight.setAttribute('content', isDarkMode ? '#252522' : '#FAF9F5');
-      metaThemeColorDark.setAttribute('content', isDarkMode ? '#252522' : '#FAF9F5');
+    // Update color-scheme CSS property which Safari respects more than meta tags
+    document.documentElement.style.setProperty('color-scheme', isDarkMode ? 'dark' : 'light');
+
+    // Update meta theme-color for mobile browsers
+    // Safari on iOS sometimes doesn't update the toolbar when just changing content
+    // So we remove and recreate the meta tag to force Safari to recognize the change
+    const existingMeta = document.querySelector('meta[name="theme-color"]');
+    if (existingMeta) {
+      existingMeta.remove();
     }
-    
+
+    // Create fresh meta tag with new color
+    const metaThemeColor = document.createElement('meta');
+    metaThemeColor.name = 'theme-color';
+    metaThemeColor.content = isDarkMode ? '#252522' : '#FAF9F5';
+    document.head.appendChild(metaThemeColor);
+
     // Update favicon based on theme
     updateFavicon(isDarkMode);
     
