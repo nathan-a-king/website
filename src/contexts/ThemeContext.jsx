@@ -59,9 +59,15 @@ export const ThemeProvider = ({ children }) => {
     }
     
     // Update meta theme-color for mobile browsers
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', isDarkMode ? '#111827' : '#ffffff');
+    // Update both light and dark theme-color meta tags to match actual CSS background colors
+    const metaThemeColorLight = document.querySelector('meta[name="theme-color"][media*="light"]');
+    const metaThemeColorDark = document.querySelector('meta[name="theme-color"][media*="dark"]');
+
+    if (metaThemeColorLight) {
+      metaThemeColorLight.setAttribute('content', '#FAF9F5');
+    }
+    if (metaThemeColorDark) {
+      metaThemeColorDark.setAttribute('content', '#252522');
     }
     
     // Update favicon based on theme
