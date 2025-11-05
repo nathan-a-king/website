@@ -59,15 +59,10 @@ export const ThemeProvider = ({ children }) => {
     }
     
     // Update meta theme-color for mobile browsers
-    // Update both light and dark theme-color meta tags to match actual CSS background colors
-    const metaThemeColorLight = document.querySelector('meta[name="theme-color"][media*="light"]');
-    const metaThemeColorDark = document.querySelector('meta[name="theme-color"][media*="dark"]');
-
-    if (metaThemeColorLight) {
-      metaThemeColorLight.setAttribute('content', '#FAF9F5');
-    }
-    if (metaThemeColorDark) {
-      metaThemeColorDark.setAttribute('content', '#252522');
+    // Dynamically set theme-color based on current theme (handles both system preference and manual toggles)
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', isDarkMode ? '#252522' : '#FAF9F5');
     }
     
     // Update favicon based on theme
