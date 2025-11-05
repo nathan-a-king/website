@@ -14,8 +14,8 @@ export default function Skills() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillsData.map((category, categoryIndex) => (
-            <div key={category.category} className="bg-white/90 dark:bg-brand-ink/45 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-              <h3 className="text-lg font-semibold mb-6 text-brand-charcoal dark:text-white pb-2 border-b border-brand-charcoal/10 dark:border-brand-charcoal/35">
+            <div key={category.category} className="bg-brand-soft dark:bg-brand-charcoal/20 border border-brand-gray-border dark:border-white/10 p-6 rounded-lg transition-colors shadow-card">
+              <h3 className="text-lg font-semibold mb-6 text-brand-charcoal dark:text-white pb-2 border-b border-brand-gray-border dark:border-white/10">
                 {category.category}
               </h3>
               

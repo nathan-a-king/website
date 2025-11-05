@@ -9,14 +9,26 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          cream: '#FAF9F5',        // Warm background (inspired by claude.ai)
-          charcoal: '#141413',     // Primary text
-          ink: '#252522',          // Darker text/backgrounds (lighter for dark mode)
-          surface: '#323230',      // Dark mode surface color
+          // References CSS custom properties defined in globals.css
+          // These automatically adapt for light/dark mode via :root and .dark selectors
+          bg: 'var(--color-bg)',
+          surface: 'var(--color-surface)',
+          'text-primary': 'var(--color-text-primary)',
+          'text-secondary': 'var(--color-text-secondary)',
+          'text-tertiary': 'var(--color-text-tertiary)',
+          accent: 'var(--color-accent)',
+          'accent-blue': 'var(--color-accent-blue)',
+          'accent-purple': 'var(--color-accent-purple)',
+          border: 'var(--color-border)',
+
+          // Static colors (not theme-dependent)
+          cream: '#FAF9F5',        // Light mode background
+          charcoal: '#141413',     // Light mode primary text
+          ink: '#252522',          // Dark mode background
           gray: {
-            light: '#A8A7A3',      // Secondary text (brighter for dark mode)
-            medium: '#3D3D3A',     // Medium emphasis text
-            border: 'rgba(31, 30, 29, 0.15)', // Subtle borders
+            light: '#A8A7A3',      // Dark mode secondary text
+            medium: '#3D3D3A',     // Light mode secondary text
+            border: 'rgba(31, 30, 29, 0.15)',
           },
           terracotta: '#CC6B4A',   // Primary accent
           blue: '#2E5A91',         // Secondary accent

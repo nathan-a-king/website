@@ -7,40 +7,40 @@ import { usePreloadPost } from '../hooks/usePosts';
 
 // Post card skeleton
 const PostCardSkeleton = () => (
-  <Card className="border border-brand-charcoal/10 dark:border-brand-charcoal/40 shadow-sm bg-white dark:bg-brand-ink/45 p-6">
+  <Card className="border border-brand-gray-border dark:border-white/10 shadow-card bg-brand-cream dark:bg-brand-ink p-6">
     <CardContent className="p-0 animate-pulse">
-      <div className="h-6 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded mb-3"></div>
-      <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded mb-2 w-24"></div>
+      <div className="h-6 bg-brand-soft dark:bg-white/5 rounded mb-3"></div>
+      <div className="h-4 bg-brand-soft dark:bg-white/5 rounded mb-2 w-24"></div>
       <div className="space-y-2 mb-4">
-        <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded"></div>
-        <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded w-5/6"></div>
+        <div className="h-4 bg-brand-soft dark:bg-white/5 rounded"></div>
+        <div className="h-4 bg-brand-soft dark:bg-white/5 rounded w-5/6"></div>
       </div>
-      <div className="h-4 bg-brand-highlight/80 dark:bg-brand-charcoal/45 rounded w-20"></div>
+      <div className="h-4 bg-brand-soft dark:bg-white/5 rounded w-20"></div>
     </CardContent>
   </Card>
 );
 
 // Actual post card content
 const PostCardContent = ({ post, preloadPost }) => (
-  <Card className="border border-brand-charcoal/10 dark:border-brand-charcoal/40 shadow-sm bg-white dark:bg-brand-ink/45 p-6 transition-colors">
+  <Card className="border border-brand-gray-border dark:border-white/10 hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 shadow-card bg-brand-cream dark:bg-brand-ink p-6 transition-all duration-200">
     <CardContent className="p-0">
-      <Link 
-        to={`/blog/${post.slug}`} 
+      <Link
+        to={`/blog/${post.slug}`}
         className="block group"
         onMouseEnter={() => preloadPost(post.slug)}
         onFocus={() => preloadPost(post.slug)}
       >
-        <h2 className="text-2xl font-semibold mb-3 text-brand-charcoal dark:text-white group-hover:text-brand-primary dark:group-hover:text-white transition-colors">
+        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-charcoal dark:text-brand-cream group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
           {post.title}
         </h2>
-        <div className="flex items-center text-sm text-brand-charcoal/70 dark:text-gray-200 mb-3">
+        <div className="flex items-center text-sm text-brand-gray-light dark:text-brand-gray-light mb-3">
           <CalendarDays className="w-4 h-4 mr-2" />
           <span>{post.date}</span>
         </div>
-        <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed mb-4">
+        <p className="text-brand-gray-medium dark:text-brand-gray-light leading-relaxed mb-4">
           {post.excerpt}
         </p>
-        <span className="text-brand-primary dark:text-white text-sm font-medium group-hover:underline">
+        <span className="text-brand-charcoal dark:text-brand-cream text-sm font-medium group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
           Read more →
         </span>
       </Link>

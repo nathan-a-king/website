@@ -23,17 +23,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const darkTheme = vscDarkPlus;    // Try: dracula, oneDark, vscDarkPlus, atomDark, tomorrow, nord
 
   return (
-    <div className={`relative rounded-lg overflow-hidden border my-4 code-block-container ${
-      isDarkMode 
-        ? 'border-gray-600 bg-gray-800' 
-        : 'border-gray-200 bg-gray-50'
-    }`}>
+    <div className="relative rounded-lg overflow-hidden border border-brand-gray-border dark:border-white/10 bg-brand-soft dark:bg-gray-800 my-4 code-block-container">
       <SyntaxHighlighter
         language={language}
         style={isDarkMode ? darkTheme : lightTheme}
-        customStyle={{ 
-          margin: 0, 
-          padding: "1rem", 
+        customStyle={{
+          margin: 0,
+          padding: "1rem",
           background: "transparent",
           fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
         }}
@@ -42,11 +38,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
       </SyntaxHighlighter>
       <button
         onClick={handleCopy}
-        className={`absolute top-2 right-2 text-xs px-2 py-1 rounded focus:outline-none transition-colors ${
-          isDarkMode
-            ? 'bg-gray-700 text-gray-200 hover:bg-gray-600'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-        }`}
+        className="absolute top-2 right-2 text-xs px-2 py-1 rounded bg-brand-cream dark:bg-gray-700 text-brand-charcoal dark:text-gray-200 hover:bg-brand-soft dark:hover:bg-gray-600 border border-brand-gray-border dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50 transition-all duration-200"
       >
         Copy
       </button>

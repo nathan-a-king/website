@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function SkillBar({ name, level, delay = 0 }) {
   const [animatedLevel, setAnimatedLevel] = useState(0);
