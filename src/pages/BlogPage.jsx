@@ -64,10 +64,10 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
+      <div className="relative min-h-screen bg-brand-bg text-brand-text-primary font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-brand-gray-medium dark:text-brand-gray-light">Loading posts...</p>
+            <p className="text-brand-text-secondary">Loading posts...</p>
           </div>
         </main>
       </div>
@@ -76,7 +76,7 @@ export default function BlogPage() {
 
   if (error) {
     return (
-      <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors">
+      <div className="relative min-h-screen bg-brand-bg text-brand-text-primary font-sans transition-colors">
         <main className="pt-36 px-6 sm:px-10 pb-14">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-red-600 dark:text-red-400">Error loading posts: {error}</p>
@@ -93,7 +93,7 @@ export default function BlogPage() {
   );
 
   return (
-    <div className="relative min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors overflow-hidden">
+    <div className="relative min-h-screen bg-brand-bg text-brand-text-primary font-sans transition-colors overflow-hidden">
       <BackgroundPattern variant="dots" className="text-brand-charcoal" />
       <BlogListStructuredData posts={posts} />
       <main className="pt-36 px-6 sm:px-10 pb-14 relative">
@@ -107,7 +107,7 @@ export default function BlogPage() {
                 placeholder="Search posts by title, content, or date..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-4 bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/15 rounded-lg text-brand-charcoal dark:text-brand-cream placeholder-brand-gray-light dark:placeholder-brand-gray-light focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta/40 transition-all"
+                className="w-full pl-14 pr-6 py-4 bg-brand-bg border border-brand-border rounded-lg text-brand-text-primary placeholder-brand-gray-light dark:placeholder-brand-gray-light focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta/40 transition-all"
               />
             </div>
 
@@ -119,7 +119,7 @@ export default function BlogPage() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     selectedCategories.size === 0
                       ? "bg-brand-charcoal border-brand-charcoal text-brand-cream"
-                      : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-gray-border dark:border-white/15 text-brand-gray-medium dark:text-brand-gray-light hover:bg-brand-cream dark:hover:bg-white/5"
+                      : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-border text-brand-text-secondary hover:bg-brand-cream dark:hover:bg-white/5"
                   }`}
                 >
                   All
@@ -139,7 +139,7 @@ export default function BlogPage() {
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       selectedCategories.has(category)
                         ? "bg-brand-charcoal border-brand-charcoal text-brand-cream"
-                        : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-gray-border dark:border-white/15 text-brand-gray-medium dark:text-brand-gray-light hover:bg-brand-cream dark:hover:bg-white/5"
+                        : "bg-brand-soft dark:bg-brand-ink/80 border border-brand-border text-brand-text-secondary hover:bg-brand-cream dark:hover:bg-white/5"
                     }`}
                   >
                     {category}
@@ -149,7 +149,7 @@ export default function BlogPage() {
             )}
 
             {(searchQuery || selectedCategories.size > 0) && (
-              <div className="text-center mt-4 text-sm text-brand-gray-medium dark:text-brand-gray-light">
+              <div className="text-center mt-4 text-sm text-brand-text-secondary">
                 Found {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
                 {selectedCategories.size > 0 && ` with ${Array.from(selectedCategories).join(' + ')}`}
                 {searchQuery && ` matching "${searchQuery}"`}
@@ -159,7 +159,7 @@ export default function BlogPage() {
 
           {filteredPosts.length === 0 ? (
             <div className="text-center py-12 opacity-0 animate-fadeIn border-0 outline-none shadow-none" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-              <p className="text-brand-gray-medium dark:text-brand-gray-light text-lg">
+              <p className="text-brand-text-secondary text-lg">
                 No posts found matching your search.
               </p>
               <button
@@ -183,27 +183,27 @@ export default function BlogPage() {
                 onFocus={() => preloadPost(post.slug)}
               >
                 <Card
-                  className="relative border border-brand-gray-border dark:border-white/10 hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 transition-all duration-200 cursor-pointer opacity-0 animate-fadeIn h-full bg-brand-cream dark:bg-brand-ink rounded-lg overflow-hidden"
+                  className="relative border border-brand-border hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 transition-all duration-200 cursor-pointer opacity-0 animate-fadeIn h-full bg-brand-bg rounded-lg overflow-hidden"
                   style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
                 >
                   <CardContent className="px-6 pt-8 pb-6 h-full flex flex-col">
                     <article className="flex-1 flex flex-col">
                       <header className="mb-4">
-                        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-charcoal dark:text-brand-cream leading-snug group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors duration-200">
+                        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-text-primary leading-snug group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors duration-200">
                           {post.title}
                         </h2>
-                        <div className="flex items-center text-sm text-brand-gray-light dark:text-brand-gray-light">
+                        <div className="flex items-center text-sm text-brand-text-tertiary">
                           <CalendarDays className="w-4 h-4 mr-2" />
                           <time>{post.date}</time>
                         </div>
                       </header>
 
-                      <p className="text-brand-gray-medium dark:text-brand-gray-light leading-relaxed mb-4 text-sm">
+                      <p className="text-brand-text-secondary leading-relaxed mb-4 text-sm">
                         {post.excerpt}
                       </p>
 
-                      <div className="mt-auto pt-4 border-t border-brand-gray-border dark:border-white/10">
-                        <span className="inline-flex items-center text-sm font-medium text-brand-charcoal dark:text-brand-cream group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-all">
+                      <div className="mt-auto pt-4 border-t border-brand-border">
+                        <span className="inline-flex items-center text-sm font-medium text-brand-text-primary group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-all">
                           Read more
                           <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -223,7 +223,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream border-brand-gray-border dark:border-white/15 hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-bg text-brand-text-primary border-brand-border hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 Previous
               </button>
@@ -233,7 +233,7 @@ export default function BlogPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${currentPage === page ? 'bg-brand-charcoal text-brand-cream' : 'bg-brand-soft dark:bg-brand-ink/80 text-brand-charcoal dark:text-brand-cream border border-brand-gray-border dark:border-white/15 hover:bg-brand-cream dark:hover:bg-white/5'}`}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${currentPage === page ? 'bg-brand-charcoal text-brand-cream' : 'bg-brand-soft dark:bg-brand-ink/80 text-brand-text-primary border border-brand-border hover:bg-brand-cream dark:hover:bg-white/5'}`}
                   >
                     {page}
                   </button>
@@ -243,7 +243,7 @@ export default function BlogPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream border-brand-gray-border dark:border-white/15 hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="px-5 py-2 rounded-lg border text-sm font-medium bg-brand-bg text-brand-text-primary border-brand-border hover:bg-brand-soft dark:hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 Next
               </button>
@@ -252,7 +252,7 @@ export default function BlogPage() {
         </div>
       </main>
 
-      <footer className="border-t border-brand-gray-border dark:border-white/10 mt-20 py-6 text-center text-sm text-brand-gray-light dark:text-brand-gray-light">
+      <footer className="border-t border-brand-border mt-20 py-6 text-center text-sm text-brand-text-tertiary">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>

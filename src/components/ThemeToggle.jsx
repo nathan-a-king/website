@@ -8,13 +8,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg border border-brand-gray-border dark:border-white/10 bg-brand-cream dark:bg-brand-ink backdrop-blur-sm transition-all duration-200 hover:bg-brand-soft dark:hover:bg-white/5"
+      className="p-2 rounded-lg border border-brand-border bg-brand-bg backdrop-blur-sm transition-all duration-200 hover:bg-brand-surface"
       aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
     >
       {isDarkMode ? (
-        <Sun className="w-5 h-5 text-brand-charcoal dark:text-brand-cream" />
+        <Sun className="w-5 h-5 text-brand-text-primary" />
       ) : (
-        <Moon className="w-5 h-5 text-brand-charcoal dark:text-brand-cream" />
+        <Moon className="w-5 h-5 text-brand-text-primary" />
       )}
     </button>
   );

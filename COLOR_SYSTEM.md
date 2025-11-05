@@ -55,25 +55,25 @@ colors: {
 
 ## Usage
 
-### Option 1: Adaptive Classes (Recommended for New Code)
-Use the new adaptive classes that automatically switch with theme:
+### Adaptive Classes (Standard Approach)
+Use adaptive classes that automatically switch with theme - this is how all components are now built:
 
 ```jsx
-// ✅ Recommended - automatically adapts to dark mode
+// ✅ Standard approach - automatically adapts to dark mode
 <div className="bg-brand-bg text-brand-text-primary">
   <h1 className="text-brand-text-primary">Hello</h1>
   <p className="text-brand-text-secondary">Description</p>
-  <button className="bg-brand-accent">Click me</button>
+  <button className="bg-brand-accent border-brand-border">Click me</button>
 </div>
 ```
 
-### Option 2: Static Classes with Dark Mode Variants (Current)
-Use static classes with manual dark mode overrides (existing code):
+### Static Classes (For Special Cases)
+Static colors are available when you need specific values that shouldn't change with theme:
 
 ```jsx
-// ✅ Works, but requires manual dark mode classes
-<div className="bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream">
-  Content
+// Use only when you specifically need a fixed color
+<div className="bg-brand-terracotta text-white">
+  Always terracotta, regardless of theme
 </div>
 ```
 
@@ -87,16 +87,24 @@ Use CSS variables directly in custom styles:
 </div>
 ```
 
-## Migration Guide
+## Examples
 
-### Current Code (Manual Dark Mode)
+### Before Migration (Old Pattern)
 ```jsx
-<div className="bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream">
+// ❌ Old - verbose with manual dark: variants
+<div className="bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream border-brand-gray-border dark:border-white/10">
+  <h1 className="text-brand-charcoal dark:text-brand-cream">Title</h1>
+  <p className="text-brand-gray-medium dark:text-brand-gray-light">Text</p>
+</div>
 ```
 
-### New Approach (Automatic Dark Mode)
+### After Migration (Current Pattern)
 ```jsx
-<div className="bg-brand-bg text-brand-text-primary">
+// ✅ Current - clean and adaptive
+<div className="bg-brand-bg text-brand-text-primary border-brand-border">
+  <h1 className="text-brand-text-primary">Title</h1>
+  <p className="text-brand-text-secondary">Text</p>
+</div>
 ```
 
 ## Benefits

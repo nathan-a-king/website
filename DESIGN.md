@@ -70,26 +70,26 @@ colors: {
 | Usage | Light Mode | Dark Mode | Tailwind Class |
 |-------|-----------|-----------|----------------|
 | **Backgrounds** |
-| Primary Background | `#FAF9F5` Warm Cream | `#252522` Charcoal | `bg-brand-cream dark:bg-brand-ink` |
+| Primary Background | `#FAF9F5` Warm Cream | `#252522` Charcoal | `bg-brand-bg` |
 | Surface/Cards | `#F8F7F4` Soft | `#323230` Surface | `bg-brand-soft dark:bg-brand-surface` |
 | **Text** |
-| Primary | `#141413` Charcoal | `#FFFFFF` White | `text-brand-charcoal dark:text-brand-cream` |
-| Secondary | `#3D3D3A` Gray Medium | `#E5E4E0` Gray Light | `text-brand-gray-medium dark:text-brand-gray-light` |
+| Primary | `#141413` Charcoal | `#FFFFFF` White | `text-brand-text-primary` |
+| Secondary | `#3D3D3A` Gray Medium | `#E5E4E0` Gray Light | `text-brand-text-secondary` |
 | Tertiary | `#73726C` Gray | `#B5B4B0` Gray | `text-brand-gray-light` |
 | **Accents** |
 | Primary | `#CC6B4A` Terracotta | (same) | `text-brand-terracotta` |
 | Secondary | `#2E5A91` Blue | (same) | `text-brand-blue` |
 | Tertiary | `#9B8FD6` Purple | (same) | `text-brand-purple` |
 | **Borders** |
-| Standard | `rgba(31,30,29,0.15)` | `rgba(250,249,245,0.15)` | `border-brand-gray-border dark:border-white/10` |
+| Standard | `rgba(31,30,29,0.15)` | `rgba(250,249,245,0.15)` | `border-brand-border` |
 
 ### Usage Examples
 
 ```jsx
 // Standard card with adaptive colors
-<div className="bg-brand-soft dark:bg-brand-charcoal/20 border border-brand-gray-border dark:border-white/10">
-  <h2 className="text-brand-charcoal dark:text-brand-cream">Title</h2>
-  <p className="text-brand-gray-medium dark:text-brand-gray-light">Description</p>
+<div className="bg-brand-surface border border-brand-border">
+  <h2 className="text-brand-text-primary">Title</h2>
+  <p className="text-brand-text-secondary">Description</p>
 </div>
 
 // Button with accent color
@@ -183,12 +183,12 @@ Use Tailwind's default spacing scale consistently:
 
 **Standard Pattern**:
 ```jsx
-border border-brand-gray-border dark:border-white/10
+border border-brand-border
 ```
 
 **With Hover**:
 ```jsx
-border border-brand-gray-border dark:border-white/10
+border border-brand-border
 hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40
 ```
 
@@ -222,8 +222,8 @@ boxShadow: {
 ### Cards
 
 ```jsx
-<Card className="border border-brand-gray-border dark:border-white/10
-                 bg-brand-cream dark:bg-brand-ink
+<Card className="border border-brand-border
+                 bg-brand-bg
                  rounded-lg shadow-card
                  hover:border-brand-terracotta/30
                  transition-all duration-200">
@@ -250,10 +250,10 @@ boxShadow: {
 **Secondary Button**:
 ```jsx
 <button className="px-6 py-3
-                   border border-brand-gray-border dark:border-white/15
-                   text-brand-charcoal dark:text-brand-cream
+                   border border-brand-border
+                   text-brand-text-primary
                    rounded-lg font-medium
-                   hover:bg-brand-soft dark:hover:bg-white/5
+                   hover:bg-brand-surface
                    transition-all duration-200">
   Secondary Action
 </button>
@@ -263,23 +263,23 @@ boxShadow: {
 
 ```jsx
 <input className="w-full px-4 py-3
-                  border border-brand-gray-border dark:border-white/15
-                  bg-brand-cream dark:bg-brand-ink
-                  text-brand-charcoal dark:text-brand-cream
+                  border border-brand-border
+                  bg-brand-bg
+                  text-brand-text-primary
                   rounded-lg
                   focus:ring-2 focus:ring-brand-terracotta/50
                   focus:border-transparent
                   transition-colors
-                  placeholder-brand-gray-light" />
+                  placeholder-brand-text-tertiary" />
 ```
 
 ### Navigation
 
 ```jsx
-<nav className="bg-brand-cream dark:bg-brand-ink
-                border border-brand-gray-border dark:border-white/10
+<nav className="bg-brand-bg
+                border border-brand-border
                 rounded-lg shadow-card">
-  <a className="text-brand-charcoal dark:text-brand-cream
+  <a className="text-brand-text-primary
                 hover:text-brand-terracotta
                 transition-colors">
     Link
@@ -331,7 +331,7 @@ function Component() {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <div className="bg-brand-cream dark:bg-brand-ink">
+    <div className="bg-brand-bg">
       {/* Content */}
     </div>
   );
@@ -382,13 +382,13 @@ Use appropriate semantic elements:
 
 **New approach** (design system):
 ```jsx
-<div className="bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/10">
+<div className="bg-brand-bg border border-brand-border">
 ```
 
 ### Key Changes
 
 1. **Colors**: Use `brand-*` color tokens
-2. **Borders**: Standardize on `border border-brand-gray-border dark:border-white/10`
+2. **Borders**: Standardize on `border border-brand-border`
 3. **Shadows**: Use `shadow-card` or `shadow-subtle`
 4. **Typography**: Apply serif fonts to headings with `font-serif`
 5. **Border Radius**: Use `rounded-lg` (8px) as default

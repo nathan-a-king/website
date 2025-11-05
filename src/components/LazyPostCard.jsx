@@ -7,7 +7,7 @@ import { usePreloadPost } from '../hooks/usePosts';
 
 // Post card skeleton
 const PostCardSkeleton = () => (
-  <Card className="border border-brand-gray-border dark:border-white/10 shadow-card bg-brand-cream dark:bg-brand-ink p-6">
+  <Card className="border border-brand-border shadow-card bg-brand-bg p-6">
     <CardContent className="p-0 animate-pulse">
       <div className="h-6 bg-brand-soft dark:bg-white/5 rounded mb-3"></div>
       <div className="h-4 bg-brand-soft dark:bg-white/5 rounded mb-2 w-24"></div>
@@ -22,7 +22,7 @@ const PostCardSkeleton = () => (
 
 // Actual post card content
 const PostCardContent = ({ post, preloadPost }) => (
-  <Card className="border border-brand-gray-border dark:border-white/10 hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 shadow-card bg-brand-cream dark:bg-brand-ink p-6 transition-all duration-200">
+  <Card className="border border-brand-border hover:border-brand-terracotta/30 dark:hover:border-brand-terracotta/40 shadow-card bg-brand-bg p-6 transition-all duration-200">
     <CardContent className="p-0">
       <Link
         to={`/blog/${post.slug}`}
@@ -30,17 +30,17 @@ const PostCardContent = ({ post, preloadPost }) => (
         onMouseEnter={() => preloadPost(post.slug)}
         onFocus={() => preloadPost(post.slug)}
       >
-        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-charcoal dark:text-brand-cream group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
+        <h2 className="text-2xl font-serif font-normal mb-3 text-brand-text-primary group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
           {post.title}
         </h2>
         <div className="flex items-center text-sm text-brand-gray-light dark:text-brand-gray-light mb-3">
           <CalendarDays className="w-4 h-4 mr-2" />
           <span>{post.date}</span>
         </div>
-        <p className="text-brand-gray-medium dark:text-brand-gray-light leading-relaxed mb-4">
+        <p className="text-brand-text-secondary leading-relaxed mb-4">
           {post.excerpt}
         </p>
-        <span className="text-brand-charcoal dark:text-brand-cream text-sm font-medium group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
+        <span className="text-brand-text-primary text-sm font-medium group-hover:text-brand-terracotta dark:group-hover:text-brand-terracotta transition-colors">
           Read more →
         </span>
       </Link>

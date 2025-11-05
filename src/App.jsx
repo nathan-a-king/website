@@ -21,7 +21,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ErrorBoundary>
-          <div className="min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-white transition-colors">
+          <div className="min-h-screen bg-brand-bg text-brand-text-primary transition-colors">
             <ScrollToTop />
             <Navigation />
             <Routes>

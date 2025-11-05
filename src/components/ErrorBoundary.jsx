@@ -71,9 +71,9 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       // Fallback UI
       return (
-        <div className="min-h-screen bg-brand-cream dark:bg-brand-ink text-brand-charcoal dark:text-brand-cream font-sans transition-colors flex items-center justify-center p-6">
+        <div className="min-h-screen bg-brand-bg text-brand-text-primary font-sans transition-colors flex items-center justify-center p-6">
           <div className="max-w-2xl w-full">
-            <div className="bg-brand-cream dark:bg-brand-surface border border-red-500/30 dark:border-red-500/50 rounded-lg p-8 shadow-card">
+            <div className="bg-brand-surface border border-red-500/30 dark:border-red-500/50 rounded-lg p-8 shadow-card">
               <div className="text-center mb-6">
                 <svg
                   className="w-16 h-16 mx-auto mb-4 text-red-500"
@@ -88,10 +88,10 @@ class ErrorBoundary extends React.Component {
                     d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                   />
                 </svg>
-                <h1 className="text-3xl font-serif font-normal mb-2 text-brand-charcoal dark:text-brand-cream">
+                <h1 className="text-3xl font-serif font-normal mb-2 text-brand-text-primary">
                   Oops! Something went wrong
                 </h1>
-                <p className="text-brand-gray-medium dark:text-brand-gray-light">
+                <p className="text-brand-text-secondary">
                   We're sorry for the inconvenience. An unexpected error occurred.
                 </p>
               </div>
@@ -126,13 +126,13 @@ class ErrorBoundary extends React.Component {
                 </button>
                 <a
                   href="/"
-                  className="px-6 py-3 bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/15 text-brand-charcoal dark:text-brand-cream rounded-lg font-medium hover:bg-brand-soft dark:hover:bg-white/5 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50"
+                  className="px-6 py-3 bg-brand-bg border border-brand-gray-border dark:border-white/15 text-brand-text-primary rounded-lg font-medium hover:bg-brand-soft dark:hover:bg-white/5 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50"
                 >
                   Go Home
                 </a>
               </div>
 
-              <div className="mt-6 text-center text-sm text-brand-gray-medium dark:text-brand-gray-light">
+              <div className="mt-6 text-center text-sm text-brand-text-secondary">
                 <p>
                   If this problem persists, please{' '}
                   <a

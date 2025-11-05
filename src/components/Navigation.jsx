@@ -20,7 +20,7 @@ export default function Navigation() {
   
   return (
     <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4 flex justify-center pointer-events-none">
-      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-brand-cream dark:bg-brand-ink border border-brand-gray-border dark:border-white/10 rounded-lg shadow-card transition-all duration-300">
+      <div className="pointer-events-auto w-full max-w-5xl px-6 py-3 bg-brand-bg border border-brand-border rounded-lg shadow-card transition-all duration-300">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" onClick={closeMobileMenu}>
@@ -39,8 +39,8 @@ export default function Navigation() {
                   to="/"
                   className={`transition-colors ${
                     isActive('/')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Home
@@ -51,8 +51,8 @@ export default function Navigation() {
                   to="/blog"
                   className={`transition-colors ${
                     isActive('/blog')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Blog
@@ -63,8 +63,8 @@ export default function Navigation() {
                   to="/about"
                   className={`transition-colors ${
                     isActive('/about')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   About
@@ -75,8 +75,8 @@ export default function Navigation() {
                   to="/resume"
                   className={`transition-colors ${
                     isActive('/resume')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Resume
@@ -91,7 +91,7 @@ export default function Navigation() {
             <ThemeToggle />
             <button
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40"
+              className="p-2 rounded-md text-brand-text-secondary hover:text-brand-text-primary focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -108,7 +108,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-cream dark:bg-brand-ink border-t border-brand-gray-border dark:border-white/10 shadow-md pointer-events-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-bg border-t border-brand-border shadow-md pointer-events-auto">
           <div className="max-w-5xl mx-auto px-6 py-4">
             <ul className="flex flex-col space-y-4 text-md font-medium">
               <li>
@@ -117,8 +117,8 @@ export default function Navigation() {
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
                     isActive('/')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Home
@@ -130,8 +130,8 @@ export default function Navigation() {
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
                     isActive('/blog')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Blog
@@ -143,8 +143,8 @@ export default function Navigation() {
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
                     isActive('/about')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   About
@@ -156,8 +156,8 @@ export default function Navigation() {
                   onClick={closeMobileMenu}
                   className={`block py-2 transition-colors ${
                     isActive('/resume')
-                      ? 'text-brand-charcoal dark:text-brand-cream font-medium'
-                      : 'text-brand-gray-medium dark:text-brand-gray-light hover:text-brand-charcoal dark:hover:text-brand-cream'
+                      ? 'text-brand-text-primary font-medium'
+                      : 'text-brand-text-secondary hover:text-brand-text-primary'
                   }`}
                 >
                   Resume
