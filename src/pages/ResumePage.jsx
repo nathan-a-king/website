@@ -10,11 +10,11 @@ export default function ResumePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-brand-ink text-brand-charcoal dark:text-gray-200 font-avenir transition-colors">
+    <div className="min-h-screen bg-brand-bg text-brand-text-primary font-sans transition-colors">
       {/* Header */}
       <header className="pt-40 pb-24 px-6 sm:px-10 text-center opacity-0 animate-fadeIn" style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}>
-        <h1 className="text-5xl mb-6 text-brand-charcoal dark:text-white">Resume</h1>
-        <p className="text-xl text-brand-charcoal/80 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        <h1 className="text-5xl font-serif font-light mb-6 text-brand-text-primary">Resume</h1>
+        <p className="text-xl text-brand-text-secondary max-w-2xl mx-auto leading-relaxed">
           Software Engineer · AI Tools Designer
         </p>
       </header>
@@ -22,58 +22,58 @@ export default function ResumePage() {
       {/* Content */}
       <main className="px-6 sm:px-10 pb-12 opacity-0 animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
         <div className="max-w-4xl mx-auto">
-          
+
       {/* Contact Info */}
-      <div className="bg-brand-highlight/70 dark:bg-brand-charcoal/40 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-8 rounded-3xl mb-12 transition-colors">
+      <div className="bg-brand-surface border border-brand-border p-8 rounded-lg mb-12 transition-colors">
         <div
-          className="flex flex-wrap justify-center gap-12 text-brand-charcoal/80 dark:text-gray-200 opacity-0 animate-fadeIn"
+          className="flex flex-wrap justify-center gap-12 text-brand-text-secondary opacity-0 animate-fadeIn"
           style={{ animationDelay: '0ms', animationFillMode: 'forwards' }}
         >
           <div className="text-center">
-            <Mail className="mx-auto mb-2 text-brand-primary" />
-            <div className="font-semibold tracking-wide uppercase text-xs text-brand-charcoal/70 dark:text-gray-200">Email</div>
+            <Mail className="mx-auto mb-2 text-brand-terracotta" />
+            <div className="font-semibold tracking-wide uppercase text-xs text-brand-gray-light">Email</div>
             <div>me@nateking.dev</div>
           </div>
           <div className="text-center">
-            <MapPin className="mx-auto mb-2 text-brand-primary" />
-            <div className="font-semibold tracking-wide uppercase text-xs text-brand-charcoal/70 dark:text-gray-200">Location</div>
+            <MapPin className="mx-auto mb-2 text-brand-terracotta" />
+            <div className="font-semibold tracking-wide uppercase text-xs text-brand-gray-light">Location</div>
             <div>Omaha, NE</div>
           </div>
           <div className="text-center">
-            <Globe className="mx-auto mb-2 text-brand-primary" />
-            <div className="font-semibold tracking-wide uppercase text-xs text-brand-charcoal/70 dark:text-gray-200">Portfolio</div>
+            <Globe className="mx-auto mb-2 text-brand-terracotta" />
+            <div className="font-semibold tracking-wide uppercase text-xs text-brand-gray-light">Portfolio</div>
             <div>nateking.dev</div>
           </div>
           <div className="text-center">
-            <Award className="mx-auto mb-2 text-brand-primary" />
-            <div className="font-semibold tracking-wide uppercase text-xs text-brand-charcoal/70 dark:text-gray-200">Experience</div>
+            <Award className="mx-auto mb-2 text-brand-terracotta" />
+            <div className="font-semibold tracking-wide uppercase text-xs text-brand-gray-light">Experience</div>
             <div>7+ Years</div>
           </div>
         </div>
 
         {/* Divider */}
         <div
-          className="my-6 w-3/4 mx-auto h-px bg-brand-charcoal/20 dark:bg-brand-charcoal/35 origin-center scale-x-0 animate-drawLine"
+          className="my-6 w-3/4 mx-auto h-px bg-brand-gray-border dark:bg-white/10 origin-center scale-x-0 animate-drawLine"
           style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
         />
 
         {/* Tagline */}
         <p
-          className="text-center italic text-brand-charcoal/70 dark:text-gray-200 opacity-0 animate-fadeUp"
+          className="text-center italic text-brand-text-secondary opacity-0 animate-fadeUp"
           style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
         >
-          “Designing AI tools that feel less like software and more like conversation.”
+          "Designing AI tools that feel less like software and more like conversation."
         </p>
       </div>
 
           {/* Professional Summary */}
           <section className="mb-12">
-            <h2 className="text-3xl mb-6 text-brand-charcoal dark:text-white">Professional Summary</h2>
-            <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-              <p className="text-brand-charcoal/80 dark:text-gray-200 leading-relaxed">
-                Experienced software engineer specializing in AI-human interaction design and 
-                full-stack development. Passionate about creating intuitive interfaces that bridge the gap 
-                between artificial intelligence and human creativity. Proven track record of delivering 
+            <h2 className="text-3xl font-serif font-light mb-6 text-brand-text-primary">Professional Summary</h2>
+            <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+              <p className="text-brand-text-secondary leading-relaxed">
+                Experienced software engineer specializing in AI-human interaction design and
+                full-stack development. Passionate about creating intuitive interfaces that bridge the gap
+                between artificial intelligence and human creativity. Proven track record of delivering
                 scalable solutions and leading cross-functional teams in fast-paced environments.
               </p>
             </div>
@@ -81,17 +81,17 @@ export default function ResumePage() {
 
           {/* Experience */}
           <section className="mb-12">
-            <h2 className="text-3xl mb-6 text-brand-charcoal dark:text-white">Experience</h2>
-            
+            <h2 className="text-3xl font-serif font-light mb-6 text-brand-text-primary">Experience</h2>
+
             <div className="space-y-8">
               {/* Job 1 */}
-              <div className="border-l-4 border-brand-primary/35 dark:border-brand-primary/50 pl-6">
+              <div className="border-l-4 border-brand-terracotta pl-6">
                 <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white">Senior Software Engineer, Generative AI</h3>
-                  <span className="text-brand-charcoal/70 dark:text-gray-200">2025 - Present</span>
+                  <h3 className="text-xl font-serif font-normal text-brand-text-primary">Senior Software Engineer, Generative AI</h3>
+                  <span className="text-brand-gray-light">2025 - Present</span>
                 </div>
-                <div className="text-brand-charcoal/70 dark:text-gray-200 mb-3">FNBO · Omaha, NE</div>
-                <ul className="list-disc list-inside space-y-2 text-brand-charcoal/80 dark:text-gray-200">
+                <div className="text-brand-gray-light mb-3">FNBO · Omaha, NE</div>
+                <ul className="list-disc list-inside space-y-2 text-brand-text-secondary">
                   <li>Led development of AI-human collaboration interfaces used throughout the enterprise</li>
                   <li>Architected and built scalable React applications with focus on real-time AI interactions</li>
                   <li>Designed evaluation frameworks for measuring AI assistant effectiveness</li>
@@ -99,13 +99,13 @@ export default function ResumePage() {
               </div>
 
               {/* Job 2 */}
-              <div className="border-l-4 border-brand-primary/35 dark:border-brand-primary/50 pl-6">
+              <div className="border-l-4 border-brand-terracotta pl-6">
                 <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white">Lead Software Engineer, Salesforce</h3>
-                  <span className="text-brand-charcoal/70 dark:text-gray-200">2019 - 2025</span>
+                  <h3 className="text-xl font-serif font-normal text-brand-text-primary">Lead Software Engineer, Salesforce</h3>
+                  <span className="text-brand-gray-light">2019 - 2025</span>
                 </div>
-                <div className="text-brand-charcoal/70 dark:text-gray-200 mb-3">FNBO · Omaha, NE</div>
-                <ul className="list-disc list-inside space-y-2 text-brand-charcoal/80 dark:text-gray-200">
+                <div className="text-brand-gray-light mb-3">FNBO · Omaha, NE</div>
+                <ul className="list-disc list-inside space-y-2 text-brand-text-secondary">
                   <li>Developed responsive Lightning Web Components (LWCs) with integrated AI capabilities</li>
                   <li>Designed and optimized custom ETL pipelines to ensure timely, accurate data availability</li>
                   <li>Optimized existing Salesforce workflows for improved efficiency</li>
@@ -116,13 +116,13 @@ export default function ResumePage() {
               </div>
 
               {/* Job 3 */}
-              <div className="border-l-4 border-brand-primary/35 dark:border-brand-primary/50 pl-6">
+              <div className="border-l-4 border-brand-terracotta pl-6">
                 <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white">Senior System Administrator</h3>
-                  <span className="text-brand-charcoal/70 dark:text-gray-200">2017 - 2019</span>
+                  <h3 className="text-xl font-serif font-normal text-brand-text-primary">Senior System Administrator</h3>
+                  <span className="text-brand-gray-light">2017 - 2019</span>
                 </div>
-                <div className="text-brand-charcoal/70 dark:text-gray-200 mb-3">FNBO · Omaha, NE</div>
-                <ul className="list-disc list-inside space-y-2 text-brand-charcoal/80 dark:text-gray-200">
+                <div className="text-brand-gray-light mb-3">FNBO · Omaha, NE</div>
+                <ul className="list-disc list-inside space-y-2 text-brand-text-secondary">
                   <li>Contributed to the design and rollout of online checking and savings account opening capabilities</li>
                   <li>Partnered with business units to translate requirements into technical solutions</li>
                   <li>Served as subject matter expert (SME) on Salesforce capabilities, advising leadership on platform strategy.</li>
@@ -133,46 +133,46 @@ export default function ResumePage() {
 
           {/* Technical Skills */}
           <section className="mb-12">
-            <h2 className="text-3xl mb-6 text-brand-charcoal dark:text-white">Technical Skills</h2>
+            <h2 className="text-3xl font-serif font-light mb-6 text-brand-text-primary">Technical Skills</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-lg font-semibold text-brand-charcoal dark:text-white mb-3">Frontend</h3>
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-lg font-serif font-normal text-brand-text-primary mb-3">Frontend</h3>
                 <div className="flex flex-wrap gap-2">
                   {['React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Vue.js', 'Next.js'].map(skill => (
-                    <span key={skill} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-3 py-1 rounded-full text-sm text-brand-charcoal/80 dark:text-gray-100">
+                    <span key={skill} className="bg-brand-bg border border-brand-border px-3 py-1 rounded-lg text-sm text-brand-text-primary">
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-lg font-semibold text-brand-charcoal dark:text-white mb-3">Backend</h3>
+
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-lg font-serif font-normal text-brand-text-primary mb-3">Backend</h3>
                 <div className="flex flex-wrap gap-2">
                   {['Node.js', 'Python', 'Flask', 'Django', 'PostgreSQL', 'MongoDB', 'Redis', 'AWS'].map(skill => (
-                    <span key={skill} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-3 py-1 rounded-full text-sm text-brand-charcoal/80 dark:text-gray-100">
+                    <span key={skill} className="bg-brand-bg border border-brand-border px-3 py-1 rounded-lg text-sm text-brand-text-primary">
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-lg font-semibold text-brand-charcoal dark:text-white mb-3">AI/ML</h3>
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-lg font-serif font-normal text-brand-text-primary mb-3">AI/ML</h3>
                 <div className="flex flex-wrap gap-2">
                   {['TensorFlow', 'PyTorch', 'OpenAI API', 'Transformers', 'Scikit-learn', 'Pandas', 'NumPy'].map(skill => (
-                    <span key={skill} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-3 py-1 rounded-full text-sm text-brand-charcoal/80 dark:text-gray-100">
+                    <span key={skill} className="bg-brand-bg border border-brand-border px-3 py-1 rounded-lg text-sm text-brand-text-primary">
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-lg font-semibold text-brand-charcoal dark:text-white mb-3">Tools & Other</h3>
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-lg font-serif font-normal text-brand-text-primary mb-3">Tools & Other</h3>
                 <div className="flex flex-wrap gap-2">
                   {['Git', 'Docker', 'Jest', 'Cypress', 'Figma', 'Webpack', 'Vite', 'CI/CD'].map(skill => (
-                    <span key={skill} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-3 py-1 rounded-full text-sm text-brand-charcoal/80 dark:text-gray-100">
+                    <span key={skill} className="bg-brand-bg border border-brand-border px-3 py-1 rounded-lg text-sm text-brand-text-primary">
                       {skill}
                     </span>
                   ))}
@@ -183,45 +183,45 @@ export default function ResumePage() {
 
           {/* Notable Projects */}
           <section className="mb-12">
-            <h2 className="text-3xl mb-6 text-brand-charcoal dark:text-white">Notable Projects</h2>
+            <h2 className="text-3xl font-serif font-light mb-6 text-brand-text-primary">Notable Projects</h2>
             <div className="space-y-6">
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white mb-2">GrindLab</h3>
-                <p className="text-brand-charcoal/80 dark:text-gray-200 mb-3">
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-xl font-serif font-normal text-brand-text-primary mb-2">GrindLab</h3>
+                <p className="text-brand-text-secondary mb-3">
                   Built an iOS/SwiftUI app that analyzes coffee grind consistency using computer vision. The app uses the device camera to capture images of coffee grounds and provides detailed analysis including particle size distribution, uniformity metrics, and brewing recommendations.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['SwiftUI'].map(tech => (
-                    <span key={tech} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-2 py-1 rounded text-xs text-brand-charcoal/70 dark:text-gray-200">
+                    <span key={tech} className="bg-brand-bg border border-brand-border px-2 py-1 rounded text-xs text-brand-text-secondary">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white mb-2">Interactive iOS AI Assistant App</h3>
-                <p className="text-brand-charcoal/80 dark:text-gray-200 mb-3">
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-xl font-serif font-normal text-brand-text-primary mb-2">Interactive iOS AI Assistant App</h3>
+                <p className="text-brand-text-secondary mb-3">
                   Developed a modern, SwiftUI-powered chat assistant app for iOS, integrating OpenAI Chat Completions. It provides a clean, multi-threaded chat experience with persistent history and is designed to be easily extensible for custom use cases.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['SwiftUI', 'Amazon Bedrock', 'WebSocket'].map(tech => (
-                    <span key={tech} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-2 py-1 rounded text-xs text-brand-charcoal/70 dark:text-gray-200">
+                    <span key={tech} className="bg-brand-bg border border-brand-border px-2 py-1 rounded text-xs text-brand-text-secondary">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white/90 dark:bg-brand-ink/50 border border-brand-charcoal/10 dark:border-brand-charcoal/40 p-6 rounded-3xl transition-colors shadow-lg">
-                <h3 className="text-xl font-semibold text-brand-charcoal dark:text-white mb-2">Smart Code Review Tool</h3>
-                <p className="text-brand-charcoal/80 dark:text-gray-200 mb-3">
+              <div className="bg-brand-surface border border-brand-border p-6 rounded-lg transition-colors">
+                <h3 className="text-xl font-serif font-normal text-brand-text-primary mb-2">Smart Code Review Tool</h3>
+                <p className="text-brand-text-secondary mb-3">
                   Built an AI-powered code review system that analyzes pull requests and provides contextual feedback.
                   Integrated with GitHub API and custom ML models for code quality assessment.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['Python', 'Flask', 'GitHub API', 'PostgreSQL', 'Docker'].map(tech => (
-                    <span key={tech} className="bg-brand-highlight/80 dark:bg-brand-charcoal/40 px-2 py-1 rounded text-xs text-brand-charcoal/70 dark:text-gray-200">
+                    <span key={tech} className="bg-brand-bg border border-brand-border px-2 py-1 rounded text-xs text-brand-text-secondary">
                       {tech}
                     </span>
                   ))}
@@ -234,7 +234,7 @@ export default function ResumePage() {
         </div>
       </main>
 
-      <footer className="border-t border-brand-charcoal/10 dark:border-brand-charcoal/45 mt-12 py-6 text-center text-sm text-brand-charcoal/60 dark:text-gray-200">
+      <footer className="border-t border-brand-border mt-12 py-6 text-center text-sm text-brand-text-tertiary">
         © {new Date().getFullYear()} Nathan A. King. All rights reserved.
       </footer>
     </div>

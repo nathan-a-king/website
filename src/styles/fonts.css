@@ -1,3 +1,4 @@
+/* Sans-serif font for UI elements */
 @font-face {
   font-family: 'Avenir';
   src: local('Avenir'), local('Avenir Next');
@@ -7,4 +8,32 @@
 
 .font-avenir {
   font-family: 'Avenir', -apple-system, system-ui, sans-serif;
+}
+
+/* Serif font for headings and content - using web-safe Georgia */
+.font-serif {
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+/* Typography utility classes */
+.heading-display {
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.heading-large {
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.heading-medium {
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-weight: 400;
+}
+
+.text-ui {
+  font-family: 'Avenir', -apple-system, system-ui, sans-serif;
+  font-weight: 400;
 }

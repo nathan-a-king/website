@@ -37,8 +37,8 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className={isDarkMode ? 'fixed inset-0 backdrop-blur-sm bg-gray-900' : 'fixed inset-0 backdrop-blur-sm bg-white/95'}
+    <div
+      className="fixed inset-0 backdrop-blur-sm bg-brand-bg"
       style={{ zIndex: 999999 }}
       onClick={onClose}
     >
@@ -48,24 +48,24 @@ export default function ImageModal({ src, alt, isOpen, onClose }) {
           <img
             src={src}
             alt={alt}
-            className="max-w-[85vw] max-h-[75vh] object-contain rounded-lg shadow-2xl"
+            className="max-w-[85vw] max-h-[75vh] object-contain rounded-lg shadow-md"
             onClick={(e) => e.stopPropagation()}
           />
-          
+
           {/* Close button - positioned relative to the image */}
           <button
             onClick={onClose}
-            className="absolute -top-2 -right-2 p-2 rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+            className="absolute -top-2 -right-2 p-2 rounded-lg bg-brand-surface text-brand-text-primary border border-brand-border shadow-card hover:bg-brand-soft dark:hover:bg-white/5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50"
             style={{ zIndex: 1000000 }}
             aria-label="Close image"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
-        
+
         {/* Caption */}
         {alt && (
-          <div className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm max-w-[80%] text-center ${isDarkMode ? 'bg-gray-800/90 text-gray-200' : 'bg-gray-100/90 text-gray-800'}`}>
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm max-w-[80%] text-center bg-brand-surface text-brand-text-primary border border-brand-border backdrop-blur-sm">
             {alt}
           </div>
         )}
