@@ -19,6 +19,24 @@ A modern personal website and blog built with React, Vite, and Tailwind CSS.
 - 📱 Fully responsive design
 - 🔍 SEO-friendly with pre-rendered sitemap and meta tags
 - ⚡ Client-side caching for improved performance
+- 🎨 Claude.ai-inspired design system with warm aesthetics
+
+## Design System
+
+This project uses a comprehensive design system inspired by Claude.ai's visual aesthetic. Key features:
+
+- **Warm Color Palette** - Cream backgrounds with terracotta accents
+- **Dual Typography** - Serif headings (Georgia) + Sans UI (Avenir)
+- **CSS Custom Properties** - Single source of truth for colors with automatic dark mode
+- **Consistent Patterns** - Unified borders, shadows, and spacing
+- **Accessibility** - WCAG AA compliant with proper focus states
+
+**📖 See [DESIGN.md](DESIGN.md) for complete design system documentation**
+
+Additional resources:
+- [COLOR_SYSTEM.md](COLOR_SYSTEM.md) - Color architecture and usage guide
+- [tailwind.config.js](tailwind.config.js) - Tailwind configuration
+- [src/styles/globals.css](src/styles/globals.css) - CSS custom properties
 
 ## Development
 
@@ -101,6 +119,8 @@ The build process:
 
 ## Configuration
 
+- **DESIGN.md** - Complete design system documentation
+- **COLOR_SYSTEM.md** - Color architecture and migration guide
 - **CLAUDE.md** - Instructions for Claude Code
 - **vite.config.js** - Build configuration and plugins
 - **tailwind.config.js** - Tailwind and dark mode settings
