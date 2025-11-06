@@ -161,7 +161,7 @@ export default function PostPage() {
           value={String(children).replace(/\n$/, '')}
         />
       ) : (
-        <code className="bg-brand-soft dark:bg-white/10 text-brand-text-primary px-1 py-0.5 rounded text-sm font-mono" {...props}>
+        <code className="bg-brand-surface text-brand-text-primary px-1 py-0.5 rounded text-sm font-mono" {...props}>
           {children}
         </code>
       );

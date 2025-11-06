@@ -1,11 +1,8 @@
 // src/components/CodeBlock.tsx
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { 
-  // Only import the themes you're actually using
-  oneLight,
-  vscDarkPlus
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Copy } from "lucide-react";
+import { customLightTheme, customDarkTheme } from "../styles/syntaxThemes";
 import { useTheme } from "../contexts/ThemeContext";
 import "./CodeBlock.css";
 
@@ -18,12 +15,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const { isDarkMode } = useTheme();
   const handleCopy = () => navigator.clipboard.writeText(value);
 
-  // Easy theme configuration - change these to experiment!
-  const lightTheme = oneLight;     // Try: prism, ghcolors, vs, oneLight
-  const darkTheme = vscDarkPlus;    // Try: dracula, oneDark, vscDarkPlus, atomDark, tomorrow, nord
+  const lightTheme = customLightTheme;
+  const darkTheme = customDarkTheme;
 
   return (
-    <div className="relative rounded-lg overflow-hidden border border-brand-border bg-brand-soft dark:bg-gray-800 my-4 code-block-container">
+    <div className="relative rounded-lg overflow-hidden border border-brand-border bg-brand-surface my-4 code-block-container">
       <SyntaxHighlighter
         language={language}
         style={isDarkMode ? darkTheme : lightTheme}
@@ -38,9 +34,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
       </SyntaxHighlighter>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 text-xs px-2 py-1 rounded bg-brand-cream dark:bg-gray-700 text-brand-charcoal dark:text-gray-200 hover:bg-brand-soft dark:hover:bg-gray-600 border border-brand-border focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50 transition-all duration-200"
+        aria-label="Copy code to clipboard"
+        className="absolute top-2 right-2 p-2 rounded bg-brand-surface text-brand-text-tertiary hover:text-brand-text-primary hover:bg-brand-bg focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50 transition-all duration-200"
       >
-        Copy
+        <Copy className="w-4 h-4" />
       </button>
     </div>
   );
