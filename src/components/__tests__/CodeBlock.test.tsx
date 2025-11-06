@@ -17,9 +17,9 @@ vi.mock('react-syntax-highlighter', () => ({
   ),
 }));
 
-vi.mock('react-syntax-highlighter/dist/esm/styles/prism', () => ({
-  oneLight: { name: 'oneLight' },
-  vscDarkPlus: { name: 'vscDarkPlus' },
+vi.mock('../../styles/syntaxThemes', () => ({
+  customLightTheme: { name: 'customLightTheme' },
+  customDarkTheme: { name: 'customDarkTheme' },
 }));
 
 // Mock CSS import
@@ -96,7 +96,7 @@ describe('CodeBlock', () => {
       render(<CodeBlock {...defaultProps} />);
 
       const highlighter = screen.getByTestId('syntax-highlighter');
-      expect(highlighter).toHaveAttribute('data-style', 'oneLight');
+      expect(highlighter).toHaveAttribute('data-style', 'customLightTheme');
     });
 
     it('should use dark theme when isDarkMode is true', () => {
@@ -104,7 +104,7 @@ describe('CodeBlock', () => {
       render(<CodeBlock {...defaultProps} />);
 
       const highlighter = screen.getByTestId('syntax-highlighter');
-      expect(highlighter).toHaveAttribute('data-style', 'vscDarkPlus');
+      expect(highlighter).toHaveAttribute('data-style', 'customDarkTheme');
     });
 
     it('should update theme when isDarkMode changes', () => {
@@ -112,13 +112,13 @@ describe('CodeBlock', () => {
       const { rerender } = render(<CodeBlock {...defaultProps} />);
 
       let highlighter = screen.getByTestId('syntax-highlighter');
-      expect(highlighter).toHaveAttribute('data-style', 'oneLight');
+      expect(highlighter).toHaveAttribute('data-style', 'customLightTheme');
 
       mockUseTheme.mockReturnValue({ isDarkMode: true });
       rerender(<CodeBlock {...defaultProps} />);
 
       highlighter = screen.getByTestId('syntax-highlighter');
-      expect(highlighter).toHaveAttribute('data-style', 'vscDarkPlus');
+      expect(highlighter).toHaveAttribute('data-style', 'customDarkTheme');
     });
   });
 

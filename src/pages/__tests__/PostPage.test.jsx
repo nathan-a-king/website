@@ -607,7 +607,7 @@ describe('PostPage', () => {
 
         const code = container.querySelector('code');
         expect(code).toBeInTheDocument();
-        expect(code).toHaveClass('bg-brand-soft');
+        expect(code).toHaveClass('bg-brand-surface');
         expect(code).toHaveClass('text-brand-text-primary');
         expect(code).toHaveTextContent('inline code');
       });
