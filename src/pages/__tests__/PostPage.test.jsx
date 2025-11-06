@@ -38,9 +38,20 @@ vi.mock('../../components/StructuredData', () => ({
   BlogPostStructuredData: () => <div data-testid="structured-data">Structured Data</div>,
 }));
 
-// Mock LazyMarkdown
+// Mock LazyMarkdown to render with components
 vi.mock('../../components/LazyMarkdown.jsx', () => ({
-  default: ({ children }) => <div data-testid="markdown-content">{children}</div>,
+  default: ({ children, components }) => {
+    if (!components) {
+      return <div data-testid="markdown-content">{children}</div>;
+    }
+    // Render using ReactMarkdown with the provided components
+    const ReactMarkdown = require('react-markdown').default;
+    return (
+      <div data-testid="markdown-content">
+        <ReactMarkdown components={components}>{children}</ReactMarkdown>
+      </div>
+    );
+  },
 }));
 
 // Mock ElizaChatbot
@@ -345,6 +356,380 @@ describe('PostPage', () => {
 
       const backLink = screen.getByRole('link', { name: /back to blog/i });
       expect(backLink.tagName).toBe('A');
+    });
+  });
+
+  describe('Markdown Components', () => {
+    describe('Headings', () => {
+      it('should render h1 headings with custom styling', () => {
+        const postWithHeading = {
+          ...mockPost,
+          content: '# Main Heading',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithHeading,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        const heading = screen.getByRole('heading', { level: 1, name: /main heading/i });
+        expect(heading).toHaveClass('text-3xl');
+        expect(heading).toHaveClass('font-serif');
+      });
+
+      it('should render h2 headings with custom styling', () => {
+        const postWithHeading = {
+          ...mockPost,
+          content: '## Second Heading',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithHeading,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        const heading = screen.getByRole('heading', { level: 2, name: /second heading/i });
+        expect(heading).toHaveClass('text-2xl');
+        expect(heading).toHaveClass('font-serif');
+      });
+
+      it('should render h3 headings with custom styling', () => {
+        const postWithHeading = {
+          ...mockPost,
+          content: '### Third Heading',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithHeading,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        const heading = screen.getByRole('heading', { level: 3, name: /third heading/i });
+        expect(heading).toHaveClass('text-xl');
+        expect(heading).toHaveClass('font-serif');
+      });
+    });
+
+    describe('Links', () => {
+      it('should render links with custom styling', () => {
+        const postWithLink = {
+          ...mockPost,
+          content: '[Visit Example](https://example.com)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithLink,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        const link = screen.getByRole('link', { name: /visit example/i });
+        expect(link).toHaveAttribute('href', 'https://example.com');
+        expect(link).toHaveAttribute('target', '_blank');
+        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+        expect(link).toHaveClass('text-brand-terracotta');
+      });
+    });
+
+    describe('Blockquotes', () => {
+      it('should render blockquotes with custom styling', () => {
+        const postWithBlockquote = {
+          ...mockPost,
+          content: '> This is a quote',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithBlockquote,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const blockquote = container.querySelector('blockquote');
+        expect(blockquote).toBeInTheDocument();
+        expect(blockquote).toHaveClass('border-l-4');
+        expect(blockquote).toHaveClass('border-brand-terracotta');
+        expect(blockquote).toHaveTextContent('This is a quote');
+      });
+    });
+
+    describe('Horizontal Rules', () => {
+      it('should render horizontal rules with custom styling', () => {
+        const postWithHr = {
+          ...mockPost,
+          content: 'Before\n\n---\n\nAfter',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithHr,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const hr = container.querySelector('hr');
+        expect(hr).toBeInTheDocument();
+        expect(hr).toHaveClass('my-10');
+        expect(hr).toHaveClass('border-brand-border');
+      });
+    });
+
+    describe('Lists', () => {
+      it('should render unordered lists with custom styling', () => {
+        const postWithList = {
+          ...mockPost,
+          content: '- Item 1\n- Item 2\n- Item 3',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithList,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const ul = container.querySelector('ul');
+        expect(ul).toBeInTheDocument();
+        expect(ul).toHaveClass('list-disc');
+        expect(ul).toHaveClass('list-inside');
+      });
+
+      it('should render ordered lists with custom styling', () => {
+        const postWithList = {
+          ...mockPost,
+          content: '1. First\n2. Second\n3. Third',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithList,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const ol = container.querySelector('ol');
+        expect(ol).toBeInTheDocument();
+        expect(ol).toHaveClass('list-decimal');
+        expect(ol).toHaveClass('list-inside');
+      });
+
+      it('should render list items with custom styling', () => {
+        const postWithList = {
+          ...mockPost,
+          content: '- List item',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithList,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const li = container.querySelector('li');
+        expect(li).toBeInTheDocument();
+        expect(li).toHaveClass('mb-1');
+      });
+    });
+
+    describe('Text Formatting', () => {
+      it('should render strong/bold text', () => {
+        const postWithBold = {
+          ...mockPost,
+          content: '**Bold text**',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithBold,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const strong = container.querySelector('strong');
+        expect(strong).toBeInTheDocument();
+        expect(strong).toHaveClass('font-semibold');
+        expect(strong).toHaveTextContent('Bold text');
+      });
+
+      it('should render em/italic text', () => {
+        const postWithItalic = {
+          ...mockPost,
+          content: '*Italic text*',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithItalic,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const em = container.querySelector('em');
+        expect(em).toBeInTheDocument();
+        expect(em).toHaveClass('italic');
+        expect(em).toHaveTextContent('Italic text');
+      });
+    });
+
+    describe('Code', () => {
+      it('should render inline code with custom styling', () => {
+        const postWithCode = {
+          ...mockPost,
+          content: 'This is `inline code` here',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithCode,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const code = container.querySelector('code');
+        expect(code).toBeInTheDocument();
+        expect(code).toHaveClass('bg-brand-soft');
+        expect(code).toHaveClass('text-brand-text-primary');
+        expect(code).toHaveTextContent('inline code');
+      });
+    });
+
+    describe('Images', () => {
+      it('should render regular images using ClickableImage component', () => {
+        const postWithImage = {
+          ...mockPost,
+          content: '![Alt text](/image.jpg)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithImage,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        const image = screen.getByTestId('clickable-image');
+        expect(image).toBeInTheDocument();
+        expect(image).toHaveAttribute('src', '/image.jpg');
+        expect(image).toHaveAttribute('alt', 'Alt text');
+      });
+
+      it('should render images consistently', () => {
+        const postWithImage = {
+          ...mockPost,
+          content: '![Alt text](/image.jpg)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithImage,
+          loading: false,
+          error: null,
+        });
+
+        renderPostPage();
+
+        // Image should render
+        const image = screen.getByTestId('clickable-image');
+        expect(image).toBeInTheDocument();
+        expect(image).toHaveAttribute('src', '/image.jpg');
+      });
+
+      it('should handle small images with special styling', () => {
+        const postWithSmallImage = {
+          ...mockPost,
+          content: '![Small image](/image-small.jpg)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithSmallImage,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        // Small images use inline modal logic instead of ClickableImage
+        const image = container.querySelector('img[alt="Small image"]');
+        expect(image).toBeInTheDocument();
+      });
+
+      it('should handle small right-aligned images', () => {
+        const postWithSmallRImage = {
+          ...mockPost,
+          content: '![Small right](/image-smallr.jpg)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithSmallRImage,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const image = container.querySelector('img[alt="Small right"]');
+        expect(image).toBeInTheDocument();
+      });
+    });
+
+    describe('Paragraphs with Images', () => {
+      it('should handle paragraphs with single images', () => {
+        const postWithImageInPara = {
+          ...mockPost,
+          content: '![Image](/test.jpg)',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithImageInPara,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        // Should render but not wrapped in <p> tag
+        const image = screen.getByTestId('clickable-image');
+        expect(image).toBeInTheDocument();
+      });
+
+      it('should handle regular paragraphs with text justification', () => {
+        const postWithParagraph = {
+          ...mockPost,
+          content: 'This is a regular paragraph with some text.',
+        };
+
+        mockUsePost.mockReturnValue({
+          post: postWithParagraph,
+          loading: false,
+          error: null,
+        });
+
+        const { container } = renderPostPage();
+
+        const paragraph = container.querySelector('p');
+        expect(paragraph).toBeInTheDocument();
+        expect(paragraph).toHaveClass('text-justify');
+      });
     });
   });
 });
