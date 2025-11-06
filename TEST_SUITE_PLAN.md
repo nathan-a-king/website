@@ -41,42 +41,49 @@ Implement comprehensive testing for the website with a focus on critical busines
 
 ---
 
-## Phase 2: Core Components
+## Phase 2: Core Components ✅ COMPLETED
 **Priority: MEDIUM** - User-facing functionality
 
 ### 2.1 Navigation & Layout
-- [ ] **`src/components/__tests__/Navigation.test.jsx`**
+- [X] **`src/components/__tests__/Navigation.test.jsx`** (17 tests)
   - Active link highlighting
   - Mobile menu toggle
   - Route navigation
   - Accessibility (ARIA labels)
+  - Dark mode integration
 
-- [ ] **`src/components/__tests__/ThemeToggle.test.jsx`**
+- [X] **`src/components/__tests__/ThemeToggle.test.jsx`** (9 tests)
   - Theme switching UI
   - Icon changes (sun/moon)
   - Context integration
+  - Aria labels
 
 ### 2.2 Error Handling
-- [ ] **`src/components/__tests__/ErrorBoundary.test.jsx`**
+- [X] **`src/components/__tests__/ErrorBoundary.test.jsx`** (16 tests)
   - Error catching and display
   - Error UI rendering
   - Reset functionality
   - Fallback UI
+  - Development mode details
 
 ### 2.3 Content Display
-- [ ] **`src/components/__tests__/LazyPostCard.test.jsx`**
+- [X] **`src/components/__tests__/LazyPostCard.test.jsx`** (23 tests)
   - Post metadata display
   - Link generation
-  - Preload on hover
+  - Preload on hover/focus
   - Date formatting
+  - Lazy loading with IntersectionObserver
+  - Animation delays
 
-- [ ] **`src/components/__tests__/LazyMarkdown.test.jsx`** (optional)
+- [ ] **`src/components/__tests__/LazyMarkdown.test.jsx`** (optional - skipped)
   - Markdown rendering
   - Code block handling
 
-- [ ] **`src/components/__tests__/StructuredData.test.jsx`**
+- [X] **`src/components/__tests__/StructuredData.test.jsx`** (24 tests)
   - JSON-LD generation
   - Schema.org compliance
+  - BlogPosting and Blog schemas
+  - Author and publisher data
 
 ---
 
