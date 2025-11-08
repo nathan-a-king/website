@@ -16,10 +16,20 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const [copied, setCopied] = React.useState(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    try {
+      // Clear any existing timeout to prevent race conditions
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error('Failed to copy code:', error);
+      // Could add error state here if needed
+    }
   };
 
   React.useEffect(() => {
