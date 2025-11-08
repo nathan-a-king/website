@@ -14,12 +14,21 @@ interface CodeBlockProps {
 const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const { isDarkMode } = useTheme();
   const [copied, setCopied] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    timeoutRef.current = setTimeout(() => setCopied(false), 2000);
   };
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const lightTheme = customLightTheme;
   const darkTheme = customDarkTheme;
