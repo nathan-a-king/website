@@ -1,5 +1,16 @@
 [
   {
+    "slug": "stop-blaming-the-cap",
+    "title": "Stop Blaming the Cap",
+    "date": "November 8, 2025",
+    "excerpt": "Developers aren't hitting AI limits because they use it too much—they're hitting them because of wasted context. Here's how context engineering fixes it.",
+    "categories": [
+      "AI",
+      "Engineering"
+    ],
+    "firstImage": null
+  },
+  {
     "slug": "the-mispricing-of-understanding",
     "title": "The Mispricing of Understanding",
     "date": "November 1, 2025",
