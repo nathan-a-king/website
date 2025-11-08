@@ -13,7 +13,13 @@ interface CodeBlockProps {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const { isDarkMode } = useTheme();
-  const handleCopy = () => navigator.clipboard.writeText(value);
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const lightTheme = customLightTheme;
   const darkTheme = customDarkTheme;
@@ -22,7 +28,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
     <div className="relative rounded-lg overflow-hidden border border-brand-border bg-brand-surface my-4 code-block-container">
       <SyntaxHighlighter
         language={language}
-        style={isDarkMode ? darkTheme : lightTheme}
+        style={(isDarkMode ? darkTheme : lightTheme) as any}
         customStyle={{
           margin: 0,
           padding: "1rem",
@@ -37,7 +43,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
         aria-label="Copy code to clipboard"
         className="absolute top-2 right-2 p-2 rounded bg-brand-surface text-brand-text-tertiary hover:text-brand-text-primary hover:bg-brand-bg focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50 transition-all duration-200"
       >
-        <Copy className="w-4 h-4" />
+        {copied ? (
+          <span className="text-xs font-medium copy-feedback">Copied!</span>
+        ) : (
+          <Copy className="w-4 h-4" />
+        )}
       </button>
     </div>
   );
