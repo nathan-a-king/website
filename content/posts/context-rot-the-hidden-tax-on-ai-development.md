@@ -1,6 +1,6 @@
 ---
-slug: stop-blaming-the-cap
-title: "Stop Blaming the Cap"
+slug: context-rot-the-hidden-tax-on-ai-development
+title: "Context Rot: The Hidden Tax on AI Development"
 date: November 8, 2025
 excerpt: "Developers aren't hitting AI limits because they use it too much—they're hitting them because of wasted context. Here's how context engineering fixes it."
 categories: ["AI", "Engineering"]
