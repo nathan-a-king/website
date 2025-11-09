@@ -13,16 +13,39 @@ interface CodeBlockProps {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
   const { isDarkMode } = useTheme();
-  const handleCopy = () => navigator.clipboard.writeText(value);
+  const [copied, setCopied] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const lightTheme = customLightTheme;
-  const darkTheme = customDarkTheme;
+  const handleCopy = async () => {
+    try {
+      // Clear any existing timeout to prevent race conditions
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error('Failed to copy code:', error);
+      // Could add error state here if needed
+    }
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="relative rounded-lg overflow-hidden border border-brand-border bg-brand-surface my-4 code-block-container">
       <SyntaxHighlighter
         language={language}
-        style={isDarkMode ? darkTheme : lightTheme}
+        // Type assertion needed because syntaxThemes.js exports untyped objects
+        style={(isDarkMode ? customDarkTheme : customLightTheme) as any}
         customStyle={{
           margin: 0,
           padding: "1rem",
@@ -34,10 +57,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
       </SyntaxHighlighter>
       <button
         onClick={handleCopy}
-        aria-label="Copy code to clipboard"
+        aria-label={copied ? "Code copied to clipboard" : "Copy code to clipboard"}
         className="absolute top-2 right-2 p-2 rounded bg-brand-surface text-brand-text-tertiary hover:text-brand-text-primary hover:bg-brand-bg focus:outline-none focus:ring-2 focus:ring-brand-terracotta/50 transition-all duration-200"
       >
-        <Copy className="w-4 h-4" />
+        {copied ? (
+          <span className="text-xs font-medium copy-feedback" role="status" aria-live="polite">
+            Copied!
+          </span>
+        ) : (
+          <Copy className="w-4 h-4" />
+        )}
       </button>
     </div>
   );
