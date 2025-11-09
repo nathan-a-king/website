@@ -9,6 +9,7 @@
 /* Copy feedback animation */
 .copy-feedback {
   animation: fadeInOut 2s ease-in-out;
+  will-change: transform, opacity;
 }
 
 @keyframes fadeInOut {
