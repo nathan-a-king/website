@@ -66,10 +66,12 @@ describe('ThemeContext', () => {
 
     // Mock Canvas for favicon generation
     const originalCreateElement = document.createElement.bind(document);
+    const mockContext = {
+      drawImage: vi.fn(),
+      filter: undefined,
+    };
     const mockCanvas = {
-      getContext: vi.fn(() => ({
-        drawImage: vi.fn(),
-      })),
+      getContext: vi.fn(() => mockContext),
       toDataURL: vi.fn(() => 'data:image/png;base64,mock'),
       width: 0,
       height: 0,
@@ -476,6 +478,90 @@ describe('ThemeContext', () => {
       await new Promise((resolve) => setTimeout(resolve, 10));
 
       expect(logger.default.warn).toHaveBeenCalled();
+    });
+
+    it('should apply invert filter to canvas context for dark mode', async () => {
+      const originalCreateElement = document.createElement.bind(document);
+
+      // Create a fresh mock context for this test
+      const mockContext = {
+        drawImage: vi.fn(),
+        filter: undefined,
+      };
+      const mockCanvas = {
+        getContext: vi.fn(() => mockContext),
+        toDataURL: vi.fn(() => 'data:image/png;base64,mock'),
+        width: 0,
+        height: 0,
+      };
+
+      // Override createElement for this test
+      const originalCreateElementFn = document.createElement;
+      document.createElement = vi.fn((tagName) => {
+        if (tagName === 'canvas') return mockCanvas;
+        return originalCreateElement(tagName);
+      });
+
+      const mockFavicon = originalCreateElement('link');
+      mockFavicon.rel = 'icon';
+      mockFavicon.href = '';
+      document.head.appendChild(mockFavicon);
+
+      localStorageMock.getItem.mockReturnValue('dark');
+
+      renderHook(() => useTheme(), { wrapper });
+
+      // Wait for async favicon update
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      // Verify filter was applied
+      expect(mockContext.filter).toBe('invert(1)');
+      expect(mockContext.drawImage).toHaveBeenCalled();
+
+      // Restore original createElement
+      document.createElement = originalCreateElementFn;
+    });
+
+    it('should not apply filter to canvas context for light mode', async () => {
+      const originalCreateElement = document.createElement.bind(document);
+
+      // Create a fresh mock context for this test
+      const mockContext = {
+        drawImage: vi.fn(),
+        filter: undefined,
+      };
+      const mockCanvas = {
+        getContext: vi.fn(() => mockContext),
+        toDataURL: vi.fn(() => 'data:image/png;base64,mock'),
+        width: 0,
+        height: 0,
+      };
+
+      // Override createElement for this test
+      const originalCreateElementFn = document.createElement;
+      document.createElement = vi.fn((tagName) => {
+        if (tagName === 'canvas') return mockCanvas;
+        return originalCreateElement(tagName);
+      });
+
+      const mockFavicon = originalCreateElement('link');
+      mockFavicon.rel = 'icon';
+      mockFavicon.href = '';
+      document.head.appendChild(mockFavicon);
+
+      localStorageMock.getItem.mockReturnValue('light');
+
+      renderHook(() => useTheme(), { wrapper });
+
+      // Wait for async favicon update
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      // Verify filter was NOT applied
+      expect(mockContext.filter).toBeUndefined();
+      expect(mockContext.drawImage).toHaveBeenCalled();
+
+      // Restore original createElement
+      document.createElement = originalCreateElementFn;
     });
   });
 });
