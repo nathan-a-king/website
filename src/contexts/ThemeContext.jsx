@@ -88,9 +88,9 @@ export const ThemeProvider = ({ children }) => {
     const favicon = document.querySelector('link[rel="icon"]');
     if (!favicon) return;
 
-    // Use the appropriate logo based on theme
-    const logoPath = isDark ? '/mac-logo-white.png' : '/mac-logo.png';
-    
+    // Use single logo file and invert colors for dark mode
+    const logoPath = '/mac-logo.png';
+
     // Create an image element to load the logo
     const img = new Image();
     img.onload = () => {
@@ -100,6 +100,11 @@ export const ThemeProvider = ({ children }) => {
       canvas.width = 32;
       canvas.height = 32;
 
+      // Apply color inversion for dark mode
+      if (isDark) {
+        ctx.filter = 'invert(1)';
+      }
+
       // Draw the logo image onto the canvas
       ctx.drawImage(img, 0, 0, 32, 32);
 
@@ -107,12 +112,12 @@ export const ThemeProvider = ({ children }) => {
       const dataURL = canvas.toDataURL('image/png');
       favicon.href = dataURL;
     };
-    
+
     // Fallback: if logo fails to load, keep current favicon
     img.onerror = () => {
       logger.warn('Failed to load logo for favicon', { logoPath });
     };
-    
+
     img.src = logoPath;
   };
 
