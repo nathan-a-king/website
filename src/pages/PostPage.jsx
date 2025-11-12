@@ -14,7 +14,8 @@ const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
 const ElizaChatbot = lazy(() => import('../components/ElizaChatbot.jsx'));
 const ELIZA_CHATBOT_MARKER = '[[ELIZA_CHATBOT]]';
 
-export default function PostPage() {
+export default function PostPage({ ElizaComponent = null }) {
+  const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
   const { slug } = useParams();
   const { post, loading, error } = usePost(slug);
   const { isDarkMode } = useTheme();
@@ -256,14 +257,8 @@ export default function PostPage() {
                     )}
                     {!isLast && (
                       <div className="my-10 flex justify-center">
-                        <Suspense
-                          fallback={
-                            <div className="text-sm text-brand-text-tertiary">
-                              Loading ELIZA…
-                            </div>
-                          }
-                        >
-                          <ElizaChatbot />
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary">Loading ELIZA…</div>}>
+                          <ChatbotComponent />
                         </Suspense>
                       </div>
                     )}

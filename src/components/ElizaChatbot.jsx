@@ -68,9 +68,9 @@ const ElizaChatbot = () => {
       <div className="overflow-hidden rounded-2xl border border-brand-border bg-brand-surface shadow-card backdrop-blur-xs">
         <div className="border-b border-brand-border px-6 py-6 sm:py-8">
           <p className="text-xs uppercase tracking-[0.3em] text-brand-text-tertiary">Interactive study</p>
-          <h2 className="mt-3 text-3xl font-serif text-brand-text-primary">ELIZA Companion</h2>
+          <h2 className="mt-3 text-3xl font-serif text-brand-text-primary">ELIZA Chatbot</h2>
           <p className="mt-3 text-base text-brand-text-secondary">
-            A faithful simulation of Joseph Weizenbaum&apos;s 1966 therapist bot, refreshed to match our adaptive interface.
+            A faithful simulation of Joseph Weizenbaum&apos;s 1966 therapist bot.
           </p>
           <div className="mt-4 h-0.5 w-16 bg-brand-accent"></div>
         </div>
@@ -98,7 +98,7 @@ const ElizaChatbot = () => {
                       </svg>
                     </span>
                   </div>
-                  Start a conversation with ELIZA to see adaptive reflections in the new UI.
+                  Start a conversation with ELIZA.
                 </div>
               )}
 
