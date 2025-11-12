@@ -1,8 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const ElizaChatbot = () => {
-  const [messages, setMessages] = useState([
-    { text: "How do you do. Please tell me your problem.", isUser: false }
+  const [messages, setMessages] = useState(() => [
+    { 
+      text: "How do you do. Please tell me your problem.", 
+      isUser: false,
+      timestamp: Date.now()
+    }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -634,22 +638,23 @@ const ElizaChatbot = () => {
     return fallback;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event?.preventDefault();
     const input = inputValue.trim();
     if (!input) return;
 
     // Check for quit commands
     if (/^(quit|exit|bye|goodbye)$/i.test(input)) {
       setMessages(prev => [...prev, 
-        { text: input, isUser: true },
-        { text: "Goodbye. It was nice talking to you.", isUser: false }
+        { text: input, isUser: true, timestamp: Date.now() },
+        { text: "Goodbye. It was nice talking to you.", isUser: false, timestamp: Date.now() }
       ]);
       setInputValue('');
       return;
     }
 
     // Add user message
-    setMessages(prev => [...prev, { text: input, isUser: true }]);
+    setMessages(prev => [...prev, { text: input, isUser: true, timestamp: Date.now() }]);
     setInputValue('');
     setIsTyping(true);
 
@@ -657,7 +662,7 @@ const ElizaChatbot = () => {
     const thinkingTime = 600 + Math.random() * 1200;
     setTimeout(() => {
       const response = getElizaResponse(input);
-      setMessages(prev => [...prev, { text: response, isUser: false }]);
+      setMessages(prev => [...prev, { text: response, isUser: false, timestamp: Date.now() }]);
       setIsTyping(false);
     }, thinkingTime);
   };
@@ -669,157 +674,131 @@ const ElizaChatbot = () => {
     }
   }, [messages, isTyping]);
 
-  const styles = {
-    container: {
-      width: '100%',
-      maxWidth: '700px',
-      background: '#000',
-      border: '2px solid #00ff00',
-      borderRadius: '8px',
-      padding: '20px',
-      boxShadow: '0 0 20px rgba(0, 255, 0, 0.3)',
-      fontFamily: '"Courier New", monospace',
-      color: '#00ff00',
-      margin: '0 auto'
-    },
-    header: {
-      textAlign: 'center',
-      marginBottom: '20px',
-      paddingBottom: '15px',
-      borderBottom: '1px solid #00ff00'
-    },
-    title: {
-      fontSize: '24px',
-      marginBottom: '5px',
-      textShadow: '0 0 10px rgba(0, 255, 0, 0.5)',
-      margin: '0 0 5px 0'
-    },
-    subtitle: {
-      fontSize: '12px',
-      opacity: 0.8,
-      margin: '2px 0'
-    },
-    chatContainer: {
-      height: '400px',
-      overflowY: 'auto',
-      marginBottom: '20px',
-      padding: '10px',
-      background: '#0a0a0a',
-      border: '1px solid #00ff00',
-      borderRadius: '4px'
-    },
-    message: {
-      marginBottom: '15px',
-      lineHeight: 1.4,
-      color: '#00ff00'
-    },
-    userMessage: {
-      color: '#00ff00',
-      marginBottom: '15px',
-      lineHeight: 1.4
-    },
-    elizaMessage: {
-      color: '#00ff00',
-      paddingLeft: '20px',
-      opacity: 0.9,
-      marginBottom: '15px',
-      lineHeight: 1.4
-    },
-    inputContainer: {
-      display: 'flex',
-      gap: '10px'
-    },
-    input: {
-      flex: 1,
-      background: '#0a0a0a',
-      border: '1px solid #00ff00',
-      color: '#00ff00',
-      padding: '10px',
-      fontFamily: '"Courier New", monospace',
-      fontSize: '14px',
-      borderRadius: '4px',
-      outline: 'none'
-    },
-    button: {
-      background: '#00ff00',
-      color: '#000',
-      border: 'none',
-      padding: '10px 20px',
-      fontFamily: '"Courier New", monospace',
-      fontWeight: 'bold',
-      cursor: 'pointer',
-      borderRadius: '4px',
-      transition: 'all 0.3s'
-    },
-    typingIndicator: {
-      color: '#00ff00',
-      opacity: 0.5,
-      fontStyle: 'italic',
-      paddingLeft: '20px'
-    },
-    hint: {
-      fontSize: '10px',
-      opacity: 0.6,
-      textAlign: 'center',
-      marginTop: '10px'
+  const formatTimestamp = (timestamp) => {
+    if (!timestamp) return '';
+    try {
+      return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch {
+      return '';
     }
   };
 
+  const hasUserMessages = messages.some(message => message.isUser);
+
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>ELIZA</h1>
-        <p style={styles.subtitle}>A Computer Program for the Study of Natural Language</p>
-        <p style={styles.subtitle}>MIT Artificial Intelligence Laboratory, 1966</p>
-        <p style={styles.subtitle}>Joseph Weizenbaum</p>
-      </div>
-      
-      <div style={styles.chatContainer} ref={chatContainerRef}>
-        {messages.map((message, index) => (
-          <div 
-            key={index} 
-            style={message.isUser ? styles.userMessage : styles.elizaMessage}
-          >
-            {message.isUser ? '> ' : ''}
-            {message.text}
+    <section className="mx-auto w-full max-w-3xl px-4 py-10 font-sans text-brand-text-primary sm:px-6">
+      <div className="overflow-hidden rounded-2xl border border-brand-border bg-brand-surface shadow-card backdrop-blur-xs">
+        <div className="border-b border-brand-border px-6 py-6 sm:py-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-brand-text-tertiary">Interactive study</p>
+          <h2 className="mt-3 text-3xl font-serif text-brand-text-primary">ELIZA Companion</h2>
+          <p className="mt-3 text-base text-brand-text-secondary">
+            A faithful simulation of Joseph Weizenbaum&apos;s 1966 therapist bot.
+          </p>
+          <div className="mt-4 h-0.5 w-16 bg-brand-accent"></div>
+        </div>
+
+        <div className="space-y-6 px-6 py-6">
+          <div className="rounded-2xl border border-brand-border bg-brand-bg shadow-inner-soft">
+            <div
+              ref={chatContainerRef}
+              className="flex max-h-[60vh] min-h-[320px] flex-col gap-4 overflow-y-auto px-2 py-6 sm:px-4"
+              aria-live="polite"
+              aria-atomic="false"
+            >
+              {!hasUserMessages && (
+                <div className="rounded-xl border border-dashed border-brand-border px-4 py-5 text-center text-sm text-brand-text-secondary">
+                  <div className="mb-3 flex justify-center">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-border text-brand-text-tertiary">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v6A2.5 2.5 0 0 1 17.5 15H14l-4 5v-5H6.5A2.5 2.5 0 0 1 4 12.5v-6Z" />
+                      </svg>
+                    </span>
+                  </div>
+                  Start a conversation with ELIZA.
+                </div>
+              )}
+
+              {messages.map((message, index) => (
+                <div
+                  key={`${index}-${message.timestamp ?? index}`}
+                  className={`space-y-1 ${message.isUser ? 'text-right' : ''}`}
+                >
+                  <div className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+                    <span
+                      className={`inline-flex items-center rounded-full border border-brand-border px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-text-secondary ${
+                        !message.isUser && index === 0 ? 'bg-brand-bg animate-pulse' : 'bg-transparent'
+                      }`}
+                    >
+                      {message.isUser ? 'You' : 'ELIZA'}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-brand-text-primary">
+                    {message.text}
+                  </p>
+                  <span className="block text-xs text-brand-text-tertiary">
+                    {formatTimestamp(message.timestamp)}
+                  </span>
+                </div>
+              ))}
+
+              {isTyping && (
+                <div className="space-y-1 text-brand-text-tertiary" aria-label="ELIZA is typing">
+                  <div>
+                    <span className="inline-flex items-center rounded-full border border-brand-border px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-text-secondary">
+                      ELIZA
+                    </span>
+                  </div>
+                  <div className="inline-flex items-center gap-2">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-brand-text-secondary"></span>
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-brand-text-secondary" style={{ animationDelay: '0.15s' }}></span>
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-brand-text-secondary" style={{ animationDelay: '0.3s' }}></span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        ))}
-        {isTyping && (
-          <div style={styles.typingIndicator}>
-            ...
-          </div>
-        )}
+
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div className="flex flex-col gap-3 rounded-2xl border border-brand-border bg-brand-bg px-4 py-3 shadow-inner-soft focus-within:ring-2 focus-within:ring-brand-accent md:flex-row md:items-center">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Share a thought or feeling to continue"
+                className="flex-1 bg-transparent text-base text-brand-text-primary placeholder:text-brand-text-tertiary focus:outline-none"
+                aria-label="Message ELIZA"
+              />
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleSubmit()}
+                  className="hidden rounded-full border border-brand-border px-3 py-2 text-xs font-medium uppercase tracking-wide text-brand-text-secondary transition hover:text-brand-text-primary md:inline-flex"
+                  aria-label="Send via keyboard shortcut"
+                >
+                  Cmd+Enter
+                </button>
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-accent px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                  disabled={!inputValue.trim()}
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+            <p className="text-xs text-brand-text-tertiary">
+              Press Enter to send · Type &quot;quit&quot; to end the session
+            </p>
+          </form>
+        </div>
       </div>
-      
-      <div style={styles.inputContainer}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
-          placeholder="Please state your problem"
-          style={styles.input}
-        />
-        <button 
-          onClick={handleSubmit}
-          style={styles.button}
-          onMouseEnter={(e) => {
-            e.target.style.background = '#00dd00';
-            e.target.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.5)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = '#00ff00';
-            e.target.style.boxShadow = 'none';
-          }}
-        >
-          SEND
-        </button>
-      </div>
-      
-      <div style={styles.hint}>
-        Type 'quit' or 'goodbye' to end session
-      </div>
-    </div>
+    </section>
   );
 };
 
