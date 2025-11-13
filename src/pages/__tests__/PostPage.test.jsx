@@ -54,11 +54,6 @@ vi.mock('../../components/LazyMarkdown.jsx', () => ({
   },
 }));
 
-// Mock ElizaChatbot
-vi.mock('../../components/ElizaChatbot.jsx', () => ({
-  default: () => <div data-testid="eliza-chatbot">Chatbot</div>,
-}));
-
 // Mock ClickableImage
 vi.mock('../../components/ClickableImage.jsx', () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} data-testid="clickable-image" />,
@@ -116,11 +111,14 @@ describe('PostPage', () => {
     });
   });
 
-  const renderPostPage = () => {
+  const TestElizaChatbot = () => <div data-testid="eliza-chatbot">Chatbot</div>;
+
+  const renderPostPage = (options = {}) => {
+    const { elizaComponent = TestElizaChatbot } = options;
     return render(
       <BrowserRouter>
         <Routes>
-          <Route path="*" element={<PostPage />} />
+          <Route path="*" element={<PostPage ElizaComponent={elizaComponent} />} />
         </Routes>
       </BrowserRouter>
     );
@@ -730,6 +728,57 @@ describe('PostPage', () => {
         expect(paragraph).toBeInTheDocument();
         expect(paragraph).toHaveClass('text-justify');
       });
+    });
+  });
+
+  describe('ELIZA chatbot embedding', () => {
+    it('does not render chatbot when marker is absent', () => {
+      renderPostPage();
+      expect(screen.queryByTestId('eliza-chatbot')).toBeNull();
+    });
+
+    it('renders a chatbot instance for each marker between segments', () => {
+      mockUsePost.mockReturnValue({
+        post: {
+          ...mockPost,
+          content: [
+            'Intro paragraph.',
+            '[[ELIZA_CHATBOT]]',
+            'Second block of content.',
+            '[[ELIZA_CHATBOT]]',
+            'Closing thoughts.',
+          ].join('\n'),
+        },
+        loading: false,
+        error: null,
+      });
+
+      renderPostPage();
+      const chatbots = screen.getAllByTestId('eliza-chatbot');
+      expect(chatbots).toHaveLength(2);
+    });
+
+    it('skips empty content segments while still rendering chatbots', () => {
+      mockUsePost.mockReturnValue({
+        post: {
+          ...mockPost,
+          content: [
+            '[[ELIZA_CHATBOT]]',
+            'Mid-section content.',
+            '[[ELIZA_CHATBOT]]',
+          ].join('\n'),
+        },
+        loading: false,
+        error: null,
+      });
+
+      renderPostPage();
+
+      const markdownBlocks = screen.getAllByTestId('markdown-content');
+      expect(markdownBlocks.length).toBeGreaterThan(0);
+
+      const chatbots = screen.getAllByTestId('eliza-chatbot');
+      expect(chatbots).toHaveLength(2);
     });
   });
 });

@@ -1,8 +1,7 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CalendarDays, ArrowLeft, Maximize2 } from "lucide-react";
 import LazyMarkdown from '../components/LazyMarkdown.jsx';
-import ElizaChatbot from '../components/ElizaChatbot.jsx';
 import { Card, CardContent } from "../components/ui/card.jsx";
 import ClickableImage from '../components/ClickableImage.jsx';
 import ImageModal from '../components/ImageModal.jsx';
@@ -12,9 +11,11 @@ import { BlogPostStructuredData } from '../components/StructuredData';
 import { useTheme } from '../contexts/ThemeContext';
 
 const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
+const ElizaChatbot = lazy(() => import('../components/ElizaChatbot.jsx'));
 const ELIZA_CHATBOT_MARKER = '[[ELIZA_CHATBOT]]';
 
-export default function PostPage() {
+export default function PostPage({ ElizaComponent = null }) {
+  const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
   const { slug } = useParams();
   const { post, loading, error } = usePost(slug);
   const { isDarkMode } = useTheme();
@@ -256,7 +257,9 @@ export default function PostPage() {
                     )}
                     {!isLast && (
                       <div className="my-10 flex justify-center">
-                        <ElizaChatbot />
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary">Loading ELIZA…</div>}>
+                          <ChatbotComponent />
+                        </Suspense>
                       </div>
                     )}
                   </React.Fragment>
