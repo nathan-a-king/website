@@ -10,11 +10,7 @@ What follows is, on its surface, a piece about two men from a long-ago war. But 
 
 Some people freeze when the world stops making sense. Others improvise. Some cling to what they’ve built. Others risk what they love for what they value. This isn’t a historical problem.
 
-It’s a human one.
-
-A leadership one.
-
-A business one.
+It’s a human one—a profound question of leadership when the future is uncertain.
 
 The Civil War just exposes it in a way that modern life politely hides. So yes, this begins with two hillsides—one in Virginia, one in Pennsylvania. But the question underneath it is one all of us face sooner or later:
 
