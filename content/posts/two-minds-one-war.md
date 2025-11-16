@@ -3,7 +3,7 @@ slug: two-minds-one-war
 title: "Two Minds, One War"
 date: November 17, 2025
 excerpt: "What do you do when the world demands an answer you don't have? A study of two Civil War leaders reveals the profound difference between minds that contract under pressure and minds that expand—and what that reveals about leadership, responsibility, and how we face uncertainty."
-categories: ["Strategy"]
+categories: ["Strategy", "Leadership"]
 ---
 
 What follows is, on its surface, a piece about two men from a long-ago war. But the more time I spent writing it, the more I realized I wasn’t writing about McClellan or Chamberlain at all. I was writing about us—about the fault lines in our own minds when responsibility, uncertainty, and fear collide.
