@@ -2,7 +2,7 @@
 slug: mcp-isnt-dead
 title: "No, MCP Isn't Dead"
 date: November 16, 2025
-excerpt: ""
+excerpt: "Everyone's declaring MCP dead after Anthropic's new agent pattern. They're wrong. The pattern doesn't kill MCP—it finally shows what it was built for."
 categories: ["AI"]
 ---
 
@@ -109,4 +109,10 @@ Every existing MCP server stops working. The Postgres server, the GitHub server,
 
 Every other MCP client loses access to those tools. The pattern becomes Anthropic-specific instead of ecosystem-wide and interoperability disappears. Tools built for this agent can't be used by other agents. Tools built for other agents can't be imported here. The open specification gets replaced by a proprietary one, and third-party development would grind to a halt.
 
-The pattern doesn't just break. It becomes a walled garden. The pattern only works because MCP exists. Agents didn’t outgrow the protocol, they finally showed us the full potential of MCP.
+The pattern doesn't just break. It becomes a walled garden. The pattern only works because MCP exists. Agents didn't outgrow the protocol, they finally showed us the full potential of MCP.
+
+---
+
+## References
+
+Jones, Adam, and Conor Kelly. "Code Execution with MCP: Building More Efficient Agents." Anthropic. November 4, 2025. https://www.anthropic.com/engineering/code-execution-with-mcp.
