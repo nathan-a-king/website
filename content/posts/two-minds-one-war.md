@@ -2,7 +2,7 @@
 slug: two-minds-one-war
 title: "Two Minds, One War"
 date: November 17, 2025
-excerpt: ""
+excerpt: "What do you do when the world demands an answer you don't have? A study of two Civil War leaders reveals the profound difference between minds that contract under pressure and minds that expand—and what that reveals about leadership, responsibility, and how we face uncertainty."
 categories: ["Strategy"]
 ---
 
