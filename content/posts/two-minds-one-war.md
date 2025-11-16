@@ -187,3 +187,5 @@ McClellan and Chamberlain don't teach us what to choose. They teach us that ther
 Their hillsides are long silent now. But the question that confronted them—what to do when love and duty collide, when the world won't hold still, when you must decide without knowing—has never stopped asking itself.
 
 The answer isn't which man you admire. The answer is which man you become when the moment demands more than you believe you can give.
+
+I didn’t write this to hand out moral scores to two men who’ve been dead for a century and a half. I wrote it because I’ve watched smart people — myself included — become McClellan at exactly the moment a situation needed a Chamberlain. Strategy, leadership, product decisions, even personal ones: they all eventually arrive at the same hillside, with the same unfair question. We don’t get to choose whether the world is uncertain. We only get to choose which part of ourselves answers when it is.
