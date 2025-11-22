@@ -3,7 +3,7 @@ slug: inside-agent-builder
 title: "Inside OpenAI's Agent Builder"
 date: October 11, 2025
 excerpt: "OpenAI's Agent Builder isn't just catching up to frameworks like LangGraph — it's a bid to own the entire agent development lifecycle, from prototype to production."
-category: "AI"
+categories: ["AI"]
 ---
 
 When OpenAI [announced **AgentKit**](https://openai.com/index/introducing-agentkit/), it wasn't just another SDK or shiny developer tool — it was a declaration of intent. OpenAI wants to own the entire lifecycle of AI agents, from your first prototype to production deployment. And they're not being subtle about it.
