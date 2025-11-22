@@ -23,11 +23,11 @@ Nova doesn’t try to impress you with features. It tries to *delight* you with 
 
 ## The Power of Attention to Detail
 
-Attention to detail is one of those phrases we throw around too easily. In Nova, it’s everywhere. You notice it in the way the editor gutter aligns perfectly, or how syntax highlighting feels natural instead of neon. You notice it in the gentle fade of the cursor, or the micro-animations that acknowledge your actions just enough to make the interface feel alive.
+Attention to detail is one of those phrases we throw around too easily. In Nova, it's everywhere. You notice it in the way the editor gutter aligns perfectly, or how syntax highlighting feels natural instead of neon. You notice it in the gentle fade of the cursor, or the micro-animations that acknowledge your actions just enough to make the interface feel alive.
 
-There’s a tactile quality to it — the digital equivalent of a precision-machined object. You could live your entire developer life without needing those touches, but once you experience them, it’s hard to go back. Good design doesn’t demand attention. It rewards it.
+There's a tactile quality to it — the digital equivalent of a precision-machined object. You could live your entire developer life without needing those touches, but once you experience them, it's hard to go back. Good design doesn't demand attention. It rewards it.
 
-![](/images/posts/nova.jpeg)
+![Nova code editor interface showing clean typography and balanced design](/images/posts/nova.jpeg)
 
 ## Why Design Matters in Developer Tools
 
