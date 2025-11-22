@@ -36,13 +36,8 @@ function markdownPostsPlugin() {
       // Extract first image from content
       const firstImage = extractFirstImageFromMarkdown(markdownContent);
       
-      // Normalize categories - handle both 'category' (string) and 'categories' (array)
-      let categories = [];
-      if (frontmatter.categories && Array.isArray(frontmatter.categories)) {
-        categories = frontmatter.categories;
-      } else if (frontmatter.category) {
-        categories = [frontmatter.category];
-      }
+      // Get categories from frontmatter
+      const categories = frontmatter.categories || [];
 
       // Create post metadata for index
       const postMeta = {

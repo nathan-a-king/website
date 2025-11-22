@@ -3,7 +3,7 @@ slug: inside-agent-builder
 title: "Inside OpenAI's Agent Builder"
 date: October 11, 2025
 excerpt: "OpenAI's Agent Builder isn't just catching up to frameworks like LangGraph — it's a bid to own the entire agent development lifecycle, from prototype to production."
-category: "AI"
+categories: ["AI"]
 ---
 
 When OpenAI [announced **AgentKit**](https://openai.com/index/introducing-agentkit/), it wasn't just another SDK or shiny developer tool — it was a declaration of intent. OpenAI wants to own the entire lifecycle of AI agents, from your first prototype to production deployment. And they're not being subtle about it.
@@ -60,11 +60,11 @@ In Agent Builder, you'd start by dropping nodes onto the canvas: fetch, filter, 
 
 Then you'd wire it to your actual systems through the Connector Registry, embed the UI with ChatKit, and run evaluations on sample data to stress-test it. Once it's solid, you push it live with versioning, monitoring, and cost controls baked in.
 
-![](/images/posts/agent-builder-flow.png)
+![OpenAI Agent Builder interface showing node-based workflow canvas with connected reasoning steps](/images/posts/agent-builder-flow.png)
 
-![](/images/posts/agent-evals1.png)
+![Agent Builder evaluation interface showing test cases and grading tools](/images/posts/agent-evals1.png)
 
-![](/images/posts/agent-evals2.png)
+![Agent Builder evaluation results with performance metrics and trace inspection](/images/posts/agent-evals2.png)
 
 The pitch is: what used to take three frameworks, two dashboards, and a custom backend now happens in one place. And honestly? For most teams, that's compelling enough.
 

@@ -3,7 +3,7 @@ slug: "post-determinism"
 title: "Post Determinism"
 date: "September 18, 2025"
 excerpt: "AI is reshaping software from deterministic code to probabilistic systems. The future lies in blending logic with learning to build trustworthy tools."
-category: "AI"
+categories: ["AI"]
 ---
 
 Since the invention of the computer, we've operated under a simple premise: computers are predictable machines that precisely follow a defined set of instructions. This fundamental assumption has shaped how we design software and interact with our devices. Artificial Intelligence has fundamentally upended the established 50-year paradigm of deterministic computing. Post-determinism marks a shift from computers as rigid executors of instructions to adaptable, probabilistic systems that generate responses based on learned patterns rather than explicit code. We're entering an era where computers can interpret, create, and surprise us. This shift from predictable to probabilistic computing isn't just a technical evolution—it represents a complete transformation in how we must think and interact with technology. Unlike deterministic systems where failure modes are predictable, AI-driven software introduces new risks, including bias, non-deterministic outputs, and emergent behaviors that challenge traditional software engineering principles. Developers must rethink their approach to software design, including reimagining potential use cases in light of these new capabilities.
