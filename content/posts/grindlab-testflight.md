@@ -6,9 +6,9 @@ excerpt: "GrindLab is officially in private TestFlight. After years of experimen
 categories: ["Design", "Engineering"]
 ---
 
-![](/images/posts/grindlab-welcome-smallr.webp)
+![GrindLab welcome screen showing the app logo and interface](/images/posts/grindlab-welcome-smallr.webp)
 
-I’m happy to announce that **GrindLab** is officially in private, pre-release TestFlight.
+I'm happy to announce that **GrindLab** is officially in private, pre-release TestFlight.
 I anticipate this beta stage will last a few months, with GrindLab tentatively planned for release at the beginning of January 2026. It will be a free app on the iOS App Store.
 
 GrindLab began as a side experiment — a way to quantify what baristas feel by intuition: grind consistency. What started as a Python script for analyzing particle distributions slowly evolved into a full-fledged iOS app. It’s been rewritten multiple times, redesigned in SwiftUI, and rebuilt around an image-processing engine that fuses **Vision**, **Accelerate**, and **Core Image** frameworks for precision analysis.

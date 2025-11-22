@@ -8,7 +8,7 @@ categories: ["Design", "Engineering"]
 
 The _flow_ of every user interface (UI) shapes the entire user experience. Every tap, swipe, and glance is part of a journey toward a user's goal. Good UI flow makes that journey feel natural—so natural the user barely notices it. Poor flow, on the other hand, shifts the focus from the experience to the interface itself. People rarely delete an app because the idea is fundamentally bad—they delete it because they feel lost, overwhelmed, or stuck. The question remained: how can I distill the inherently complex process in GrindLab into a simple, frictionless user journey? That's why flow has been at the center of my mind—and yet, it's still very much a work in progress.
 
-![](/images/posts/grindlab.png) ![](/images/posts/distribution.png) ![](/images/posts/overview.png)
+![GrindLab welcome screen with camera interface](/images/posts/grindlab.png) ![GrindLab particle distribution analysis graph showing grind consistency](/images/posts/distribution.png) ![GrindLab overview screen showing saved analyses](/images/posts/overview.png)
 
 ## Principles in Practice
 

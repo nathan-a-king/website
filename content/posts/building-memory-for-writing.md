@@ -107,7 +107,7 @@ const processQuery = createStep({
 
 The agent has access to a `semanticSearchTool` that embeds the query, retrieves relevant chunks, and returns them as context. GPT-4o does the synthesis. The result feels conversational, but it's grounded in my actual writing.
 
-![](/images/posts/mastra-document-ingestion.png)
+![Screenshot of Mastra document ingestion workflow showing the steps: read documents, generate embeddings, and store embeddings](/images/posts/mastra-document-ingestion.png)
 
 ## What I Learned: Context Is Everything
 
