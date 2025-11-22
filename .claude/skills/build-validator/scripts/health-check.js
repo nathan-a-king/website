@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const http = require('http');
+import http from 'http';
 
 const PORT = process.env.PORT || 8080;
 const HOST = 'localhost';
