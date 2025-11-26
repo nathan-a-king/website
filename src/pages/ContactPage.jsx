@@ -78,6 +78,7 @@ export default function ContactPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    autoComplete="name"
                     required
                     className="w-full px-4 py-3 border border-brand-border bg-brand-bg text-brand-text-primary rounded-lg focus:ring-2 focus:ring-brand-terracotta/50 focus:border-transparent transition-colors placeholder-brand-gray-light"
                     placeholder="Your full name"
@@ -96,6 +97,7 @@ export default function ContactPage() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
+                    autoComplete="off"
                     required
                     className="w-full px-4 py-3 border border-brand-border bg-brand-bg text-brand-text-primary rounded-lg focus:ring-2 focus:ring-brand-terracotta/50 focus:border-transparent transition-colors placeholder-brand-gray-light"
                     placeholder="What's this about?"
@@ -113,6 +115,7 @@ export default function ContactPage() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    autoComplete="off"
                     required
                     rows="6"
                     className="w-full px-4 py-3 border border-brand-border bg-brand-bg text-brand-text-primary rounded-lg focus:ring-2 focus:ring-brand-terracotta/50 focus:border-transparent transition-colors resize-none placeholder-brand-gray-light"
