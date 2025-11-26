@@ -6,17 +6,13 @@ excerpt: "Ulysses S. Grant crushed the Confederacy in eleven months. Three years
 categories: ["Leadership", "Strategy"]
 ---
 
-Ulysses S. Grant crushed the Confederacy in eleven months. Three years later, he lost everything to a con man named Ferdinand Ward.
-
-The same traits that made him unstoppable on the battlefield made him vulnerable in the boardroom. This wasn't irony—it was predictable.
+Ulysses S. Grant crushed the Confederacy in eleven months. Three years later, he lost everything to a con man named Ferdinand Ward. The same traits that made him unstoppable on the battlefield made him vulnerable in the boardroom. This wasn't irony—it was predictable.
 
 Conventional wisdom says greatness transfers—that excellence in one domain predicts success in another. Grant challenges that assumption. His story reveals an uncomfortable truth about leadership: the cognitive traits that make you extraordinary in one environment can create significant vulnerabilities in another.
 
 ## The Mind That Won the War
 
-By May 1864, the Civil War had devoured three years and five Union generals. Robert E. Lee had psychologically defeated each, despite their superior numbers. Then came Grant.
-
-After the first day of brutal, inconclusive fighting in the Wilderness, Grant's officers expected him to retreat—as every Union commander before him had done. Instead, he issued the most revealing order of the war:
+By May 1864, the Civil War had devoured five Union generals over three years. Robert E. Lee had psychologically defeated each, despite their superior numbers. Then came Grant. After the first day of brutal, inconclusive fighting in the Wilderness, Grant's officers expected him to retreat—as every Union commander before him had done. Instead, he issued the most revealing order of the war:
 
 > *"Forward tomorrow."*
 
