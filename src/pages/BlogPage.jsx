@@ -104,9 +104,12 @@ export default function BlogPage() {
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-brand-gray-light pointer-events-none" />
               <input
                 type="text"
+                id="blog-search"
+                name="search"
                 placeholder="Search posts by title, content, or date..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                autoComplete="off"
                 className="w-full pl-14 pr-6 py-4 bg-brand-bg border border-brand-border rounded-lg text-brand-text-primary placeholder-brand-gray-light dark:placeholder-brand-gray-light focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta/40 transition-all"
               />
             </div>

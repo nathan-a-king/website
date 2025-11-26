@@ -152,9 +152,12 @@ const ElizaChatbot = () => {
             <div className="flex flex-col gap-3 rounded-2xl border border-brand-border bg-brand-bg px-4 py-3 shadow-inner-soft focus-within:ring-2 focus-within:ring-brand-accent md:flex-row md:items-center">
               <input
                 type="text"
+                id="eliza-message"
+                name="message"
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
                 placeholder="Share a thought or feeling to continue"
+                autoComplete="off"
                 className="flex-1 bg-transparent text-base text-brand-text-primary placeholder:text-brand-text-tertiary focus:outline-none"
                 aria-label="Message ELIZA"
               />
