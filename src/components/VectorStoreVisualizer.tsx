@@ -109,9 +109,12 @@ const VectorStoreVisualizer = () => {
     setTimeout(() => {
       setSearchResults(results.slice(0, topK));
       setIsSearching(false);
-      // Restore scroll position after results render
+      // Restore scroll position after results render - use multiple frames to ensure it sticks
       requestAnimationFrame(() => {
         window.scrollTo(0, scrollY);
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+        });
       });
     }, 500);
   };
