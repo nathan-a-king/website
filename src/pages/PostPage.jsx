@@ -12,7 +12,9 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
 const ElizaChatbot = lazy(() => import('../components/ElizaChatbot.jsx'));
+const VectorStoreVisualizer = lazy(() => import('../components/VectorStoreVisualizer.tsx'));
 const ELIZA_CHATBOT_MARKER = '[[ELIZA_CHATBOT]]';
+const VECTOR_STORE_VIZ_MARKER = '[[VECTOR_STORE_VIZ]]';
 
 export default function PostPage({ ElizaComponent = null }) {
   const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
@@ -177,7 +179,23 @@ export default function PostPage({ ElizaComponent = null }) {
     if (!post?.content) {
       return [];
     }
-    return post.content.split(ELIZA_CHATBOT_MARKER);
+    // Split by both markers, preserving which marker was used
+    let content = post.content;
+
+    // Escape special regex characters in markers
+    const escapeRegex = (str) => str.replace(/[[\]]/g, '\\$&');
+
+    // Replace markers with unique identifiers we can split on
+    content = content.replace(new RegExp(escapeRegex(ELIZA_CHATBOT_MARKER), 'g'), '||ELIZA||');
+    content = content.replace(new RegExp(escapeRegex(VECTOR_STORE_VIZ_MARKER), 'g'), '||VECTOR||');
+
+    const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\|)/);
+
+    return parts.map(part => {
+      if (part === '||ELIZA||') return { type: 'eliza', content: '' };
+      if (part === '||VECTOR||') return { type: 'vector', content: '' };
+      return { type: 'markdown', content: part };
+    }).filter(segment => segment.type !== 'markdown' || segment.content.trim().length > 0);
   }, [post?.content]);
 
   // Update SEO meta tags when post loads
@@ -245,20 +263,24 @@ export default function PostPage({ ElizaComponent = null }) {
           <Card className="border-none shadow-none bg-transparent dark:bg-transparent">
             <CardContent className="text-brand-text-secondary leading-[1.75] tracking-normal">
               {postSegments.length > 0 && postSegments.map((segment, index) => {
-                const hasContent = segment.trim().length > 0;
-                const isLast = index === postSegments.length - 1;
-
                 return (
                   <React.Fragment key={`post-segment-${index}`}>
-                    {hasContent && (
+                    {segment.type === 'markdown' && (
                       <LazyMarkdown components={markdownComponents}>
-                        {segment}
+                        {segment.content}
                       </LazyMarkdown>
                     )}
-                    {!isLast && (
+                    {segment.type === 'eliza' && (
                       <div className="my-10 flex justify-center">
                         <Suspense fallback={<div className="text-sm text-brand-text-tertiary">Loading ELIZA…</div>}>
                           <ChatbotComponent />
+                        </Suspense>
+                      </div>
+                    )}
+                    {segment.type === 'vector' && (
+                      <div className="my-10">
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading visualization…</div>}>
+                          <VectorStoreVisualizer />
                         </Suspense>
                       </div>
                     )}
