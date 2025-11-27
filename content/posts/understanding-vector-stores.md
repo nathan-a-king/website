@@ -21,7 +21,7 @@ This breaks down constantly:
 
 The words are different. The meaning is the same. Keyword search can't bridge that gap. And this isn't a minor edge case. Modern applications handle millions of searches across documentation, support articles, product catalogs, and code repositories. Every semantic mismatch is a failed search, a frustrated user, a missed answer.
 
-How do we design a search that understands what someone *means*, not just what they typed.
+How do we design a search that understands what someone *means*, not just what they typed?
 
 ## The Solution: Meaning as Position in Space
 
@@ -66,7 +66,7 @@ Here's an interactive visualization. Hover over each dot to see a summary of the
 In this visualization:
 - Each dot represents a document, positioned by its meaning
 - Similar documents cluster naturally
-- Your query becomes a vector (the red dot)
+- Your query becomes a vector (the terracotta dot)
 - The system finds the closest documents
 - Distance in this space corresponds to semantic similarity
 
