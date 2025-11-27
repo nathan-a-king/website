@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import { Search, X } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -18,6 +18,7 @@ interface SearchResult extends Document {
 
 const VectorStoreVisualizer = () => {
   const { isDarkMode } = useTheme();
+  const gridId = useId();
   const [query, setQuery] = useState('');
   const [topK, setTopK] = useState(3);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -138,11 +139,11 @@ const VectorStoreVisualizer = () => {
           <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" className="border border-brand-border rounded">
             {/* Grid background */}
             <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <pattern id={gridId} width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke={isDarkMode ? "rgba(250, 249, 245, 0.08)" : "rgba(31, 30, 29, 0.08)"} strokeWidth="1"/>
               </pattern>
             </defs>
-            <rect width="600" height="400" fill="url(#grid)" />
+            <rect width="600" height="400" fill={`url(#${gridId})`} />
 
             {/* Connection lines from query to results */}
             {queryVector && searchResults.map((result) => (
@@ -289,7 +290,7 @@ const VectorStoreVisualizer = () => {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 placeholder="e.g., machine learning models"
                 className="flex-1 px-3 py-2 border border-brand-border bg-brand-bg text-brand-text-primary placeholder:text-brand-text-tertiary rounded focus:outline-none focus:ring-2 focus:ring-brand-terracotta"
               />

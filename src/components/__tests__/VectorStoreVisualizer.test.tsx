@@ -135,7 +135,7 @@ describe('VectorStoreVisualizer', () => {
 
       const input = screen.getByPlaceholderText('e.g., machine learning models');
       fireEvent.change(input, { target: { value: 'neural networks' } });
-      fireEvent.keyPress(input, { key: 'Enter', code: 'Enter', charCode: 13 });
+      fireEvent.keyDown(input, { key: 'Enter', code: 'Enter', charCode: 13 });
 
       expect(screen.getByRole('button', { name: /searching/i })).toBeInTheDocument();
 
