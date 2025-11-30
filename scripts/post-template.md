@@ -3,6 +3,7 @@ slug: your-post-slug
 title: "Your Post Title"
 date: December 15, 2024
 excerpt: "A brief description of your post content for previews and SEO. Keep it under 160 characters for optimal SEO."
+categories: ["AI"]
 ---
 
 # Your Post Title

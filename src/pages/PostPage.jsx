@@ -174,6 +174,42 @@ export default function PostPage({ ElizaComponent = null }) {
     li: ({ children }) => <li className="mb-1">{children}</li>,
     strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
     em: ({ children }) => <em className="italic">{children}</em>,
+    // Table components with Tailwind styling
+    table: ({ children }) => (
+      <div className="my-8 overflow-x-auto">
+        <table className="min-w-full divide-y divide-brand-border border border-brand-border rounded-lg">
+          {children}
+        </table>
+      </div>
+    ),
+    thead: ({ children }) => (
+      <thead className="bg-brand-surface">
+        {children}
+      </thead>
+    ),
+    tbody: ({ children }) => (
+      <tbody className="divide-y divide-brand-border bg-white dark:bg-brand-ink">
+        {children}
+      </tbody>
+    ),
+    tr: ({ children }) => (
+      <tr className="hover:bg-brand-surface/50 transition-colors">
+        {children}
+      </tr>
+    ),
+    th: ({ children }) => (
+      <th className="px-6 py-3 text-left text-xs font-semibold text-brand-text-primary uppercase tracking-wider">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="px-6 py-4 text-sm text-brand-text-secondary">
+        {children}
+      </td>
+    ),
+    // Superscript and subscript support
+    sup: ({ children }) => <sup className="text-xs">{children}</sup>,
+    sub: ({ children }) => <sub className="text-xs">{children}</sub>,
   }), [isDarkMode]);
   const postSegments = React.useMemo(() => {
     if (!post?.content) {

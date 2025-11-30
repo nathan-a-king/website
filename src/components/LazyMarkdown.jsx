@@ -1,4 +1,6 @@
 import React, { lazy, Suspense } from 'react';
+import remarkGfm from 'remark-gfm';
+import remarkSupersub from 'remark-supersub';
 
 // Lazy load ReactMarkdown and related components
 const ReactMarkdown = lazy(() => import('react-markdown'));
@@ -34,12 +36,13 @@ export default function LazyMarkdown({ children, components, className, ...props
 
   return (
     <Suspense fallback={<MarkdownSkeleton />}>
-      <div 
+      <div
         className={`transition-opacity duration-1000 ease-in-out ${
           hasLoaded ? 'opacity-100' : 'opacity-0'
         } ${className || ''}`}
       >
-        <ReactMarkdown 
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkSupersub]}
           components={components}
           {...props}
         >
