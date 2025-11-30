@@ -63,6 +63,26 @@ const YieldImpact = () => {
           Why Smaller Dies Win: Yield vs Die Size
         </h3>
 
+        {/* Screen reader live region for hover announcements */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {hoveredBar !== null && (
+            <span>
+              {(() => {
+                const [type, indexStr] = hoveredBar.split('-');
+                const index = parseInt(indexStr || '0');
+                const die = data[index];
+                if (!die) return '';
+
+                if (type === 'yield') {
+                  return `${die.label.replace(/\n/g, ' ')} ${die.size}: Yield ${die.yieldPercent}%`;
+                } else {
+                  return `${die.label.replace(/\n/g, ' ')} ${die.size}: ${die.goodDies} good dies per wafer`;
+                }
+              })()}
+            </span>
+          )}
+        </div>
+
         {/* SVG Chart */}
         <div className="overflow-x-auto -mx-2 px-2">
           <svg
@@ -70,7 +90,15 @@ const YieldImpact = () => {
             className="mx-auto w-full"
             style={{ maxWidth: '100%', height: 'auto', minHeight: '500px' }}
             preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Grouped bar chart showing the relationship between die size, manufacturing yield percentage, and good dies per wafer"
+            aria-describedby="yield-impact-description"
           >
+            <desc id="yield-impact-description">
+              Chart demonstrating how increasing silicon die size negatively impacts both yield percentage and good dies per wafer.
+              Shows four die sizes from M1 at 119mm² to hypothetical large SoC at 600mm². As die size doubles, yield drops from 89% to 59%,
+              and good dies per wafer decrease dramatically from 425 to 44. Hover over bars to see detailed metrics.
+            </desc>
             {/* Background */}
             <rect
               x={0}

@@ -24,6 +24,19 @@ const COST_COMPARISON_MARKER = '[[COST_COMPARISON]]';
 const ARCH_EVOLUTION_MARKER = '[[ARCH_EVOLUTION]]';
 const YIELD_IMPACT_MARKER = '[[YIELD_IMPACT]]';
 
+// Escape special regex characters in markers
+const escapeRegex = (str) => str.replace(/[[\]]/g, '\\$&');
+
+// Pre-compile marker replacements to avoid creating RegExp objects on every render
+const MARKER_REPLACEMENTS = [
+  [new RegExp(escapeRegex(ELIZA_CHATBOT_MARKER), 'g'), '||ELIZA||'],
+  [new RegExp(escapeRegex(VECTOR_STORE_VIZ_MARKER), 'g'), '||VECTOR||'],
+  [new RegExp(escapeRegex(CHIPLET_TIMELINE_MARKER), 'g'), '||CHIPLET||'],
+  [new RegExp(escapeRegex(COST_COMPARISON_MARKER), 'g'), '||COST||'],
+  [new RegExp(escapeRegex(ARCH_EVOLUTION_MARKER), 'g'), '||ARCH||'],
+  [new RegExp(escapeRegex(YIELD_IMPACT_MARKER), 'g'), '||YIELD||'],
+];
+
 export default function PostPage({ ElizaComponent = null }) {
   const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
   const { slug } = useParams();
@@ -264,16 +277,10 @@ export default function PostPage({ ElizaComponent = null }) {
     // Split by both markers, preserving which marker was used
     let content = post.content;
 
-    // Escape special regex characters in markers
-    const escapeRegex = (str) => str.replace(/[[\]]/g, '\\$&');
-
-    // Replace markers with unique identifiers we can split on
-    content = content.replace(new RegExp(escapeRegex(ELIZA_CHATBOT_MARKER), 'g'), '||ELIZA||');
-    content = content.replace(new RegExp(escapeRegex(VECTOR_STORE_VIZ_MARKER), 'g'), '||VECTOR||');
-    content = content.replace(new RegExp(escapeRegex(CHIPLET_TIMELINE_MARKER), 'g'), '||CHIPLET||');
-    content = content.replace(new RegExp(escapeRegex(COST_COMPARISON_MARKER), 'g'), '||COST||');
-    content = content.replace(new RegExp(escapeRegex(ARCH_EVOLUTION_MARKER), 'g'), '||ARCH||');
-    content = content.replace(new RegExp(escapeRegex(YIELD_IMPACT_MARKER), 'g'), '||YIELD||');
+    // Replace markers with unique identifiers we can split on (using pre-compiled regexes)
+    MARKER_REPLACEMENTS.forEach(([regex, replacement]) => {
+      content = content.replace(regex, replacement);
+    });
 
     const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\||\|\|CHIPLET\|\||\|\|COST\|\||\|\|ARCH\|\||\|\|YIELD\|\|)/);
 

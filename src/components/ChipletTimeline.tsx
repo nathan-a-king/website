@@ -10,7 +10,7 @@ interface TimelineEvent {
 
 const ChipletTimeline = () => {
   const { isDarkMode } = useTheme();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredEvent, setHoveredEvent] = useState<string | null>(null);
 
   // Timeline events data
   const events: TimelineEvent[] = [
@@ -82,6 +82,20 @@ const ChipletTimeline = () => {
           Predictions vs Reality: The Chiplet Convergence Timeline
         </h3>
 
+        {/* Screen reader live region for hover announcements */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {hoveredEvent !== null && (
+            <span>
+              {(() => {
+                const index = parseInt(hoveredEvent.split('-')[1] || '0');
+                const event = events[index];
+                if (!event) return '';
+                return `${event.type === 'prediction' ? 'Prediction: ' : 'Actual event: '}${event.label.replace(/\n/g, ' ')} in ${event.year}`;
+              })()}
+            </span>
+          )}
+        </div>
+
         {/* Legend */}
         <div className="flex justify-center gap-6 mb-4 text-sm">
           <div className="flex items-center gap-2">
@@ -101,7 +115,15 @@ const ChipletTimeline = () => {
             className="mx-auto w-full"
             style={{ maxWidth: '100%', height: 'auto', minHeight: '500px' }}
             preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Interactive timeline comparing 2023 chiplet predictions to actual industry developments from 2023 to 2025"
+            aria-describedby="chiplet-timeline-description"
           >
+            <desc id="chiplet-timeline-description">
+              Timeline visualization showing predictions from a 2023 article about Apple's need for advanced chip manufacturing
+              alongside actual events including Mac Pro releases, M-series chip launches, and chiplet technology adoption.
+              Hover over events to highlight them.
+            </desc>
             {/* Background */}
             <rect
               x={0}
@@ -130,7 +152,8 @@ const ChipletTimeline = () => {
             {events.map((event, index) => {
               const x = yearToX(event.year);
               const y = getYPosition(event, index);
-              const isHovered = hoveredIndex === index;
+              const eventId = `event-${index}`;
+              const isHovered = hoveredEvent === eventId;
 
               // Calculate label dimensions - always centered on x
               const labelWidth = 220;
@@ -140,9 +163,9 @@ const ChipletTimeline = () => {
 
               return (
                 <g
-                  key={`event-${index}`}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  key={eventId}
+                  onMouseEnter={() => setHoveredEvent(eventId)}
+                  onMouseLeave={() => setHoveredEvent(null)}
                   cursor="pointer"
                 >
                   {/* Connection line to timeline */}

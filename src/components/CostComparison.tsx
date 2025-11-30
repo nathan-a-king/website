@@ -190,6 +190,20 @@ const CostComparison = () => {
           Silicon Cost Comparison: Process Node Evolution
         </h3>
 
+        {/* Screen reader live region for hover announcements */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {hoveredBar !== null && (
+            <span>
+              {hoveredBar.includes('2023') ? 'N5 Process - ' : 'N3 Process - '}
+              {(() => {
+                const index = parseInt(hoveredBar.split('-').pop() || '0');
+                const data = hoveredBar.includes('2023') ? n5Data : n3Data;
+                return data[index] ? `${data[index].label.replace(/\n/g, ' ')}: $${data[index].cost}` : '';
+              })()}
+            </span>
+          )}
+        </div>
+
         {/* SVG Chart */}
         <div className="overflow-x-auto -mx-2 px-2">
           <svg
@@ -197,7 +211,15 @@ const CostComparison = () => {
             className="mx-auto w-full"
             style={{ maxWidth: '100%', height: 'auto', minHeight: '500px' }}
             preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Bar chart comparing estimated silicon materials costs between N5 and N3 process nodes for various Apple M-series chips"
+            aria-describedby="cost-comparison-description"
           >
+            <desc id="cost-comparison-description">
+              Dual bar chart showing estimated materials costs for Apple silicon chips across two manufacturing processes.
+              Left chart shows 2023 N5 process costs ranging from $40 to $446. Right chart shows 2025 N3 process costs ranging from $45 to $450.
+              Hover over bars to highlight cost information.
+            </desc>
             {/* Background */}
             <rect
               x={0}

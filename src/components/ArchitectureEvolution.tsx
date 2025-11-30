@@ -159,13 +159,32 @@ const ArchitectureEvolution = () => {
           The Architecture Evolution: From Monolithic to Modular
         </h3>
 
+        {/* Screen reader live region for hover announcements */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {hoveredSection !== null && (
+            <span>
+              {hoveredSection === 'm1ultra' && 'Apple M1 Ultra - Two complete SoCs connected via interposer with 10,000 signals'}
+              {hoveredSection === 'amd' && 'AMD EPYC - True chiplet architecture with separate CPU and I/O dies'}
+              {hoveredSection === 'm5' && 'Apple M5 rumored - True chiplet design with separate CPU, GPU, and controller tiles'}
+            </span>
+          )}
+        </div>
+
         <div className="overflow-x-auto -mx-2 px-2">
           <svg
             viewBox={`0 0 ${width} ${height}`}
             className="mx-auto w-full"
             style={{ maxWidth: '100%', height: 'auto', minHeight: '500px' }}
             preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label="Architecture diagram comparing chip designs from monolithic M1 Ultra to modular chiplet approaches in AMD EPYC and rumored Apple M5"
+            aria-describedby="architecture-evolution-description"
           >
+            <desc id="architecture-evolution-description">
+              Three-panel comparison showing evolution from Apple's M1 Ultra using two complete SoCs on an interposer,
+              to AMD's true chiplet architecture with separate CPU and I/O dies, to Apple's rumored M5 chiplet design
+              with modular CPU, GPU, and controller tiles. Hover over each architecture to see details.
+            </desc>
             {/* Background */}
             <rect x={0} y={0} width={width} height={height} fill={bgColor} rx={8} />
 
