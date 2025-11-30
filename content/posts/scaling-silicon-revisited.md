@@ -2,7 +2,7 @@
 slug: scaling-silicon-revisited
 title: "Scaling Silicon Revisited"
 date: November 30, 2025
-excerpt: "A new post about scaling silicon revisited."
+excerpt: "Two years later, the chip industry converged on chiplets. Even Apple is embracing what physics demanded all along."
 categories: ["Hardware"]
 ---
 
