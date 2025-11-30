@@ -87,6 +87,81 @@ The convergence toward chiplets isn't a fashion trend or a marketing decision. I
 
 [[YIELD_IMPACT]]
 
+Let me put some updated numbers to this. A 300mm wafer on TSMC's N3 process now costs roughly $18,000-$20,000 (up from ~$17,000 on N5). When you factor in yield losses from defect density, the math becomes even more punishing for large dies.
+
+A 600mm² die—roughly 36% larger than the M1 Max—would see yields drop to around 45% with standard defect densities. You'd get maybe 75 dies per wafer, with only 34 of them good. At $18,000 per wafer, that's over $500 in materials cost per chip, before packaging, before testing, before any other manufacturing steps.
+
+Compare that to four 150mm² chiplets. Each has 90%+ yield. You can bin them separately, mixing and matching to create different SKUs. If one tile has a defect, you don't lose the entire chip. And you can manufacture your I/O tile on a cheaper, older process node since it doesn't need cutting-edge transistor density.
+
+This is why AMD can offer 192-core EPYC processors while Apple topped out at the M2 Ultra's 24 cores (actually 20 CPU cores + 4 efficiency cores). It's not that Apple's engineers lack ambition. It's that the economics of monolithic dies break down past a certain size.
+
+## The Broader Implications
+
+What does it mean when the entire industry converges on the same architectural approach?
+
+**For Apple**, it suggests a recognition that their vertical integration advantage has limits. They can design world-class SoCs for phones, tablets, and consumer laptops. But for high-performance computing—whether desktop workstations or cloud AI servers—the monolithic approach hits a wall. Chiplets let them stay competitive without building economically impossible chips.
+
+**For AMD**, it's complete vindication. They made a bet in 2017 with first-gen Ryzen and EPYC that chiplets were the future. They were mocked by some for it. Now they've won an IEEE award, they're setting industry standards, and their erstwhile competitors are following their lead.
+
+**For Intel**... well, Intel is also going chiplets. Their Meteor Lake and upcoming processors use a disaggregated architecture with separate tiles. The difference is Intel was forced into it by manufacturing struggles, while AMD chose it strategically.
+
+**For the industry**, it signals that Moore's Law scaling—in its traditional form of doubling transistors on a monolithic die every two years—is truly over. The new game is heterogeneous integration: different chiplets, different process nodes, different functions, all assembled into a coherent system.
+
+UCIe standardization is crucial here. When companies can use a common interconnect standard, it lowers barriers for smaller players and enables an ecosystem of specialized chiplet suppliers. We might see a future where you can buy CPU tiles from one vendor, GPU tiles from another, and assemble them into custom configurations. That's speculative, but the groundwork is being laid.
+
+## What I Didn't Anticipate
+
+Let me be honest about what surprised me.
+
+I didn't expect Apple to move toward chiplets this quickly. I thought they'd stretch the monolithic SoC approach further, perhaps with more sophisticated binning or with slight improvements in process technology buying them another generation or two. The rumored pivot to SoIC for M5 suggests the limits are harder than I realized, or that their ambitions for cloud AI are driving faster change.
+
+I also underestimated how quickly N3E would mature. The transition from N3B to N3E happened faster than I expected, and the yields on N3E appear to be excellent. TSMC has gotten remarkably good at process iteration.
+
+Finally, I didn't fully appreciate how important standardization would become. UCIe went from "interesting consortium" to "critical industry infrastructure" faster than I would have guessed. The fact that AMD, Intel, Nvidia, and Arm all got behind it suggests everyone sees the same future.
+
+## Looking Forward: What's Next?
+
+If we accept that chiplets are the dominant paradigm for high-performance computing going forward, what comes next?
+
+**Process node progression will slow further**. We're already seeing the gap between nodes expand from ~2 years to 3+ years. TSMC's roadmap shows N3, N2, and eventually A16 (their "1.6nm-class" node), but the cadence is slowing and the gains per node are diminishing. The focus shifts from "smaller transistors" to "better integration."
+
+**3D stacking becomes critical**. Technologies like SoIC, TSMC's CoWoS, and Intel's Foveros enable vertical integration—stacking chiplets on top of each other for better density and shorter interconnects. This is where much of the innovation will happen.
+
+**Software must evolve**. Heterogeneous systems with variable latency between chiplets require different programming models. The "everything is uniform memory" abstraction that works on monolithic SoCs starts to break down. We'll need better compiler support, better scheduling, better awareness of the underlying topology.
+
+**The definition of "SoC" will blur**. What do we call a system with six chiplets integrated on an interposer? Is it still a system-on-a-chip, or is it something else? The terminology will need to catch up with the reality.
+
+As for Apple specifically, I'm curious whether they'll:
+1. Release M5 as a true chiplet design, or
+2. Keep M5 monolithic for consumer Macs but use chiplets for server variants, or  
+3. Abandon the Mac Pro entirely and focus on Mac Studio as their high-end offering
+
+The Mac Pro in its current form feels like a product searching for a purpose. If Apple can't build a chip significantly more powerful than M2 Ultra without breaking the economics, what's the point? PCIe slots alone don't justify a $7,000 premium over Mac Studio for most users.
+
+## The Curiosity Factor
+
+What fascinates me most about this whole journey isn't being right or wrong about specific predictions. It's watching how fundamental constraints—defect density, reticle limits, wafer costs—shape the decisions of companies worth trillions of dollars.
+
+Apple is one of the most powerful companies in history. They have effectively unlimited R&D budget, close partnerships with TSMC, and the best chip designers in the world. And yet, they appear to be bending to the same physical and economic realities that forced AMD to rethink chip architecture back in 2017.
+
+That's not a failure on Apple's part. It's just physics.
+
+The same math that made chiplets attractive to AMD—better yields, lower cost per working chip, mix-and-match flexibility—applies to everyone. Intel discovered this. Apple appears to be discovering it now. Even Nvidia, with their massive monolithic GPU dies, is exploring chiplet-based designs for future products.
+
+The industry is converging not because everyone copied AMD, but because everyone is reading the same defect density charts and wafer cost sheets and coming to the same inevitable conclusion.
+
+## Closing Thoughts
+
+When I wrote the original article in January 2023, I was trying to understand how three different companies would scale their architectures in the face of slowing process improvements. The question was: which strategy would win?
+
+Two years later, the answer appears to be: chiplets won. Not AMD's specific implementation necessarily, but the fundamental approach of modular, heterogeneous integration.
+
+Apple's rumored move to SoIC chiplets for M5 would be the clearest signal yet that the monolithic SoC era—at least for high-performance computing—is over. We're entering a new phase where the packaging and integration matter as much as the transistors themselves.
+
+Will I be writing another follow-up in 2027 saying I got this wrong again? Maybe! The fun part about analyzing technology is that the ground keeps shifting. But right now, the convergence toward chiplets looks like one of those rare moments where an entire industry shifts direction almost in unison, driven by math that doesn't care about brand loyalty or platform preferences.
+
+The chips have spoken, and they're saying: think smaller, integrate smarter, and embrace modularity. Even Apple is listening.
+
 ---
 
 ## Original Article
