@@ -85,6 +85,8 @@ If this happens—and it's still rumored, not confirmed—it would represent App
 
 The convergence toward chiplets isn't a fashion trend or a marketing decision. It's being driven by immutable physical and economic realities.
 
+[[YIELD_IMPACT]]
+
 ---
 
 ## Original Article

@@ -16,11 +16,13 @@ const VectorStoreVisualizer = lazy(() => import('../components/VectorStoreVisual
 const ChipletTimeline = lazy(() => import('../components/ChipletTimeline.tsx'));
 const CostComparison = lazy(() => import('../components/CostComparison.tsx'));
 const ArchitectureEvolution = lazy(() => import('../components/ArchitectureEvolution.tsx'));
+const YieldImpact = lazy(() => import('../components/YieldImpact.tsx'));
 const ELIZA_CHATBOT_MARKER = '[[ELIZA_CHATBOT]]';
 const VECTOR_STORE_VIZ_MARKER = '[[VECTOR_STORE_VIZ]]';
 const CHIPLET_TIMELINE_MARKER = '[[CHIPLET_TIMELINE]]';
 const COST_COMPARISON_MARKER = '[[COST_COMPARISON]]';
 const ARCH_EVOLUTION_MARKER = '[[ARCH_EVOLUTION]]';
+const YIELD_IMPACT_MARKER = '[[YIELD_IMPACT]]';
 
 export default function PostPage({ ElizaComponent = null }) {
   const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
@@ -271,8 +273,9 @@ export default function PostPage({ ElizaComponent = null }) {
     content = content.replace(new RegExp(escapeRegex(CHIPLET_TIMELINE_MARKER), 'g'), '||CHIPLET||');
     content = content.replace(new RegExp(escapeRegex(COST_COMPARISON_MARKER), 'g'), '||COST||');
     content = content.replace(new RegExp(escapeRegex(ARCH_EVOLUTION_MARKER), 'g'), '||ARCH||');
+    content = content.replace(new RegExp(escapeRegex(YIELD_IMPACT_MARKER), 'g'), '||YIELD||');
 
-    const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\||\|\|CHIPLET\|\||\|\|COST\|\||\|\|ARCH\|\|)/);
+    const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\||\|\|CHIPLET\|\||\|\|COST\|\||\|\|ARCH\|\||\|\|YIELD\|\|)/);
 
     return parts.map(part => {
       if (part === '||ELIZA||') return { type: 'eliza', content: '' };
@@ -280,6 +283,7 @@ export default function PostPage({ ElizaComponent = null }) {
       if (part === '||CHIPLET||') return { type: 'chiplet', content: '' };
       if (part === '||COST||') return { type: 'cost', content: '' };
       if (part === '||ARCH||') return { type: 'arch', content: '' };
+      if (part === '||YIELD||') return { type: 'yield', content: '' };
       return { type: 'markdown', content: part };
     }).filter(segment => segment.type !== 'markdown' || segment.content.trim().length > 0);
   }, [post?.content]);
@@ -388,6 +392,13 @@ export default function PostPage({ ElizaComponent = null }) {
                       <div className="my-10">
                         <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading architecture diagram…</div>}>
                           <ArchitectureEvolution />
+                        </Suspense>
+                      </div>
+                    )}
+                    {segment.type === 'yield' && (
+                      <div className="my-10">
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading chart…</div>}>
+                          <YieldImpact />
                         </Suspense>
                       </div>
                     )}

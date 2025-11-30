@@ -185,8 +185,8 @@ const CostComparison = () => {
 
   return (
     <div className="my-12 w-full">
-      <div className="bg-brand-surface rounded-lg p-6 shadow-lg">
-        <h3 className="text-xl font-semibold text-brand-text-primary text-center mb-6">
+      <div className="bg-brand-surface rounded-lg p-4 shadow-lg">
+        <h3 className="text-xl font-semibold text-brand-text-primary text-center mb-3">
           Silicon Cost Comparison: Process Node Evolution
         </h3>
 

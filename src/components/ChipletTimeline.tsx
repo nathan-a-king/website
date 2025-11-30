@@ -77,13 +77,13 @@ const ChipletTimeline = () => {
 
   return (
     <div className="my-12 w-full">
-      <div className="bg-brand-surface rounded-lg p-6 shadow-lg">
-        <h3 className="text-xl font-semibold text-brand-text-primary text-center mb-6">
+      <div className="bg-brand-surface rounded-lg p-4 shadow-lg">
+        <h3 className="text-xl font-semibold text-brand-text-primary text-center mb-3">
           Predictions vs Reality: The Chiplet Convergence Timeline
         </h3>
 
         {/* Legend */}
-        <div className="flex justify-center gap-6 mb-6 text-sm">
+        <div className="flex justify-center gap-6 mb-4 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded" style={{ backgroundColor: '#2E5A91' }}></div>
             <span className="text-brand-text-secondary">2023 Predictions</span>
