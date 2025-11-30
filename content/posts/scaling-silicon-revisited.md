@@ -6,13 +6,88 @@ excerpt: "A new post about scaling silicon revisited."
 categories: ["Hardware"]
 ---
 
-In January 2023, I published an article about the diverging strategies of Intel, AMD, and Apple in processor design. The core argument was simple: as transistors shrink and wafer costs soar, the economics of chip manufacturing would force fundamental changes in how we build silicon. AMD's chiplet approach offered cost advantages. Apple's monolithic system-on-a-chip strategy provided complete integration but faced scaling challenges. Intel was... well, Intel was figuring things out.
+In January 2023, I published [an article](#original-article) about the diverging strategies of Intel, AMD, and Apple in processor design. The core argument was simple: as transistors shrink and wafer costs soar, the economics of chip manufacturing would force fundamental changes in how we build silicon. AMD's chiplet approach offered cost advantages. Apple's monolithic system-on-a-chip strategy provided complete integration but faced scaling challenges. Intel was... well, Intel was figuring things out.
 
 Two years later, something fascinating has happened. Not only have the predictions held up remarkably well, but the industry appears to be converging on a single answer to the scaling problem—and it's not the answer I expected Apple to embrace.
 
+[[CHIPLET_TIMELINE]]
+
+## The Original Argument
+
+The 2023 piece hinged on basic semiconductor economics. Using Apple's M1 and M1 Max as examples, I calculated how die size affects both the number of chips per wafer and manufacturing yield. The math was straightforward but unforgiving:
+
+- **M1** (119 mm²): 478 dies per wafer, 88.9% yield = 425 good chips
+- **M1 Max** (440 mm²): 117 dies per wafer, 65.4% yield = 76 good chips
+
+That's a 5.6x difference in good chips from the same wafer, which directly translates to cost. I estimated the M1 Max at $223 in materials cost versus $40 for the base M1. The M1 Ultra, being two M1 Max dies on an interposer, would cost around $450 in silicon alone.
+
+The conclusion was that Apple would hit a ceiling. Going bigger than Ultra would price the Mac Pro out of its market. Mark Gurman had reported that a larger Mac Pro SoC would likely start at $10,000—economics that just didn't make sense.
+
+Meanwhile, AMD's chiplet approach was betting on a different future: smaller dies with better yields, mixed across different process nodes, assembled into configurations that could scale from 8 to 192 cores.
+
+## What Actually Happened
+
+In June 2023, Apple released the Mac Pro with the M2 Ultra. The starting price? $6,999. It was, as expected, two M2 Max dies connected via UltraFusion technology on an interposer—the exact architecture I had analyzed.
+
+And then... nothing.
+
+As of late 2025, the Mac Pro is still running M2 Ultra. Meanwhile, the Mac Studio leapfrogged it with M3 Ultra in March 2025, and you can now get a Mac Studio with M4 Max that outperforms the Mac Pro in many workloads. The product that was supposed to be Apple's performance flagship has become a semi-abandoned curiosity, valuable mainly for its PCIe slots.
+
+[[COST_COMPARISON]]
+
+The hypothetical Mac Pro with a chip larger than M2 Ultra never materialized. The $10,000+ starting price that would have required made it a non-starter. The physics won.
+
+This is where things get interesting. AMD didn't just succeed with chiplets—they essentially won the architectural debate.
+
+In 2024, AMD received the IEEE Corporate Innovation Award for pioneering chiplet design research. According to IEEE, AMD's chiplet architecture has "nearly halved" the manufacturing cost of modern processors while delivering greater memory bandwidth and compute capability than monolithic designs.
+
+But the real vindication goes beyond awards. Universal Chiplet Interconnect Express (UCIe)—an open standard for chiplet communication created in 2022—now has support from AMD, Intel, Nvidia, Arm, and dozens of other industry players. Even rivals are standardizing around the approach AMD pioneered.
+
+The cost advantages I described in 2023? They're now industry consensus. Chiplets enable:
+
+- **Better yields** by keeping dies small
+- **Mixed process nodes** (cutting-edge 3nm for CPUs, cheaper nodes for I/O)
+- **Design reuse** across product lines
+- **Faster time-to-market** for new configurations
+
+AMD's recent Financial Analyst Day in November 2025 showed a company that has never been in a stronger position. They're securing over $50 billion in design wins, expanding across cloud, edge, and embedded markets, all built on their chiplet foundation.
+
+### The Process Node Journey Played Out on Schedule
+
+Remember that chart in my original article showing the slowing pace of transistor size reduction? TSMC's roadmap has followed it almost exactly.
+
+Apple's M3 launched on TSMC's first-generation 3nm process (N3B) in late 2023. But N3B was always known to be expensive—a stepping stone until the more economical N3E process matured. Several industry observers noted at the time that Apple was basically paying a premium to be first to 3nm, knowing they'd need to transition quickly.
+
+Sure enough, the M4 arrived in May 2024 on N3E, TSMC's second-generation 3nm process. N3E offers better yields, lower costs, and actually enabled Apple to add more transistors (28 billion vs. M3's count) while improving both performance and efficiency. The quick M3-to-M4 transition wasn't a sign of trouble—it was a planned migration from an expensive process to a cost-optimized one.
+
+TSMC is now ramping N3P (third-generation 3nm) for even better performance and density. The progression is exactly what you'd expect when the easy gains from shrinking are gone: iterate on the process, optimize yields, reduce costs. The "fundamental rethinking" I mentioned in 2023 is here.
+
+[[ARCH_EVOLUTION]]
+
+## The Plot Twist: Apple's Apparent Conversion
+
+Here's where the story takes an unexpected turn.
+
+In July 2024, reports emerged that Apple is developing its M5 processor using TSMC's SoIC (System on Integrated Chip) technology—a fundamentally different approach than anything Apple has done before. Not just UltraFusion connecting two complete SoCs, but actual modular chiplets.
+
+The rumored design would split the processor into separate tiles:
+- A large CPU tile with all the processor cores
+- A large GPU tile with graphics cores  
+- Smaller controller tiles for memory, I/O, and other functions
+
+Each tile could be manufactured separately, potentially on different process nodes, then integrated using 3D stacking technology. It's a true chiplet architecture, more similar to AMD's approach than to Apple's traditional monolithic SoC design.
+
+What makes this particularly intriguing is the reported dual-use strategy. These M5 chips are allegedly being designed to serve both consumer Macs *and* Apple's AI cloud servers. Apple's current cloud infrastructure reportedly uses multiple M2 Ultra chips ganged together—a stopgap solution. A purpose-built chiplet design could serve both markets while sharing development costs.
+
+If this happens—and it's still rumored, not confirmed—it would represent Apple acknowledging the same fundamental limits I wrote about in 2023. You can only push monolithic dies so far before yield and cost become untenable. Beyond that point, you need modularity.
+
+## Why This Matters: The Physics of the Situation
+
+The convergence toward chiplets isn't a fashion trend or a marketing decision. It's being driven by immutable physical and economic realities.
+
 ---
 
-Original Article:
+## Original Article
 
 Apple raised eyebrows in 2020 when the company announced plans to transition from Intel processors to chips designed in-house, marking the end of a 15-year partnership with Intel.^1^ For long-time followers of technology, it was reminiscent of Steve Jobs' announcement at the 2005 Worldwide Developers Conference (WWDC), where he revealed Apple's plan to transition from PowerPC to the x86 architecture from Intel. Like the x86 transition fifteen years earlier, the rollout of Apple silicon went astonishingly smoothly despite the fundamental incompatibility between x86 and ARM instruction sets. For the first time in the recent past, Intel, Advanced Micro Devices (AMD), and Apple have taken divergent strategies in microarchitecture design. Each strategy has its own strengths and weaknesses, so it will be fascinating to see how well each approach scales to the future's cost, efficiency, and performance demands. AMD's chiplet design offers pricing advantages over Intel at the expense of bandwidth constraints and increased latency. Apple's system-on-a-chip (SoC) strategy requires larger dies but offers complete integration; however, we may be seeing the first cracks in Apple's ARM SoC strategy after scaling back plans for a high-end Mac Pro.^2^ According to Mark Gurman's reporting, a Mac Pro with an SoC larger than the M1 Ultra would likely have a starting cost of $10,000. To get a better perspective on the pricing challenges Apple may be facing when designing an SoC for the Mac Pro, let's explore how yield and cost change as die size increases.
 

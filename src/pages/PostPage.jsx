@@ -13,8 +13,14 @@ import { useTheme } from '../contexts/ThemeContext';
 const CodeBlock = lazy(() => import('../components/CodeBlock.tsx'));
 const ElizaChatbot = lazy(() => import('../components/ElizaChatbot.jsx'));
 const VectorStoreVisualizer = lazy(() => import('../components/VectorStoreVisualizer.tsx'));
+const ChipletTimeline = lazy(() => import('../components/ChipletTimeline.tsx'));
+const CostComparison = lazy(() => import('../components/CostComparison.tsx'));
+const ArchitectureEvolution = lazy(() => import('../components/ArchitectureEvolution.tsx'));
 const ELIZA_CHATBOT_MARKER = '[[ELIZA_CHATBOT]]';
 const VECTOR_STORE_VIZ_MARKER = '[[VECTOR_STORE_VIZ]]';
+const CHIPLET_TIMELINE_MARKER = '[[CHIPLET_TIMELINE]]';
+const COST_COMPARISON_MARKER = '[[COST_COMPARISON]]';
+const ARCH_EVOLUTION_MARKER = '[[ARCH_EVOLUTION]]';
 
 export default function PostPage({ ElizaComponent = null }) {
   const ChatbotComponent = ElizaComponent ?? ElizaChatbot;
@@ -22,19 +28,57 @@ export default function PostPage({ ElizaComponent = null }) {
   const { post, loading, error } = usePost(slug);
   const { isDarkMode } = useTheme();
   const markdownComponents = React.useMemo(() => ({
-    h1: ({ children }) => <h1 className="text-3xl font-serif font-light mt-8 mb-4 text-brand-text-primary">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-2xl font-serif font-light mt-6 mb-3 text-brand-text-primary">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-xl font-serif font-normal mt-4 mb-2 text-brand-text-primary">{children}</h3>,
-    a: ({ children, href }) => (
-      <a
-        href={href}
-        className="text-brand-terracotta dark:text-brand-terracotta underline hover:text-brand-terracotta/80 transition-colors"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    ),
+    h1: ({ children }) => {
+      const text = typeof children === 'string' ? children : React.Children.toArray(children).join('');
+      const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+      return <h1 id={id} className="text-3xl font-serif font-light mt-8 mb-4 text-brand-text-primary">{children}</h1>;
+    },
+    h2: ({ children }) => {
+      const text = typeof children === 'string' ? children : React.Children.toArray(children).join('');
+      const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+      return <h2 id={id} className="text-2xl font-serif font-light mt-6 mb-3 text-brand-text-primary">{children}</h2>;
+    },
+    h3: ({ children }) => {
+      const text = typeof children === 'string' ? children : React.Children.toArray(children).join('');
+      const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+      return <h3 id={id} className="text-xl font-serif font-normal mt-4 mb-2 text-brand-text-primary">{children}</h3>;
+    },
+    a: ({ children, href }) => {
+      // Handle anchor links (same-page navigation) differently
+      const isAnchor = href?.startsWith('#');
+
+      if (isAnchor) {
+        return (
+          <a
+            href={href}
+            className="text-brand-terracotta dark:text-brand-terracotta underline hover:text-brand-terracotta/80 transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById(href.substring(1));
+              if (element) {
+                const yOffset = -100; // Offset to account for floating header
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }}
+          >
+            {children}
+          </a>
+        );
+      }
+
+      // External links open in new tab
+      return (
+        <a
+          href={href}
+          className="text-brand-terracotta dark:text-brand-terracotta underline hover:text-brand-terracotta/80 transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      );
+    },
     p: ({ children, node, ...props }) => {
       // Check if this paragraph contains images
       const imgCount = node?.children?.filter((child) => child.tagName === 'img').length || 0;
@@ -224,12 +268,18 @@ export default function PostPage({ ElizaComponent = null }) {
     // Replace markers with unique identifiers we can split on
     content = content.replace(new RegExp(escapeRegex(ELIZA_CHATBOT_MARKER), 'g'), '||ELIZA||');
     content = content.replace(new RegExp(escapeRegex(VECTOR_STORE_VIZ_MARKER), 'g'), '||VECTOR||');
+    content = content.replace(new RegExp(escapeRegex(CHIPLET_TIMELINE_MARKER), 'g'), '||CHIPLET||');
+    content = content.replace(new RegExp(escapeRegex(COST_COMPARISON_MARKER), 'g'), '||COST||');
+    content = content.replace(new RegExp(escapeRegex(ARCH_EVOLUTION_MARKER), 'g'), '||ARCH||');
 
-    const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\|)/);
+    const parts = content.split(/(\|\|ELIZA\|\||\|\|VECTOR\|\||\|\|CHIPLET\|\||\|\|COST\|\||\|\|ARCH\|\|)/);
 
     return parts.map(part => {
       if (part === '||ELIZA||') return { type: 'eliza', content: '' };
       if (part === '||VECTOR||') return { type: 'vector', content: '' };
+      if (part === '||CHIPLET||') return { type: 'chiplet', content: '' };
+      if (part === '||COST||') return { type: 'cost', content: '' };
+      if (part === '||ARCH||') return { type: 'arch', content: '' };
       return { type: 'markdown', content: part };
     }).filter(segment => segment.type !== 'markdown' || segment.content.trim().length > 0);
   }, [post?.content]);
@@ -317,6 +367,27 @@ export default function PostPage({ ElizaComponent = null }) {
                       <div className="my-10">
                         <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading visualization…</div>}>
                           <VectorStoreVisualizer />
+                        </Suspense>
+                      </div>
+                    )}
+                    {segment.type === 'chiplet' && (
+                      <div className="my-10">
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading timeline…</div>}>
+                          <ChipletTimeline />
+                        </Suspense>
+                      </div>
+                    )}
+                    {segment.type === 'cost' && (
+                      <div className="my-10">
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading chart…</div>}>
+                          <CostComparison />
+                        </Suspense>
+                      </div>
+                    )}
+                    {segment.type === 'arch' && (
+                      <div className="my-10">
+                        <Suspense fallback={<div className="text-sm text-brand-text-tertiary text-center">Loading architecture diagram…</div>}>
+                          <ArchitectureEvolution />
                         </Suspense>
                       </div>
                     )}
